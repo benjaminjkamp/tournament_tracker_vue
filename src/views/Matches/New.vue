@@ -1,15 +1,18 @@
 <template>
-  <div class="home">
-    <br><br>
+  <div class="matches-new">
     <div>
-      <div v-for="round in rounds">
-        <router-link :to="'/rounds/' + round.id">{{ round.name }}</router-link>
-      </div>
-      <button>
-        <router-link to="/rounds/new">Add Round</router-link>
-      </button>
+      <br><br>
+      Team 1 Name: <input type="text" v-model="newTeamName1"><br>
+      Team 1 Player 1: <input type="text" v-model="player1"><br>
+      Team 1 Player 2: <input type="text" v-model="player2"><br>
+      <br>
+      Team 2 Name: <input type="text" v-model="newTeamName2"><br>
+      Team 2 Player 1: <input type="text" v-model="player3"><br>
+      Team 2 Player 2: <input type="text" v-model="player4"><br>
+      <br>
+      <button type="submit" v-on:click="submit()">Add Match</button>  
+      <br><br>
     </div>
-    <br><br>
     <div>
       <table class="table">
         <thead class="thead-dark">
@@ -55,7 +58,14 @@ export default {
   data: function() {
     return {
       users: [],
-      rounds: []
+      newTeamName1: "",
+      newTeamName2: "",
+      player1: "",
+      player2: "",
+      player3: "",
+      player4: "",
+      errors: [],
+      match: {}
     };
   },
   created: function() {
@@ -63,11 +73,33 @@ export default {
       console.log("users", response.data);
       this.users = response.data;
     });
-    axios.get("/api/rounds").then(response => {
-      console.log("rounds", response.data);
-      this.rounds = response.data;
-    })
   },
-  methods: {}
+  methods: {
+    submit: function(){
+      var params = {
+        round_id: this.$route.params.id,
+        name_team1: this.newTeamName1,
+        name_team2: this.newTeamName2,
+        user_id_1: this.player1,
+        user_id_2: this.player2,
+        user_id_3: this.player3,
+        user_id_4: this.player4,
+      }
+
+      axios.post("/api/matches", params).then(response => {
+        console.log(response.data);
+        this.match = response.data;
+        axios.patch("/api/matches/" + this.match.id).then(response => {
+          console.log(response.data)
+        })
+          this.$router.push("/rounds/" + this.$route.params.id);
+        
+      }).catch(error => {
+        console.log(error.response.data);
+        this.errors = error.response.data;
+        
+      })
+    }
+  }
 };
 </script>
