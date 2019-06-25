@@ -28,49 +28,49 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="table-secondary">
-              <th scope="row">{{match.teams.team_1.name}}</th>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_1"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_2"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_3"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_4"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_5"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_6"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_7"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_8"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_9"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_10"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_11"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_12"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_13"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_14"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_15"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_16"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_17"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_1.scores.score_18"></td>
+            <tr  class="table-secondary">
+              <th scope="row">{{match.teams[0].name}}</th>
+              <td><input size="1" step="0.5" type="range" min="0" max="1" v-model="match.teams[0].scores.score_1"></td>
+              <td><input size="3" step="any" type="number" v-model="match.teams[0].scores.score_2"></td>
+              <td><input step="any" type="number" v-model="match.teams[0].scores.score_3"></td>
+              <td><input step="any" type="number" v-model="match.teams[0].scores.score_4"></td>
+              <td><input step="any" type="number" v-model="match.teams[0].scores.score_5"></td>
+              <td><input step="any" type="number" v-model="match.teams[0].scores.score_6"></td>
+              <td><input step="any" type="number" v-model="match.teams[0].scores.score_7"></td>
+              <td><input step="any" type="number" v-model="match.teams[0].scores.score_8"></td>
+              <td><input step="any" type="number" v-model="match.teams[0].scores.score_9"></td>
+              <td><input step="any" type="number" v-model="match.teams[0].scores.score_10"></td>
+              <td><input step="any" type="number" v-model="match.teams[0].scores.score_11"></td>
+              <td><input step="any" type="number" v-model="match.teams[0].scores.score_12"></td>
+              <td><input step="any" type="number" v-model="match.teams[0].scores.score_13"></td>
+              <td><input step="any" type="number" v-model="match.teams[0].scores.score_14"></td>
+              <td><input step="any" type="number" v-model="match.teams[0].scores.score_15"></td>
+              <td><input step="any" type="number" v-model="match.teams[0].scores.score_16"></td>
+              <td><input step="any" type="number" v-model="match.teams[0].scores.score_17"></td>
+              <td><input step="any" type="number" v-model="match.teams[0].scores.score_18"></td>
               
               
             </tr>
             <tr class="table-secondary">
-              <th scope="row">{{match.teams.team_2.name}}</th>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_1"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_2"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_3"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_4"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_5"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_6"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_7"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_8"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_9"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_10"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_11"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_12"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_13"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_14"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_15"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_16"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_17"></td>
-              <td><input step="any" type="number" v-model="match.teams.team_2.scores.score_18"></td>
+              <th scope="row">{{match.teams[1].name}}</th>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_1"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_2"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_3"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_4"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_5"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_6"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_7"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_8"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_9"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_10"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_11"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_12"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_13"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_14"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_15"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_16"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_17"></td>
+              <td><input step="any" type="number" v-model="match.teams[1].scores.score_18"></td>
               
             </tr>
           
@@ -111,43 +111,43 @@ export default {
   methods: {
     submit: function(){
       var params = {
-        team1_score1: this.match.teams.team_1.scores.score_1,
-        team1_score2: this.match.teams.team_1.scores.score_2,
-        team1_score3: this.match.teams.team_1.scores.score_3,
-        team1_score4: this.match.teams.team_1.scores.score_4,
-        team1_score5: this.match.teams.team_1.scores.score_5,
-        team1_score6: this.match.teams.team_1.scores.score_6,
-        team1_score7: this.match.teams.team_1.scores.score_7,
-        team1_score8: this.match.teams.team_1.scores.score_8,
-        team1_score9: this.match.teams.team_1.scores.score_9,
-        team1_score10: this.match.teams.team_1.scores.score_10,
-        team1_score11: this.match.teams.team_1.scores.score_11,
-        team1_score12: this.match.teams.team_1.scores.score_12,
-        team1_score13: this.match.teams.team_1.scores.score_13,
-        team1_score14: this.match.teams.team_1.scores.score_14,
-        team1_score15: this.match.teams.team_1.scores.score_15,
-        team1_score16: this.match.teams.team_1.scores.score_16,
-        team1_score17: this.match.teams.team_1.scores.score_17,
-        team1_score18: this.match.teams.team_1.scores.score_18,
+        team1_score1: this.match.teams[0].scores.score_1,
+        team1_score2: this.match.teams[0].scores.score_2,
+        team1_score3: this.match.teams[0].scores.score_3,
+        team1_score4: this.match.teams[0].scores.score_4,
+        team1_score5: this.match.teams[0].scores.score_5,
+        team1_score6: this.match.teams[0].scores.score_6,
+        team1_score7: this.match.teams[0].scores.score_7,
+        team1_score8: this.match.teams[0].scores.score_8,
+        team1_score9: this.match.teams[0].scores.score_9,
+        team1_score10: this.match.teams[0].scores.score_10,
+        team1_score11: this.match.teams[0].scores.score_11,
+        team1_score12: this.match.teams[0].scores.score_12,
+        team1_score13: this.match.teams[0].scores.score_13,
+        team1_score14: this.match.teams[0].scores.score_14,
+        team1_score15: this.match.teams[0].scores.score_15,
+        team1_score16: this.match.teams[0].scores.score_16,
+        team1_score17: this.match.teams[0].scores.score_17,
+        team1_score18: this.match.teams[0].scores.score_18,
         
-        team2_score1: this.match.teams.team_2.scores.score_1,
-        team2_score2: this.match.teams.team_2.scores.score_2,
-        team2_score3: this.match.teams.team_2.scores.score_3,
-        team2_score4: this.match.teams.team_2.scores.score_4,
-        team2_score5: this.match.teams.team_2.scores.score_5,
-        team2_score6: this.match.teams.team_2.scores.score_6,
-        team2_score7: this.match.teams.team_2.scores.score_7,
-        team2_score8: this.match.teams.team_2.scores.score_8,
-        team2_score9: this.match.teams.team_2.scores.score_9,
-        team2_score10: this.match.teams.team_2.scores.score_10,
-        team2_score11: this.match.teams.team_2.scores.score_11,
-        team2_score12: this.match.teams.team_2.scores.score_12,
-        team2_score13: this.match.teams.team_2.scores.score_13,
-        team2_score14: this.match.teams.team_2.scores.score_14,
-        team2_score15: this.match.teams.team_2.scores.score_15,
-        team2_score16: this.match.teams.team_2.scores.score_16,
-        team2_score17: this.match.teams.team_2.scores.score_17,
-        team2_score18: this.match.teams.team_2.scores.score_18,
+        team2_score1: this.match.teams[1].scores.score_1,
+        team2_score2: this.match.teams[1].scores.score_2,
+        team2_score3: this.match.teams[1].scores.score_3,
+        team2_score4: this.match.teams[1].scores.score_4,
+        team2_score5: this.match.teams[1].scores.score_5,
+        team2_score6: this.match.teams[1].scores.score_6,
+        team2_score7: this.match.teams[1].scores.score_7,
+        team2_score8: this.match.teams[1].scores.score_8,
+        team2_score9: this.match.teams[1].scores.score_9,
+        team2_score10: this.match.teams[1].scores.score_10,
+        team2_score11: this.match.teams[1].scores.score_11,
+        team2_score12: this.match.teams[1].scores.score_12,
+        team2_score13: this.match.teams[1].scores.score_13,
+        team2_score14: this.match.teams[1].scores.score_14,
+        team2_score15: this.match.teams[1].scores.score_15,
+        team2_score16: this.match.teams[1].scores.score_16,
+        team2_score17: this.match.teams[1].scores.score_17,
+        team2_score18: this.match.teams[1].scores.score_18,
       }
 
       axios.patch("/api/matches/" + this.$route.params.id, params).then(response => {

@@ -81,11 +81,15 @@
         </tbody>
       </table>
     </div>
+
     <br><br>
-    <button>
-      <router-link :to="'/matches/' + this.round.id + '/new'">Add Match</router-link>
-    </button>
+    <router-link :to="'/matches/' + this.round.id + '/new'">
+      <button>
+        Add Match
+      </button>
+    </router-link>
     <br><br><br>
+
     <div v-for="match in matches">
       <router-link :to="'/matches/' + match.id + '/edit'">
         <table class="table">
@@ -113,51 +117,30 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="table-secondary">
-              <th scope="row">{{match.teams.team_1.name}}</th>
-              <td>{{match.teams.team_1.scores.score_1}}</td>
-              <td>{{match.teams.team_1.scores.score_2}}</td>
-              <td>{{match.teams.team_1.scores.score_3}}</td>
-              <td>{{match.teams.team_1.scores.score_4}}</td>
-              <td>{{match.teams.team_1.scores.score_5}}</td>
-              <td>{{match.teams.team_1.scores.score_6}}</td>
-              <td>{{match.teams.team_1.scores.score_7}}</td>
-              <td>{{match.teams.team_1.scores.score_8}}</td>
-              <td>{{match.teams.team_1.scores.score_9}}</td>
-              <td>{{match.teams.team_1.scores.score_10}}</td>
-              <td>{{match.teams.team_1.scores.score_11}}</td>
-              <td>{{match.teams.team_1.scores.score_12}}</td>
-              <td>{{match.teams.team_1.scores.score_13}}</td>
-              <td>{{match.teams.team_1.scores.score_14}}</td>
-              <td>{{match.teams.team_1.scores.score_15}}</td>
-              <td>{{match.teams.team_1.scores.score_16}}</td>
-              <td>{{match.teams.team_1.scores.score_17}}</td>
-              <td>{{match.teams.team_1.scores.score_18}}</td>
+            <tr v-for="team in match.teams" class="table-secondary">
+              <th scope="row">{{team.name}}</th>
+              <td>{{team.scores.score_1}}</td>
+              <td>{{team.scores.score_2}}</td>
+              <td>{{team.scores.score_3}}</td>
+              <td>{{team.scores.score_4}}</td>
+              <td>{{team.scores.score_5}}</td>
+              <td>{{team.scores.score_6}}</td>
+              <td>{{team.scores.score_7}}</td>
+              <td>{{team.scores.score_8}}</td>
+              <td>{{team.scores.score_9}}</td>
+              <td>{{team.scores.score_10}}</td>
+              <td>{{team.scores.score_11}}</td>
+              <td>{{team.scores.score_12}}</td>
+              <td>{{team.scores.score_13}}</td>
+              <td>{{team.scores.score_14}}</td>
+              <td>{{team.scores.score_15}}</td>
+              <td>{{team.scores.score_16}}</td>
+              <td>{{team.scores.score_17}}</td>
+              <td>{{team.scores.score_18}}</td>
               
               
             </tr>
-            <tr class="table-secondary">
-              <th scope="row">{{match.teams.team_2.name}}</th>
-              <td>{{match.teams.team_2.scores.score_1}}</td>
-              <td>{{match.teams.team_2.scores.score_2}}</td>
-              <td>{{match.teams.team_2.scores.score_3}}</td>
-              <td>{{match.teams.team_2.scores.score_4}}</td>
-              <td>{{match.teams.team_2.scores.score_5}}</td>
-              <td>{{match.teams.team_2.scores.score_6}}</td>
-              <td>{{match.teams.team_2.scores.score_7}}</td>
-              <td>{{match.teams.team_2.scores.score_8}}</td>
-              <td>{{match.teams.team_2.scores.score_9}}</td>
-              <td>{{match.teams.team_2.scores.score_10}}</td>
-              <td>{{match.teams.team_2.scores.score_11}}</td>
-              <td>{{match.teams.team_2.scores.score_12}}</td>
-              <td>{{match.teams.team_2.scores.score_13}}</td>
-              <td>{{match.teams.team_2.scores.score_14}}</td>
-              <td>{{match.teams.team_2.scores.score_15}}</td>
-              <td>{{match.teams.team_2.scores.score_16}}</td>
-              <td>{{match.teams.team_2.scores.score_17}}</td>
-              <td>{{match.teams.team_2.scores.score_18}}</td>
-              
-            </tr>
+            
           
           </tbody>
         </table>
@@ -185,7 +168,7 @@ export default {
       course: {},
       handicaps: {},
       pars: {},
-      matches: {}
+      matches: []
     };
   },
   created: function() {
@@ -199,6 +182,8 @@ export default {
 
     })
   },
-  methods: {}
+  methods: {
+    
+  }
 };
 </script>

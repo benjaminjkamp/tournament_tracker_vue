@@ -1,9 +1,14 @@
 <template>
   <div class="rounds-new">
+    
+    <datalist id="courses">
+      <option v-for="course in courses">{{ course.id }} {{ course.name }}</option>
+    </datalist>
+
     <br><br>
     Year: <input type="text" v-model="newRoundYear"><br>
     Format: <input type="text" v-model="newRoundFormat"><br>
-    Course ID: <input type="text" v-model="newRoundCourseID"><router-link to="/courses/new"><button>Add Course</button></router-link><br>
+    Course ID: <input list="courses" type="text" v-model="newRoundCourseID"><router-link to="/courses/new"><button>Add Course</button></router-link><br>
     <br><br>
     <button type="submit" v-on:click="submit()">Add Round</button><router-link to="/"><button>Cancel</button></router-link>
     <br><br><br><br>

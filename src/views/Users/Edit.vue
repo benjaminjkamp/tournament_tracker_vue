@@ -5,7 +5,7 @@
     <div>
       <form v-on:submit.prevent="submit()">
         GNC Average: <input type="number" step="any" v-model="user.gnc_average"><br>
-        Two Year Average: <input type="number" step="any" v-model="user.two_year_average"><br>
+        Two Year Average: <input type="number" step=".01" v-model="user.two_year_average"><br>
         Wins: <input type="number" step="any" v-model="user.ryder_cup_record.ryder_cup_wins">
         Losses: <input type="number" step="any" v-model="user.ryder_cup_record.ryder_cup_losses">
         Ties: <input type="number" step="any" v-model="user.ryder_cup_record.ryder_cup_ties"><br>

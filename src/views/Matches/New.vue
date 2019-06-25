@@ -1,14 +1,20 @@
 <template>
   <div class="matches-new">
+
+    <datalist id="players">
+      <option v-for="user in users">{{ user.id }} {{ user.name }}</option>
+    </datalist>
+
+
     <div>
       <br><br>
       Team 1 Name: <input type="text" v-model="newTeamName1"><br>
-      Team 1 Player 1: <input type="text" v-model="player1"><br>
-      Team 1 Player 2: <input type="text" v-model="player2"><br>
+      Team 1 Player 1: <input list="players" type="text" v-model="player1"><br>
+      Team 1 Player 2: <input list="players" type="text" v-model="player2"><br>
       <br>
       Team 2 Name: <input type="text" v-model="newTeamName2"><br>
-      Team 2 Player 1: <input type="text" v-model="player3"><br>
-      Team 2 Player 2: <input type="text" v-model="player4"><br>
+      Team 2 Player 1: <input list="players" type="text" v-model="player3"><br>
+      Team 2 Player 2: <input list="players" type="text" v-model="player4"><br>
       <br>
       <button type="submit" v-on:click="submit()">Add Match</button>  
       <br><br>
