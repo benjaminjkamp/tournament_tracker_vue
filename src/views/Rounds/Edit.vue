@@ -5,6 +5,7 @@
     Course ID: <input type="text" v-model="round.course.id"><router-link to="/courses/new"><button>Add Course</button></router-link><br>
     <br><br>
     <button type="submit" v-on:click="submit()">Edit Round</button>
+    <button v-on:click="$router.go(-1)">Cancel</button>
     <br><br><br><br>
     <h4>Courses</h4>
     <div v-for="course in courses">

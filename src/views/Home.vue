@@ -1,35 +1,37 @@
 <template>
   <div class="home">
+    
     <br><br>
-    <div>
+  <!--   <div>
       <div v-bind:key="round.id" v-for="round in orderBy(rounds, 'name')">
         <router-link :to="'/rounds/' + round.id">{{ round.name }}</router-link>
       </div>
       <br>
       <router-link to="/rounds/new">
-        <button>Add Round</button>
+        <span>Add Round</span>
       </router-link>
 
-    </div>
+    </div> -->
     <br><br>
-    <div>
-      <table class="table">
+    <div class="card card-primary">
+      
+      <table class="table table-no-border active table-condensed">
         <thead class="thead-dark">
           <tr>
-            <th scope="col"><button v-on:click="selectSort('name')">Name</button></th>
-            <th scope="col"><button v-on:click="selectSort('low_net_handicap')">Low Net HDCP</button></th>
-            <th scope="col"><button v-on:click="selectSort('skins_handicap')">Skins HDCP</button></th>
-            <th scope="col"><button v-on:click="selectSort('gnc_average')">GNC AVG</button></th>
-            <th scope="col"><button v-on:click="selectSort('two_year_average')">2yr AVG</button></th>
-            <th scope="col"><button v-on:click="selectSort('ryder_cup_record.ryder_cup_wins')">Wins</button></th>
-            <th scope="col"><button v-on:click="selectSort('ryder_cup_record.ryder_cup_losses')">Losses</button></th>
-            <th scope="col"><button v-on:click="selectSort('ryder_cup_record.ryder_cup_ties')">Ties</button></th>
-            <th scope="col"><button v-on:click="selectSort('record_2017')">2017 Record</button></th>        
+            <th scope="col"><span v-on:click="selectSort('name')">Name</span></th>
+            <th scope="col"><span v-on:click="selectSort('low_net_handicap')">Low Net HDCP</span></th>
+            <th scope="col"><span v-on:click="selectSort('skins_handicap')">Skins HDCP</span></th>
+            <th scope="col"><span v-on:click="selectSort('gnc_average')">GNC AVG</span></th>
+            <th scope="col"><span v-on:click="selectSort('two_year_average')">2yr AVG</span></th>
+            <th scope="col"><span v-on:click="selectSort('ryder_cup_record.ryder_cup_wins')">Wins</span></th>
+            <th scope="col"><span v-on:click="selectSort('ryder_cup_record.ryder_cup_losses')">Losses</span></th>
+            <th scope="col"><span v-on:click="selectSort('ryder_cup_record.ryder_cup_ties')">Ties</span></th>
+            <th scope="col"><span v-on:click="selectSort('record_2017')">2017 Record</span></th>        
             
           </tr>
         </thead>
-        <tbody v-bind:key="user.id" v-for="user in orderBy(users, sortAttribute, sortAscending)">
-          <tr class="table-secondary">
+        <tbody class="table-hover" v-bind:key="user.id" v-for="user in orderBy(users, sortAttribute, sortAscending)">
+          <tr class="table-secondary active">
             <th scope="row">{{user.id}} {{user.name}}</th>
             <td>{{user.low_net_handicap}}</td>
             <td>{{user.skins_handicap}}</td>

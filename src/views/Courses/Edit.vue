@@ -30,53 +30,54 @@
           <tbody>
             <tr class="table-secondary">
               <th scope="row">Pars</th>
-              <td><input step="any" type="number" v-model="course.pars.hole1_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole2_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole3_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole4_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole5_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole6_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole7_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole8_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole9_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole10_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole11_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole12_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole13_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole14_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole15_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole16_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole17_par"></td>
-              <td><input step="any" type="number" v-model="course.pars.hole18_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole1_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole2_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole3_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole4_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole5_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole6_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole7_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole8_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole9_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole10_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole11_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole12_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole13_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole14_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole15_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole16_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole17_par"></td>
+              <td><input size="2" step="any" type="text" v-model="course.pars.hole18_par"></td>
               
               
             </tr>
             <tr class="table-secondary">
               <th scope="row">Handicaps</th>
-              <td><input step="any" type="number" v-model="course.handicaps.hole1_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole2_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole3_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole4_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole5_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole6_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole7_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole8_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole9_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole10_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole11_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole12_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole13_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole14_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole15_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole16_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole17_handicap"></td>
-              <td><input step="any" type="number" v-model="course.handicaps.hole18_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole1_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole2_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole3_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole4_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole5_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole6_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole7_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole8_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole9_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole10_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole11_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole12_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole13_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole14_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole15_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole16_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole17_handicap"></td>
+              <td><input size="2" step="any" type="text" v-model="course.handicaps.hole18_handicap"></td>
               
             </tr>
           
           </tbody>
         </table>
         <button type="submit">Edit Course</button>
+        <button v-on:click="$router.go(-1)">Cancel</button>
         
       </form>
     </div>

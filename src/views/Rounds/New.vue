@@ -10,7 +10,8 @@
     Format: <input type="text" v-model="newRoundFormat"><br>
     Course ID: <input list="courses" type="text" v-model="newRoundCourseID"><router-link to="/courses/new"><button>Add Course</button></router-link><br>
     <br><br>
-    <button type="submit" v-on:click="submit()">Add Round</button><router-link to="/"><button>Cancel</button></router-link>
+    <button type="submit" v-on:click="submit()">Add Round</button>
+    <button v-on:click="$router.go(-1)">Cancel</button>
     <br><br><br><br>
     <h4>Courses</h4>
     <div v-for="course in courses">

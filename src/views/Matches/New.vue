@@ -17,6 +17,7 @@
       Team 2 Player 2: <input list="players" type="text" v-model="player4"><br>
       <br>
       <button type="submit" v-on:click="submit()">Add Match</button>  
+      <button v-on:click="$router.go(-1)">Cancel</button>
       <br><br>
     </div>
     <div>

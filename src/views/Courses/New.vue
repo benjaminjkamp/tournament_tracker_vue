@@ -30,53 +30,54 @@
           <tbody>
             <tr class="table-secondary">
               <th scope="row">Pars</th>
-              <td><input step="any" type="number" v-model="par1"></td>
-              <td><input step="any" type="number" v-model="par2"></td>
-              <td><input step="any" type="number" v-model="par3"></td>
-              <td><input step="any" type="number" v-model="par4"></td>
-              <td><input step="any" type="number" v-model="par5"></td>
-              <td><input step="any" type="number" v-model="par6"></td>
-              <td><input step="any" type="number" v-model="par7"></td>
-              <td><input step="any" type="number" v-model="par8"></td>
-              <td><input step="any" type="number" v-model="par9"></td>
-              <td><input step="any" type="number" v-model="par10"></td>
-              <td><input step="any" type="number" v-model="par11"></td>
-              <td><input step="any" type="number" v-model="par12"></td>
-              <td><input step="any" type="number" v-model="par13"></td>
-              <td><input step="any" type="number" v-model="par14"></td>
-              <td><input step="any" type="number" v-model="par15"></td>
-              <td><input step="any" type="number" v-model="par16"></td>
-              <td><input step="any" type="number" v-model="par17"></td>
-              <td><input step="any" type="number" v-model="par18"></td>
+              <td><input size="2" step="any" type="text" v-model="par1"></td>
+              <td><input size="2" step="any" type="text" v-model="par2"></td>
+              <td><input size="2" step="any" type="text" v-model="par3"></td>
+              <td><input size="2" step="any" type="text" v-model="par4"></td>
+              <td><input size="2" step="any" type="text" v-model="par5"></td>
+              <td><input size="2" step="any" type="text" v-model="par6"></td>
+              <td><input size="2" step="any" type="text" v-model="par7"></td>
+              <td><input size="2" step="any" type="text" v-model="par8"></td>
+              <td><input size="2" step="any" type="text" v-model="par9"></td>
+              <td><input size="2" step="any" type="text" v-model="par10"></td>
+              <td><input size="2" step="any" type="text" v-model="par11"></td>
+              <td><input size="2" step="any" type="text" v-model="par12"></td>
+              <td><input size="2" step="any" type="text" v-model="par13"></td>
+              <td><input size="2" step="any" type="text" v-model="par14"></td>
+              <td><input size="2" step="any" type="text" v-model="par15"></td>
+              <td><input size="2" step="any" type="text" v-model="par16"></td>
+              <td><input size="2" step="any" type="text" v-model="par17"></td>
+              <td><input size="2" step="any" type="text" v-model="par18"></td>
               
               
             </tr>
             <tr class="table-secondary">
               <th scope="row">Handicaps</th>
-              <td><input step="any" type="number" v-model="hdcp1"></td>
-              <td><input step="any" type="number" v-model="hdcp2"></td>
-              <td><input step="any" type="number" v-model="hdcp3"></td>
-              <td><input step="any" type="number" v-model="hdcp4"></td>
-              <td><input step="any" type="number" v-model="hdcp5"></td>
-              <td><input step="any" type="number" v-model="hdcp6"></td>
-              <td><input step="any" type="number" v-model="hdcp7"></td>
-              <td><input step="any" type="number" v-model="hdcp8"></td>
-              <td><input step="any" type="number" v-model="hdcp9"></td>
-              <td><input step="any" type="number" v-model="hdcp10"></td>
-              <td><input step="any" type="number" v-model="hdcp11"></td>
-              <td><input step="any" type="number" v-model="hdcp12"></td>
-              <td><input step="any" type="number" v-model="hdcp13"></td>
-              <td><input step="any" type="number" v-model="hdcp14"></td>
-              <td><input step="any" type="number" v-model="hdcp15"></td>
-              <td><input step="any" type="number" v-model="hdcp16"></td>
-              <td><input step="any" type="number" v-model="hdcp17"></td>
-              <td><input step="any" type="number" v-model="hdcp18"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp1"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp2"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp3"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp4"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp5"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp6"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp7"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp8"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp9"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp10"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp11"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp12"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp13"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp14"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp15"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp16"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp17"></td>
+              <td><input size="2" step="any" type="text" v-model="hdcp18"></td>
               
             </tr>
           
           </tbody>
         </table>
         <button type="submit">Add Course</button>
+        <button v-on:click="$router.go(-1)">Cancel</button>
         
       </form>
     </div>
