@@ -12,10 +12,11 @@
       </router-link>
 
     </div> -->
+
     <br><br>
     <div class="card card-primary">
       
-      <table class="table table-no-border active table-condensed">
+      <table class="table table-no-border table-condensed">
         <thead class="thead-dark">
           <tr>
             <th scope="col"><span v-on:click="selectSort('name')">Name</span></th>

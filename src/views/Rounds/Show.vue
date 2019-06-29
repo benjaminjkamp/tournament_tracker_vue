@@ -84,7 +84,7 @@
           </div>       
         </div>
         <div class="panel-footer">
-          <router-link :to="'/matches/' + this.round.id + '/new'" class="btn btn-raised btn-white">Add Match</router-link>
+          <router-link :to="'/matches/' + this.round.id + '/new'" class="zmdi zmdi-hc-2x zmdi-plus-circle">Add Match</router-link>
         </div>
     </div>
 

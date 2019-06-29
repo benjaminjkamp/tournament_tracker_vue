@@ -17,8 +17,11 @@
             <div class="modal-header d-block shadow-2dp no-pb">
               <button type="button" class="close d-inline pull-right mt-2" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
               <div class="modal-title text-center">
-                <span class="ms-logo ms-logo-white ms-logo-sm mr-1">M</span>
-                <h3 class="no-m ms-site-title">Material<span>Style</span></h3>
+                
+                <h3 class="no-m ms-site-title">Tournament<span>Tracker</span></h3>
+                <span class="ms-logo ms-logo-white ms-logo-sm mr-1">TnT</span>
+
+                <h4>{{currentUser.name || "Tournament Tracker"}}</h4>
               </div>
               <div class="modal-header-tabs">
                 <ul class="nav nav-tabs nav-tabs-full nav-tabs-3 nav-tabs-primary" role="tablist">
@@ -31,20 +34,20 @@
             <div class="modal-body">
               <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade active show" id="ms-login-tab">
-                  <form autocomplete="off">
+                  <form autocomplete="off" v-on:submit.prevent="login()">
                     <fieldset>
                       <div class="form-group label-floating">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
-                          <label class="control-label" for="ms-form-user">Username</label>
-                          <input type="text" id="ms-form-user" class="form-control">
+                          <label class="control-label" for="ms-form-user">Email</label>
+                          <input type="text" id="ms-form-user" class="form-control" v-model="email">
                         </div>
                       </div>
                       <div class="form-group label-floating">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
                           <label class="control-label" for="ms-form-pass">Password</label>
-                          <input type="password" id="ms-form-pass" class="form-control">
+                          <input type="password" id="ms-form-pass" class="form-control" v-model="password">
                         </div>
                       </div>
                       <div class="row mt-2">
@@ -57,7 +60,7 @@
                           </div>
                         </div>
                         <div class="col-md-6">
-                          <button class="btn btn-raised btn-primary pull-right">Login</button>
+                          <button type="submit" class="btn btn-raised btn-primary pull-right">Login</button>
                         </div>
                       </div>
                     </fieldset>
@@ -70,34 +73,48 @@
                   </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="ms-register-tab">
-                  <form>
+                  <form autocomplete="off" v-on:submit.prevent="signup()">
                     <fieldset>
                       <div class="form-group label-floating">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
-                          <label class="control-label" for="ms-form-user-r">Username</label>
-                          <input type="text" id="ms-form-user-r" class="form-control">
+                          <label class="control-label" for="ms-form-user-r">First Name</label>
+                          <input type="text" id="ms-form-user-r" class="form-control" v-model="firstName">
+                        </div>                       
+                      </div>
+                      <div class="form-group label-floating">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                          <label class="control-label" for="ms-form-user-r">Last Name</label>
+                          <input type="text" id="ms-form-user-r" class="form-control" v-model="lastName">
                         </div>
                       </div>
                       <div class="form-group label-floating">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
                           <label class="control-label" for="ms-form-email-r">Email</label>
-                          <input type="email" id="ms-form-email-r" class="form-control">
+                          <input type="email" id="ms-form-email-r" class="form-control" v-model="email">
+                        </div>
+                      </div>
+                      <div class="form-group label-floating">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="zmdi zmdi-phone"></i></span>
+                          <label class="control-label" for="ms-form-email-r">Phone Number</label>
+                          <input type="text" id="ms-form-email-r" class="form-control" v-model="phoneNumber">
                         </div>
                       </div>
                       <div class="form-group label-floating">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
                           <label class="control-label" for="ms-form-pass-r">Password</label>
-                          <input type="password" id="ms-form-pass-r" class="form-control">
+                          <input type="password" id="ms-form-pass-r" class="form-control" v-model="password">
                         </div>
                       </div>
                       <div class="form-group label-floating">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
                           <label class="control-label" for="ms-form-pass-rn">Re-type Password</label>
-                          <input type="password" id="ms-form-pass-rn" class="form-control">
+                          <input type="password" id="ms-form-pass-rn" class="form-control" v-model="passwordConfirmation">
                         </div>
                       </div>
                       <button class="btn btn-raised btn-block btn-primary">Register Now</button>
@@ -149,11 +166,13 @@
               </ul>
               <a href="javascript:void(0)" class="btn-circle btn-circle-primary animated zoomInDown animation-delay-7"><i class="zmdi zmdi-share"></i></a>
             </div>
-            <a href="javascript:void(0)" class="btn-circle btn-circle-primary no-focus animated zoomInDown animation-delay-8" data-toggle="modal" data-target="#ms-account-modal"><i class="zmdi zmdi-account"></i></a>
             <form class="search-form animated zoomInDown animation-delay-9">
               <input id="search-box" type="text" class="search-input" placeholder="Search..." name="q" />
               <label for="search-box"><i class="zmdi zmdi-search"></i></label>
             </form>
+            <a v-if="currentUser.id == null" href="javascript:void(0)" class="btn-circle btn-circle-primary no-focus animated zoomInDown animation-delay-8" data-toggle="modal" data-target="#ms-account-modal"><i class="zmdi zmdi-account"></i></a>
+            <i v-if="currentUser.id != null" class="zmdi zmdi-account"></i>
+            <span v-if="currentUser.id != null"> {{currentUser.name}}</span>
             <a href="javascript:void(0)" class="btn-ms-menu btn-circle btn-circle-primary ms-toggle-left animated zoomInDown animation-delay-10"><i class="zmdi zmdi-menu"></i></a>
           </div>
         </div>
@@ -186,9 +205,9 @@
         </div> <!-- container -->
       </nav>
 
-      <router-view/>
+      
 
-      <aside class="ms-footbar">
+    <!--   <aside class="ms-footbar">
         <div class="container">
           <div class="row">
             <div class="col-lg-4 ms-footer-col">
@@ -305,20 +324,27 @@
         <div class="container">
           <p>Copyright &copy; Material Style 2017</p>
         </div>
-      </footer>
+      </footer> -->
       <div class="btn-back-top">
         <a href="#" data-scroll id="back-top" class="btn-circle btn-circle-primary btn-circle-sm btn-circle-raised "><i class="zmdi zmdi-long-arrow-up"></i></a>
       </div>
     </div> <!-- ms-site-container -->
 
 
+    <router-view :key="$route.path"/>
 
-    <div class="ms-slidebar sb-slidebar sb-left sb-style-overlay" id="ms-slidebar">
+
+    <div class="ms-slidebar  sb-left sb-style-overlay" id="ms-slidebar">
       <div class="sb-slidebar-container">
         <header class="ms-slidebar-header">
-          <div class="ms-slidebar-login">
-            <a href="javascript:void(0)" class="withripple"><i class="zmdi zmdi-account"></i> Login</a>
-            <a href="javascript:void(0)" class="withripple"><i class="zmdi zmdi-account-add"></i> Register</a>
+          <div v-if="currentUser.id == null" class="ms-slidebar-login">
+            <a href="javascript:void(0)" class="withripple" data-toggle="modal" data-target="#ms-account-modal"><i class="zmdi zmdi-account"></i> Login</a>
+            <router-link to="signup" class="withripple"><i class="zmdi zmdi-account-add"></i> Register</router-link>
+          </div>
+          <div v-if="currentUser.id != null" class="ms-slidebar-login">
+            <router-link to="/users/edit" class="withripple"><i class="zmdi zmdi-account"></i> Profile</router-link>
+            <router-link to="/logout" class="withripple"><i class="zmdi zmdi-sign-in"></i> Logout</router-link>
+            
           </div>
           <div class="ms-slidebar-title">
             <form class="search-form">
@@ -326,8 +352,8 @@
               <label for="search-box-slidebar"><i class="zmdi zmdi-search"></i></label>
             </form>
             <div class="ms-slidebar-t">
+              <h3 class="no-m ms-site-title"><b v-if="currentUser.id == null">{{logo1}}</b><big><span>{{currentUser.name || logo2}}</span></big></h3>
               <span class="ms-logo ms-logo-sm">TnT</span>
-              <h3>Tournament<span>Tracker</span></h3>
             </div>
           </div>
         </header>
@@ -335,9 +361,17 @@
           <li class="card" role="tab" id="sch1">
             <a class="collapsed" role="button" data-toggle="collapse" href="#sc1" aria-expanded="false" aria-controls="sc1">
               <i class="zmdi zmdi-home"></i> GNC Tournament </a>
-            <ul v-for="round in rounds" id="sc1" class="card-collapse collapse" role="tabpanel" aria-labelledby="sch1" data-parent="#slidebar-menu">
-              <li><a :href="'/rounds/' + round.id">{{round.name}}</a></li>
-              
+            <ul id="sc1" class="card-collapse collapse" role="tabpanel" aria-labelledby="sch1" data-parent="#slidebar-menu">
+              <li>
+                <router-link to="/rounds/new" >
+                  <i class="zmdi zmdi-hc-lg zmdi-plus-circle">
+                    Add Round
+                  </i>
+                </router-link>
+              </li>
+              <div v-for="round in rounds">
+                <li><router-link :to="'/rounds/' + round.id">{{round.name}}</router-link></li>
+              </div>
             </ul>
           </li>
           <li class="card" role="tab" id="sch2">
@@ -383,16 +417,69 @@ export default {
   // mixins: [Vue2Filters.mixin],
   data: function() {
     return {
-      rounds: []
+      rounds: [],
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      password: "",
+      passwordConfirmation: "",
+      currentUser: {},
+      logo1: "Tournament",
+      logo2: "Tracker"
+      
     };
   },
   created: function() {
     axios.get("/api/rounds").then(response => {
       console.log("rounds", response.data);
       this.rounds = response.data;
+    }),
+    axios.get("/api/users/1").then(response => {
+      console.log("users", response.data);
+      this.currentUser = response.data;
     })
   },
   methods: {
+    signup: function() {
+      var params = {
+        first_name: this.firstName,
+        last_name: this.lastName,
+        phone_number: this.phoneNumber,
+        email: this.email,
+        password: this.password,
+        password_confirmation: this.passwordConfirmation
+      };
+      axios
+        .post("/api/users", params)
+        .then(response => {
+          // this.$router.push("/login");
+        })
+        .catch(error => {
+          this.errors = error.response.data.errors;
+        });
+    },
+    login: function() {
+      var params = {
+        email: this.email,
+        password: this.password
+      };
+      axios
+        .post("/api/sessions", params)
+        .then(response => {
+          axios.defaults.headers.common["Authorization"] =
+            "Bearer " + response.data.jwt;
+          localStorage.setItem("jwt", response.data.jwt);
+          this.$router.push("/");
+          $('#ms-account-modal').modal('hide');
+          location.reload();
+        })
+        .catch(error => {
+          this.errors = ["Invalid email or password."];
+          this.email = "";
+          this.password = "";
+        });
+    }
   }
 };
 </script>
