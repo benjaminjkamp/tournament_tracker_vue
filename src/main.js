@@ -4,7 +4,7 @@ import router from './router'
 import axios from "axios";
 
 axios.defaults.baseURL = 
-  process.env.NODE_ENV === "development" ? "https://morning-anchorage-49614.herokuapp.com/" : "/";
+  process.env.NODE_ENV === "development" ? "https://morning-anchorage-49614.herokuapp.com" : "/";
 
 var jwt = localStorage.getItem("jwt");
 if (jwt) {
