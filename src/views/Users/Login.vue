@@ -153,7 +153,8 @@ export default {
       email: "",
       password: "",
       passwordConfirmation: "",
-      errors: []
+      errors: [],
+      componentKey: 0
     };
   },
   methods: {
@@ -170,7 +171,9 @@ export default {
             "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
           this.$router.push("/");
-          location.reload();
+          forceRerender();
+
+          // location.reload();
         })
         .catch(error => {
           this.errors = ["Invalid email or password."];
@@ -195,7 +198,11 @@ export default {
         .catch(error => {
           this.errors = error.response.data.errors;
         });
+    },
+    forceRerender() {
+      this.componentKey += 1;  
     }
+
   }
 };
 </script>

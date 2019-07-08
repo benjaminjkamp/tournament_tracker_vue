@@ -6,152 +6,109 @@
       </datalist>
       
       <div class="container">
+
         <div class="row">
 
-          <div class="col-xl-6 order-xl-1">
+          <div class="col-xl-5 order-xl-1">
             <div class="card card-primary animated fadeInUp animation-delay-7">
               <div class="card-body">
                 <h1 class="color-primary text-center">Team 1</h1>
                 <form v-on:submit.prevent="submit()" class="form-horizontal">
                   <fieldset>
                     <div class="form-group row is-empty">
-                      <label for="teamName1" class="col-md-3 control-label">Team Name</label>
+                      <!-- <label for="teamName1" class="col-md-3 control-label">Team Name</label> -->
                       <div class="col-md-9">
                         <input type="text" class="form-control" id="teamName1" placeholder="Team 1" v-model="newTeamName1">
                       </div>
                     </div>
                     <div class="form-group row is-empty">
-                      <label for="playerName1" class="col-md-3 control-label">Player 1</label>
+                      <!-- <label for="playerName1" class="col-md-3 control-label">Player 1</label> -->
                       <div class="col-md-9">
                         <input type="text" class="form-control" id="playerName1" placeholder="Player 1" v-model="player1">
                       </div>
                     </div>
                     <div class="form-group row is-empty">
-                      <label for="playerName2" class="col-md-3 control-label">Player 2</label>
+                      <!-- <label for="playerName2" class="col-md-3 control-label">Player 2</label> -->
                       <div class="col-md-9">
                         <input type="text" class="form-control" id="playerName2" placeholder="Player 2" v-model="player2">
                       </div>
                     </div>
-                   <h1 class="color-primary text-center">Team 2</h1>
+                    <h1 class="color-primary text-center">Team 2</h1>
                
                     <div class="form-group row is-empty">
-                      <label for="teamName2" class="col-md-3 control-label">Team Name</label>
+                      <!-- <label for="teamName2" class="col-md-3 control-label">Team Name</label> -->
                       <div class="col-md-9">
                         <input type="text" class="form-control" id="teamName2" placeholder="Team 2" v-model="newTeamName2">
                       </div>
                     </div>
                     <div class="form-group row is-empty">
-                      <label for="playerName3" class="col-md-3 control-label">Player 1</label>
+                      <!-- <label for="playerName3" class="col-md-3 control-label">Player 1</label> -->
                       <div class="col-md-9">
                         <input type="text" class="form-control" id="playerName3" placeholder="Player 1" v-model="player3">
                       </div>
                     </div>
                     <div class="form-group row is-empty">
-                      <label for="playerName4" class="col-md-3 control-label">Player 2</label>
+                      <!-- <label for="playerName4" class="col-md-3 control-label">Player 2</label> -->
                       <div class="col-md-9">
                         <input type="text" class="form-control" id="playerName4" placeholder="Player 2" v-model="player4">
                       </div>
                     </div>
                     <button type="submit" class="btn btn-raised btn-primary btn-block">Add Match <i class="zmdi zmdi-long-arrow-right no-mr ml-1"></i></button>
-                    <button v-on:click="$router.go(-1)">Cancel</button>
+                    <button v-on:click="$router.go(-1)" class="btn btn-raised btn-warning btn-block">Cancel</button>
                   </fieldset>
                 </form>
                 
               </div>
             </div>
           </div>
-          <<!-- div class="col-xl-6 order-xl-1">
-            <div class="card card-primary animated fadeInUp animation-delay-7">
-              <div class="card-body">
-                <h1 class="color-primary text-center">Team 2</h1>
-               
-                    <div class="form-group row is-empty">
-                      <label for="teamName2" class="col-md-3 control-label">Team Name</label>
-                      <div class="col-md-9">
-                        <input type="text" class="form-control" id="teamName2" placeholder="Team 2" v-model="newTeamName2">
-                      </div>
-                    </div>
-                    <div class="form-group row is-empty">
-                      <label for="playerName3" class="col-md-3 control-label">Player 1</label>
-                      <div class="col-md-9">
-                        <input type="text" class="form-control" id="playerName3" placeholder="Player 1" v-model="player3">
-                      </div>
-                    </div>
-                    <div class="form-group row is-empty">
-                      <label for="playerName4" class="col-md-3 control-label">Player 2</label>
-                      <div class="col-md-9">
-                        <input type="text" class="form-control" id="playerName4" placeholder="Player 2" v-model="player4">
-                      </div>
-                    </div>
-                    
-                  </fieldset>
+
+          <div id="userInfo" class="col-xl-7 order-xl-2">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Low Net HDCP</th>
+                  <th scope="col">Skins HDCP</th>
+                  <th scope="col">GNC AVG</th>
+                  <th scope="col">2yr AVG</th>
+                  <th scope="col">Wins</th>
+                  <th scope="col">Losses</th>
+                  <th scope="col">Ties</th>
+                  <th scope="col">2017 Record</th>        
                   
-                </form>              
-              </div>
-            </div>
-          </div> -->
+                </tr>
+              </thead>
+              <tbody v-for="user in this.users">
+                <tr class="table-secondary">
+                  <th scope="row">{{user.id}} {{user.name}}</th>
+                  <td>{{user.low_net_handicap}}</td>
+                  <td>{{user.skins_handicap}}</td>
+                  <td>{{user.gnc_average}}</td>
+                  <td>{{user.two_year_average}}</td>
+                  <td>{{user.ryder_cup_record.ryder_cup_wins}}</td>
+                  <td>{{user.ryder_cup_record.ryder_cup_losses}}</td>
+                  <td>{{user.ryder_cup_record.ryder_cup_ties}}</td>
+                  <td>{{user.record_2017}}</td>
+                  
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+
 
         </div>
-        
-      </div>
-
-
-      
-
-
-
-      <!-- <div>
-        <br><br>
-        Team 1 Name: <input type="text" v-model="newTeamName1"><br>
-        Team 1 Player 1: <input list="players" type="text" v-model="player1"><br>
-        Team 1 Player 2: <input list="players" type="text" v-model="player2"><br>
-        <br>
-        Team 2 Name: <input type="text" v-model="newTeamName2"><br>
-        Team 2 Player 1: <input list="players" type="text" v-model="player3"><br>
-        Team 2 Player 2: <input list="players" type="text" v-model="player4"><br>
-        <br>
-        <button type="submit" v-on:click="submit()">Add Match</button>  
-        <button v-on:click="$router.go(-1)">Cancel</button>
-        <br><br>
-      </div> -->
-      <div>
-        <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Low Net HDCP</th>
-              <th scope="col">Skins HDCP</th>
-              <th scope="col">GNC AVG</th>
-              <th scope="col">2yr AVG</th>
-              <th scope="col">Wins</th>
-              <th scope="col">Losses</th>
-              <th scope="col">Ties</th>
-              <th scope="col">2017 Record</th>        
-              
-            </tr>
-          </thead>
-          <tbody v-for="user in this.users">
-            <tr class="table-secondary">
-              <th scope="row">{{user.id}} {{user.name}}</th>
-              <td>{{user.low_net_handicap}}</td>
-              <td>{{user.skins_handicap}}</td>
-              <td>{{user.gnc_average}}</td>
-              <td>{{user.two_year_average}}</td>
-              <td>{{user.ryder_cup_record.ryder_cup_wins}}</td>
-              <td>{{user.ryder_cup_record.ryder_cup_losses}}</td>
-              <td>{{user.ryder_cup_record.ryder_cup_ties}}</td>
-              <td>{{user.record_2017}}</td>
-              
-            </tr>
-            
-          </tbody>
-        </table>
-      </div>
+      </div> 
     </div>
   </div>
 </template>
 
 <style>
+#userInfo {
+  overflow: scroll;
+  max-height: 780px;
+  max-width: 1000px;
+}
 </style>
 
 <script>

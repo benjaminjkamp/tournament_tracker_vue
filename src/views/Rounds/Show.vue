@@ -2,90 +2,97 @@
   <div class="rounds-show">
     
     <div class="panel panel-black">
-        <div class="panel-heading">
-          <router-link :to="'/rounds/' + round.id + '/edit'">
-            <h3 class="panel-title">{{ round.name }}</h3>
-          </router-link>  
+      <div class="panel-heading">
+          <b>{{ round.name }}</b>
+      </div>
+      <div class="panel-body">
+        <div>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">{{course.name}}</th>
+                <th scope="col">1</th>
+                <th scope="col">2</th>
+                <th scope="col">3</th>
+                <th scope="col">4</th>
+                <th scope="col">5</th>
+                <th scope="col">6</th>
+                <th scope="col">7</th>
+                <th scope="col">8</th>
+                <th scope="col">9</th>
+                <th scope="col">10</th>
+                <th scope="col">11</th>
+                <th scope="col">12</th>
+                <th scope="col">13</th>
+                <th scope="col">14</th>
+                <th scope="col">15</th>
+                <th scope="col">16</th>
+                <th scope="col">17</th>
+                <th scope="col">18</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-secondary">
+                <th scope="row">HDCP</th>
+                <td>{{handicaps.hole1_handicap}}</td>
+                <td>{{handicaps.hole2_handicap}}</td>
+                <td>{{handicaps.hole3_handicap}}</td>
+                <td>{{handicaps.hole4_handicap}}</td>
+                <td>{{handicaps.hole5_handicap}}</td>
+                <td>{{handicaps.hole6_handicap}}</td>
+                <td>{{handicaps.hole7_handicap}}</td>
+                <td>{{handicaps.hole8_handicap}}</td>
+                <td>{{handicaps.hole9_handicap}}</td>
+                <td>{{handicaps.hole10_handicap}}</td>
+                <td>{{handicaps.hole11_handicap}}</td>
+                <td>{{handicaps.hole12_handicap}}</td>
+                <td>{{handicaps.hole13_handicap}}</td>
+                <td>{{handicaps.hole14_handicap}}</td>
+                <td>{{handicaps.hole15_handicap}}</td>
+                <td>{{handicaps.hole16_handicap}}</td>
+                <td>{{handicaps.hole17_handicap}}</td>
+                <td>{{handicaps.hole18_handicap}}</td>
+                
+                
+              </tr>
+              <tr class="table-secondary">
+                <th scope="row">PAR</th>
+                <td>{{pars.hole1_par}}</td>
+                <td>{{pars.hole2_par}}</td>
+                <td>{{pars.hole3_par}}</td>
+                <td>{{pars.hole4_par}}</td>
+                <td>{{pars.hole5_par}}</td>
+                <td>{{pars.hole6_par}}</td>
+                <td>{{pars.hole7_par}}</td>
+                <td>{{pars.hole8_par}}</td>
+                <td>{{pars.hole9_par}}</td>
+                <td>{{pars.hole10_par}}</td>
+                <td>{{pars.hole11_par}}</td>
+                <td>{{pars.hole12_par}}</td>
+                <td>{{pars.hole13_par}}</td>
+                <td>{{pars.hole14_par}}</td>
+                <td>{{pars.hole15_par}}</td>
+                <td>{{pars.hole16_par}}</td>
+                <td>{{pars.hole17_par}}</td>
+                <td>{{pars.hole18_par}}</td>
+                
+              </tr>                  
+            </tbody>
+          </table>
+        </div>       
+      </div>
+      <div class="panel-footer">
+        <div>
+          <router-link :to="'/rounds/' + round.id + '/edit'" class="zmdi zmdi-hc-2x zmdi-edit">
+            Edit Round Info
+          </router-link> 
         </div>
-        <div class="panel-body">
-          <div>
-            <table class="table">
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">{{course.name}}</th>
-                  <th scope="col">1</th>
-                  <th scope="col">2</th>
-                  <th scope="col">3</th>
-                  <th scope="col">4</th>
-                  <th scope="col">5</th>
-                  <th scope="col">6</th>
-                  <th scope="col">7</th>
-                  <th scope="col">8</th>
-                  <th scope="col">9</th>
-                  <th scope="col">10</th>
-                  <th scope="col">11</th>
-                  <th scope="col">12</th>
-                  <th scope="col">13</th>
-                  <th scope="col">14</th>
-                  <th scope="col">15</th>
-                  <th scope="col">16</th>
-                  <th scope="col">17</th>
-                  <th scope="col">18</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="table-secondary">
-                  <th scope="row">HDCP</th>
-                  <td>{{handicaps.hole1_handicap}}</td>
-                  <td>{{handicaps.hole2_handicap}}</td>
-                  <td>{{handicaps.hole3_handicap}}</td>
-                  <td>{{handicaps.hole4_handicap}}</td>
-                  <td>{{handicaps.hole5_handicap}}</td>
-                  <td>{{handicaps.hole6_handicap}}</td>
-                  <td>{{handicaps.hole7_handicap}}</td>
-                  <td>{{handicaps.hole8_handicap}}</td>
-                  <td>{{handicaps.hole9_handicap}}</td>
-                  <td>{{handicaps.hole10_handicap}}</td>
-                  <td>{{handicaps.hole11_handicap}}</td>
-                  <td>{{handicaps.hole12_handicap}}</td>
-                  <td>{{handicaps.hole13_handicap}}</td>
-                  <td>{{handicaps.hole14_handicap}}</td>
-                  <td>{{handicaps.hole15_handicap}}</td>
-                  <td>{{handicaps.hole16_handicap}}</td>
-                  <td>{{handicaps.hole17_handicap}}</td>
-                  <td>{{handicaps.hole18_handicap}}</td>
-                  
-                  
-                </tr>
-                <tr class="table-secondary">
-                  <th scope="row">PAR</th>
-                  <td>{{pars.hole1_par}}</td>
-                  <td>{{pars.hole2_par}}</td>
-                  <td>{{pars.hole3_par}}</td>
-                  <td>{{pars.hole4_par}}</td>
-                  <td>{{pars.hole5_par}}</td>
-                  <td>{{pars.hole6_par}}</td>
-                  <td>{{pars.hole7_par}}</td>
-                  <td>{{pars.hole8_par}}</td>
-                  <td>{{pars.hole9_par}}</td>
-                  <td>{{pars.hole10_par}}</td>
-                  <td>{{pars.hole11_par}}</td>
-                  <td>{{pars.hole12_par}}</td>
-                  <td>{{pars.hole13_par}}</td>
-                  <td>{{pars.hole14_par}}</td>
-                  <td>{{pars.hole15_par}}</td>
-                  <td>{{pars.hole16_par}}</td>
-                  <td>{{pars.hole17_par}}</td>
-                  <td>{{pars.hole18_par}}</td>
-                  
-                </tr>                  
-              </tbody>
-            </table>
-          </div>       
+        <div>
+          <router-link :to="'/matches/' + this.round.id + '/new'" class="zmdi zmdi-hc-2x zmdi-plus-circle">
+            Add Match
+          </router-link>
         </div>
-        <div class="panel-footer">
-          <router-link :to="'/matches/' + this.round.id + '/new'" class="zmdi zmdi-hc-2x zmdi-plus-circle">Add Match</router-link>
-        </div>
+      </div>
     </div>
 
 <br><br>

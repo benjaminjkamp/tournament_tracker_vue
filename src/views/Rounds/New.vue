@@ -5,7 +5,7 @@
       <div class="modal modal-primary" id="courseAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-dialog-centered animated zoomIn animated-3x" role="document">
           <div class="modal-content">
-            <form v-on:submit="addCourse()">
+            <form v-on:submit.prevent="addCourse()">
               <div class="modal-header">
                 <h3 class="modal-title color-dark"><input type="text" v-model="courseName"></h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
@@ -114,8 +114,11 @@
                   </table>                            
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn  btn-primary ">Save changes</button>
+                
+                <button type="submit" class="btn btn-raised btn-primary btn-block">Save changes</button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
               </div>
             </form>
           </div>
@@ -175,28 +178,26 @@
                 <address class="no-mb">
                   <div v-for="course in courses">
 
-                  <p><i class="color-danger-light zmdi zmdi-pin mr-1"></i>
-                    <router-link :to="'/courses/' + course.id + '/edit'"> {{course.id}} {{course.name}} - {{course.location || "Location Unknown"}}</router-link>
+                  <p>
+                   <!--  <router-link :to="'/courses/' + course.id + '/edit'"> {{course.id}} {{course.name}} - {{course.location || "Location Unknown"}}</router-link> -->
+
+                   <div v-on:click="changeLocation(course.name)"><i class="color-danger-light zmdi zmdi-pin mr-1"></i> {{course.id}} {{course.name}} - {{course.location || "Location Unknown"}}</div>
                   </p>
                   </div>
-                  <!-- <p><i class="color-danger-light zmdi zmdi-pin mr-1"></i> 795 Folsom Ave, Suite 600</p>
-                  <p><i class="color-warning-light zmdi zmdi-map mr-1"></i> San Francisco, CA 94107</p>
-                  <p><i class="color-info-light zmdi zmdi-email mr-1"></i> <a href="mailto:joe@example.com">example@domain.com</a></p>
-                  <p><i class="color-royal-light zmdi zmdi-phone mr-1"></i>+34 123 456 7890 </p>
-                  <p><i class="color-success-light fa fa-fax mr-1"></i>+34 123 456 7890 </p> -->
+                  
                 </address>
               </div>
             </div>
-            <!-- <div class="col-xl-9 col-lg-8 col-md-7">
-              <iframe width="100%" height="340" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48342.06480344582!2d-73.980069429762!3d40.775680208459505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2589a018531e3%3A0xb9df1f7387a94119!2sCentral+Park!5e0!3m2!1sen!2sus!4v1491233314840"></iframe>
-            </div> -->
+            <div class="col-xl-9 col-lg-8 col-md-7">
+              <iframe width="100%" height="340" :src="location"></iframe></iframe>
+            </div>
           </div>
         </div>
       </div>
       
-      <div class="btn-back-top">
+      <!-- <div class="btn-back-top">
         <a href="#" data-scroll id="back-top" class="btn-circle btn-circle-primary btn-circle-sm btn-circle-raised "><i class="zmdi zmdi-long-arrow-up"></i></a>
-      </div>
+      </div> -->
     </div>
 
 
@@ -221,7 +222,46 @@ export default {
       newRoundYear: "",
       newRoundFormat: "",
       newRoundCourseID: "",
-      courses: []
+      courses: [],
+      location: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1472406.3569906724!2d-85.08727944112829!3d43.66687359293001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4d4caa3dc7ca0411%3A0x97dd48597a62c9b3!2sMichigan!5e0!3m2!1sen!2sus!4v1562171994655!5m2!1sen!2sus",
+      hills: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d760686.0897812891!2d-87.56572928714047!3d41.862093291903236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8810c9c0756c3eb5%3A0xffce161a67e25b02!2sLake+Michigan+Hills+Golf+Club!5e0!3m2!1sen!2sus!4v1562171598315!5m2!1sen!2sus",
+      moor: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1477951.3202837228!2d-85.08729566294394!3d43.65599744115602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x881775b0ebfe97f7%3A0xd718f55e0c79b28a!2sMoors+Golf+Club!5e0!3m2!1sen!2sus!4v1562174401947!5m2!1sen!2sus",
+      par1: "",
+      par2: "",
+      par3: "",
+      par4: "",
+      par5: "",
+      par6: "",
+      par7: "",
+      par8: "",
+      par9: "",
+      par10: "",
+      par11: "",
+      par12: "",
+      par13: "",
+      par14: "",
+      par15: "",
+      par16: "",
+      par17: "",
+      par18: "",
+      hdcp1: "",
+      hdcp2: "",
+      hdcp3: "",
+      hdcp4: "",
+      hdcp5: "",
+      hdcp6: "",
+      hdcp7: "",
+      hdcp8: "",
+      hdcp9: "",
+      hdcp10: "",
+      hdcp11: "",
+      hdcp12: "",
+      hdcp13: "",
+      hdcp14: "",
+      hdcp15: "",
+      hdcp16: "",
+      hdcp17: "",
+      hdcp18: "",
     };
   },
   created: function() {
@@ -241,6 +281,7 @@ export default {
         console.log(response.data);
         this.round = response.data;
         this.$router.push("/rounds/" + this.round.id);
+        // ('#courseAdd').modal('hide'); => Failed attempt to hide upon submitting
       }).catch(error => {
         console.log(error.data);
         this.errors = error.data;
@@ -296,6 +337,14 @@ export default {
         console.log(error.data);
         this.errors = error.data;
       });
+    },
+    changeLocation: function(location) {
+      if (location === "Hills"){
+        this.location = this.hills;
+      } else if (location === "Moor") {
+        this.location = this.moor;
+      }
+      end
     }
 
   }
