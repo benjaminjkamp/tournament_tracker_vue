@@ -175,8 +175,13 @@
               <span class="ms-title">Tournament<strong>Tracker</strong></span>
             </router-link>
           </div>
-          <div class="collapse navbar-collapse" id="ms-navbar">
+          <div class="collapse navbar-collapse" id="ms-navbar">     
+
             <ul class="navbar-nav">
+
+              <!-- slidebar toggle -->
+              <a href="javascript:void(0)" class="btn-ms-menu btn-circle btn-circle-white ms-toggle-left animated zoomInDown animation-delay-10"><i class="zmdi zmdi-menu zmdi-hc-4x"></i></a>
+              
               <li class="nav-item dropdown active">
                 <router-link to="/" class="nav-link animated fadeIn animation-delay-7" role="button" aria-haspopup="true" aria-expanded="false" data-name="home">
                   Players 
@@ -225,9 +230,9 @@
 
             </span>
 
-            <a href="javascript:void(0)" class="btn-ms-menu btn-circle btn-circle-white ms-toggle-left animated zoomInDown animation-delay-10"><i class="zmdi zmdi-menu"></i></a>
+            
           </div>
-          <a href="javascript:void(0)" class="ms-toggle-left btn-navbar-menu"><i class="zmdi zmdi-menu"></i></a>
+         <!--  <a href="javascript:void(0)" class="ms-toggle-left btn-navbar-menu"><i class="zmdi zmdi-menu"></i></a> -->
         </div> <!-- container -->
       </nav>
 

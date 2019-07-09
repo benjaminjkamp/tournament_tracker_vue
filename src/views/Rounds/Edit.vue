@@ -2,13 +2,17 @@
   <div class="rounds-new">
     <div class="ms-site-container">
 
-        <div class="modal modal-primary" id="courseAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal modal-light" id="courseAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog modal-dialog-centered animated zoomIn animated-3x" role="document">
             <div class="modal-content">
-              <form v-on:submit="addCourse()">
+              <form v-on:submit.prevent="addCourse()">
                 <div class="modal-header">
-                  <h3 class="modal-title color-dark"><input type="text" v-model="courseName"></h3>
+                  <h4 class="modal-title color-dark"><input type="text" placeholder="Name" v-model="courseName"></h4>
+
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                </div>
+                <div class="modal-header">
+                  <h4 class="modal-title color-dark"><input size="40" type="text" placeholder="Address" v-model="address"></h4>
                 </div>
                 <div class="modal-body">
                     <table class="table">
@@ -114,8 +118,12 @@
                     </table>                            
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                  <button type="submit" class="btn  btn-primary ">Save changes</button>
+                
+                  <button type="submit" class="btn btn-raised btn-primary btn-block">Add Course</button>
+                  <button type="button" class="btn btn-danger btn-raised btn-block" data-dismiss="modal">Close</button>
+                </div>
+                <div class="modal-footer">
+                  
                 </div>
               </form>
             </div>
@@ -136,21 +144,21 @@
               <form class="form-horizontal" v-on:submit.prevent="submit()">
                 <fieldset class="container">
                   <div class="form-group row">
-                    <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Name</label>
+                    <label for="inputName" autocomplete="false" class="col-lg-2 control-label">Name</label>
                     <div class="col-lg-9">
                       <input type="text" class="form-control" id="inputName"  v-model="round.name">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Format</label>
+                    <label for="inputFormat" autocomplete="false" class="col-lg-2 control-label">Format</label>
                     <div class="col-lg-9">
-                      <input type="email" class="form-control" id="inputEmail" placeholder="Format" v-model="round.format">
+                      <input type="text" class="form-control" id="inputFormat" placeholder="Format" v-model="round.format">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="inputEmail" autocomplete="false" class="col-lg-2 control-label">Course</label>
+                    <label for="inputCourse" autocomplete="false" class="col-lg-2 control-label">Course</label>
                     <div class="col-lg-9">
-                      <input list="courses" type="text" class="form-control" id="inputSubject" placeholder="Course" v-model="round.course.id">
+                      <input list="courses" type="text" class="form-control" id="inputCourse" placeholder="Course" v-model="round.course.id">
                     </div>
                   </div>
                   <div class="form-group row justify-content-end">
@@ -163,35 +171,37 @@
               </form>
             </div>
           </div>
+
+
+
           <div class="card card-primary">
+           
             <div class="row">
-              
-
-
-            </div>
-            <div class="row">
-              <div class="col-xl-3 col-lg-4 col-md-5">
-                <div class="card-body wow fadeInUp">
+              <div class="col-xl-5">
+                <div  class="card-body wow fadeInUp">
 
                   <div class="mb-2">
                     <span class="ms-logo ms-logo-sm mr-1">TnT</span>
                     <h3 class="no-m ms-site-title"><span>Courses</span></h3>
                     <a href="javascript:void(0)" class="btn-circle btn-circle-primary no-focus animated zoomInDown animation-delay-8" data-toggle="modal" data-target="#courseAdd"><i class="zmdi zmdi-account"></i>Add</a>
                   </div>
-                  <address class="no-mb">
+                  <address id="courseList" class="no-mb">
                     <div v-for="course in courses">
 
                     <p>
                       <!-- <router-link :to="'/courses/' + course.id + '/edit'"> {{course.id}} {{course.name}} - {{course.location || "Location Unknown"}}</router-link> -->
-                      <div v-on:click="changeLocation(course.name)"><i class="color-danger-light zmdi zmdi-pin mr-1"></i> {{course.id}} {{course.name}} - {{course.location || "Location Unknown"}}</div>
+                      <div v-on:click="changeLocation(course.location)"><i class="color-danger-light zmdi zmdi-pin mr-1"></i> <b>{{course.id}} {{course.name}}</b> - {{course.location || "Location Unknown"}}</div>
                     </p>
                     </div>
                   </address>
                 </div>
               </div>
-              <div class="col-xl-9 col-lg-8 col-md-7">
-                <iframe width="100%" height="340" :src="location"></iframe>
+
+              <!-- map -->
+              <div class="col-xl-7 col-lg-8 col-md-7">
+                <iframe width="100%" height="100%" :src="location"></iframe>
               </div>
+
             </div>
           </div>
         </div>
@@ -203,13 +213,20 @@
 
 
       <datalist id="courses">
-        <option v-for="course in courses">{{ course.id }} {{ course.name }}</option>
+        <option v-for="course in courses">
+          {{ course.id }} {{ course.name }}
+        </option>
       </datalist>
   </div>
   
 </template>
 
 <style>
+  #courseList{
+    overflow: scroll;
+    max-height: 300px;
+    max-width: 1000px;
+  }
 </style>
 
 <script>
@@ -221,6 +238,7 @@ export default {
       errors: [],
       courses: [],
       courseName: "",
+      address: "",
       par1: "",
       par2: "",
       par3: "",
@@ -274,13 +292,6 @@ export default {
   },
   methods: {
     submit: function() {
-      $('#button').submit(function(e) {
-              e.preventDefault();
-              // Coding
-              $('#courseAdd').modal('toggle'); //or  $('#IDModal').modal('hide');
-             
-          });
-
       var params = {
         name: this.round.name,
         course_id: this.round.course.id
@@ -298,6 +309,7 @@ export default {
     addCourse: function() {
       var params = {
         name: this.courseName,
+        location: this.address,
         par_hole_1: this.par1,
         par_hole_2: this.par2,
         par_hole_3: this.par3,
@@ -340,19 +352,20 @@ export default {
       axios.post("/api/courses", params).then(response => {
         console.log(response.data);
         this.courses.push(response.data);
-        // this.$router.push("/rounds/new");
+        $('#courseAdd').modal('hide');
+
       }).catch(error => {
         console.log(error.data);
         this.errors = error.data;
       });
     },
-    changeLocation: function(location) {
-      if (location === "Hills"){
+    changeLocation: function(courseAddress) {
+      if (courseAddress === "2520 Kerlikowske Rd, Benton Harbor, MI 49022"){
         this.location = this.hills;
-      } else if (location === "Moor") {
+      } else {
         this.location = this.moor;
       }
-      end
+      // this.location = "http://www.google.com/maps/place/" + courseAddress
     }
 
   }

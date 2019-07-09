@@ -1,7 +1,9 @@
 <template>
+
   <div class="rounds-new">
     
     <div class="ms-site-container">
+
       <div class="modal modal-primary" id="courseAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-dialog-centered animated zoomIn animated-3x" role="document">
           <div class="modal-content">
@@ -115,7 +117,7 @@
               </div>
               <div class="modal-footer">
                 
-                <button type="submit" class="btn btn-raised btn-primary btn-block">Save changes</button>
+                <button type="submit" class="btn btn-raised btn-primary btn-block">Add Course</button>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
@@ -124,6 +126,7 @@
           </div>
         </div>
       </div>
+
     
       <div class="ms-hero-page-override ms-hero-img-team ms-hero-bg-primary">
         <div class="container">
@@ -166,6 +169,8 @@
             </form>
           </div>
         </div>
+
+
         <div class="card card-primary">
           <div class="row">
             <div class="col-xl-3 col-lg-4 col-md-5">
@@ -176,6 +181,11 @@
                   <a href="javascript:void(0)" class="btn-circle btn-circle-primary no-focus animated zoomInDown animation-delay-8" data-toggle="modal" data-target="#courseAdd"><i class="zmdi zmdi-account"></i>Add</a>
                 </div>
                 <address class="no-mb">
+
+
+
+
+
                   <div v-for="course in courses">
 
                   <p>
@@ -188,6 +198,15 @@
                 </address>
               </div>
             </div>
+
+            <!-- <div class="map">
+              <h1>Map</h1>
+              <div id="map"></div>
+              
+            </div> -->
+
+
+
             <div class="col-xl-9 col-lg-8 col-md-7">
               <iframe width="100%" height="340" :src="location"></iframe></iframe>
             </div>
@@ -209,6 +228,21 @@
 </template>
 
 <style>
+  #map {  height: 300px; top:10px; bottom:10px; left: 10px; width: 100%; width: 500px;}
+
+  #marker {
+  background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg');
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  }
+   
+  .mapboxgl-popup {
+  max-width: 200px;
+  }
+
 </style>
 
 <script>
@@ -267,7 +301,14 @@ export default {
   created: function() {
     axios.get("/api/courses").then(response => {
       this.courses = response.data;
-    })
+    }),
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYmprYW1wIiwiYSI6ImNqeGFseHA1cDE4MzQzdHJ2bnBjZTdsMTEifQ.BMXm7D46lgju3qldWBeDeQ';
+    var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/bjkamp/cjxam6xn23qmj1clbom6pduvy', // stylesheet location
+    center: [-74.50, 40], // starting position [lng, lat]
+    zoom: 9 // starting zoom
+    });
   },
   methods: {
     submit: function() {
@@ -281,11 +322,14 @@ export default {
         console.log(response.data);
         this.round = response.data;
         this.$router.push("/rounds/" + this.round.id);
-        // ('#courseAdd').modal('hide'); => Failed attempt to hide upon submitting
       }).catch(error => {
         console.log(error.data);
         this.errors = error.data;
       });
+    },
+    mounted: function() {
+
+      
     },
     addCourse: function() {
       var params = {
@@ -332,7 +376,8 @@ export default {
       axios.post("/api/courses", params).then(response => {
         console.log(response.data);
         this.courses.push(response.data);
-        // this.$router.push("/rounds/new");
+        $('#courseAdd').modal('hide');
+
       }).catch(error => {
         console.log(error.data);
         this.errors = error.data;
