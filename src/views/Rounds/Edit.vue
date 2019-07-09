@@ -1,5 +1,6 @@
 <template>
   <div class="rounds-new">
+    
     <div class="ms-site-container">
 
         <div class="modal modal-light" id="courseAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -170,10 +171,10 @@
                 </fieldset>
               </form>
             </div>
-          </div>
+          </div> <!-- end form -->
 
 
-
+          <!-- Course Card -->
           <div class="card card-primary">
            
             <div class="row">
@@ -198,8 +199,9 @@
               </div>
 
               <!-- map -->
+              <!-- <div v-on:click="showMap()" id='map'></div> -->
               <div class="col-xl-7 col-lg-8 col-md-7">
-                <iframe width="100%" height="100%" :src="location"></iframe>
+                <iframe width="100%" height="100%" :src="'https://www.google.com/maps/embed/v1/search?key=API_KEY&q=' + location"></iframe>
               </div>
 
             </div>
@@ -217,6 +219,7 @@
           {{ course.id }} {{ course.name }}
         </option>
       </datalist>
+
   </div>
   
 </template>
@@ -227,6 +230,8 @@
     max-height: 300px;
     max-width: 1000px;
   }
+  body { margin:0; padding:0; }
+  #map { top:0; bottom:0; width:100%; }
 </style>
 
 <script>
@@ -275,8 +280,10 @@ export default {
       hdcp16: "",
       hdcp17: "",
       hdcp18: "",
-      location: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1472406.3569906724!2d-85.08727944112829!3d43.66687359293001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4d4caa3dc7ca0411%3A0x97dd48597a62c9b3!2sMichigan!5e0!3m2!1sen!2sus!4v1562171994655!5m2!1sen!2sus",
-      hills: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d760686.0897812891!2d-87.56572928714047!3d41.862093291903236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8810c9c0756c3eb5%3A0xffce161a67e25b02!2sLake+Michigan+Hills+Golf+Club!5e0!3m2!1sen!2sus!4v1562171598315!5m2!1sen!2sus",
+      zoom: 5,
+      location: "golf+club+michigan",
+      hills:"hills+golf+club+michigan",
+      hillsExact: "hills+golf+club,2520+Kerlikowske+Rd,Benton+Harbor,MI+49022",
       moor: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1477951.3202837228!2d-85.08729566294394!3d43.65599744115602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x881775b0ebfe97f7%3A0xd718f55e0c79b28a!2sMoors+Golf+Club!5e0!3m2!1sen!2sus!4v1562174401947!5m2!1sen!2sus"
     };
   },
@@ -290,21 +297,31 @@ export default {
       this.round = response.data;
     })
   },
-  methods: {
-    submit: function() {
-      var params = {
-        name: this.round.name,
-        course_id: this.round.course.id
-      };
+  mounted: function() {
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYmprYW1wIiwiYSI6ImNqeGFseHA1cDE4MzQzdHJ2bnBjZTdsMTEifQ.BMXm7D46lgju3qldWBeDeQ';
 
-      axios.patch("/api/rounds/" + this.$route.params.id, params).then(response => {
-        console.log(response.data);
-        this.$router.push("/rounds/" + this.round.id);
-      }).catch(error => {
-        console.log(error.data);
-        this.errors = error.data;
-      });
-    },
+    var map = new mapboxgl.Map({
+      container: 'map', // container id
+      style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+      center: [-74.50, 40], // starting position [lng, lat]
+      zoom: 9 // starting zoom
+    });
+  },
+  methods: {
+    // submit: function() {
+    //   var params = {
+    //     name: this.round.name,
+    //     course_id: this.round.course.id
+    //   };
+
+    //   axios.patch("/api/rounds/" + this.$route.params.id, params).then(response => {
+    //     console.log(response.data);
+    //     this.$router.push("/rounds/" + this.round.id);
+    //   }).catch(error => {
+    //     console.log(error.data);
+    //     this.errors = error.data;
+    //   });
+    // },
    
     addCourse: function() {
       var params = {
@@ -362,10 +379,47 @@ export default {
     changeLocation: function(courseAddress) {
       if (courseAddress === "2520 Kerlikowske Rd, Benton Harbor, MI 49022"){
         this.location = this.hills;
+        this.zoom = 9;
       } else {
         this.location = this.moor;
       }
+
       // this.location = "http://www.google.com/maps/place/" + courseAddress
+    },
+    showMap: function(){
+      // mapboxgl.accessToken = 'pk.eyJ1IjoiYmprYW1wIiwiYSI6ImNqeGFseHA1cDE4MzQzdHJ2bnBjZTdsMTEifQ.BMXm7D46lgju3qldWBeDeQ';
+
+      // var map = new mapboxgl.Map({
+      //   container: 'map', // container id
+      //   style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+      //   center: this.location, // starting position [lng, lat]
+      //   zoom: this.zoom // starting zoom
+      // });
+
+      mapboxgl.accessToken = 'pk.eyJ1IjoiYmprYW1wIiwiYSI6ImNqeGFseHA1cDE4MzQzdHJ2bnBjZTdsMTEifQ.BMXm7D46lgju3qldWBeDeQ';
+      // eslint-disable-next-line no-undef
+      var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
+      mapboxClient.geocoding.forwardGeocode({
+      query: 'Lake Michigan Hills Golf Club, 2520 Kerlikowske Rd, Benton Harbor, MI 49022',
+      autocomplete: false,
+      limit: 1
+      })
+      .send()
+      .then(function (response) {
+      if (response && response.body && response.body.features && response.body.features.length) {
+      var feature = response.body.features[0];
+       
+      var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: feature.center,
+      zoom: 10
+      });
+      new mapboxgl.Marker()
+      .setLngLat(feature.center)
+      .addTo(map);
+      }
+      });
     }
 
   }

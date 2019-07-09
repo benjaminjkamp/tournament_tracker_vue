@@ -9,8 +9,11 @@
           <div class="modal-content">
             <form v-on:submit.prevent="addCourse()">
               <div class="modal-header">
-                <h3 class="modal-title color-dark"><input type="text" v-model="courseName"></h3>
+                <h4 class="modal-title color-dark"><input size="35" type="text" placeholder="Course Name" v-model="courseName"></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+              </div>
+              <div class="modal-header">
+                <h4 class="modal-title color-dark"><input size="40" type="text" placeholder="Address" v-model="address"></h4>
               </div>
               <div class="modal-body">
                   <table class="table">
@@ -170,6 +173,7 @@
           </div>
         </div>
 
+        <a href="javascript:void(0)" class="btn-circle btn-circle-primary no-focus animated zoomInDown animation-delay-8" data-toggle="modal" data-target="$(#ms-account-modal)"><i class="zmdi zmdi-account"></i></a>
 
         <div class="card card-primary">
           <div class="row">
