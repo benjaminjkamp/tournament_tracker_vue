@@ -11,7 +11,7 @@
     </div>
     <div class="ms-site-container">
       <!-- Modal -->
-      <div class="modal modal-primary" id="ms-account-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal modal-dark" id="ms-account-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog animated zoomIn animated-3x" role="document">
           <div class="modal-content">
             <div class="modal-header d-block shadow-2dp no-pb">
@@ -24,9 +24,9 @@
                 <h4>{{currentUser.name || "Tournament Tracker"}}</h4>
               </div>
               <div class="modal-header-tabs" v-model="tabIndex">
-                <ul class="nav nav-tabs nav-tabs-full nav-tabs-2 nav-tabs-primary" role="tablist" v-model="tabIndex">
-                  <li class="nav-item" role="presentation"><a href="#ms-login-tab" aria-controls="ms-login-tab" role="tab" data-toggle="tab" class="nav-link active withoutripple"><i class="zmdi zmdi-account"></i> Login</a></li>
-                  <li class="nav-item" role="presentation"><a href="#ms-register-tab" aria-controls="ms-register-tab" role="tab" data-toggle="tab" class="nav-link withoutripple"><i class="zmdi zmdi-account-add"></i> Register</a></li>
+                <ul class="nav nav-tabs nav-tabs-full nav-tabs-2 nav-tabs-light" role="tablist" v-model="tabIndex">
+                  <li class="nav-item" role="presentation"><a href="#ms-login-tab" aria-controls="ms-login-tab" role="tab" data-toggle="tab" class="nav-link text-dark active withoutripple"><i class="zmdi zmdi-account"></i> Login</a></li>
+                  <li class="nav-item" role="presentation"><a href="#ms-register-tab" aria-controls="ms-register-tab" role="tab" data-toggle="tab" class="nav-link text-dark withoutripple"><i class="zmdi zmdi-account-add"></i> Register</a></li>
                   <!-- <li class="nav-item" role="presentation"><a href="#ms-recovery-tab" aria-controls="ms-recovery-tab" role="tab" data-toggle="tab" class="nav-link withoutripple"><i class="zmdi zmdi-key"></i> Recovery Pass</a></li> -->
                 </ul>
               </div>
@@ -61,7 +61,7 @@
                           </div> -->
                         <!-- </div> -->
                         <!-- <div class="col-md-4 "> -->
-                          <button type="submit" class="btn btn-raised btn-block btn-primary pull-right">Login</button>
+                          <button type="submit" class="btn btn-raised btn-block btn-black pull-right">Login</button>
                         <!-- </div> -->
                       </div>
                     </fieldset>
@@ -169,11 +169,12 @@
       <nav class="navbar navbar-expand-md  navbar-static ms-navbar ms-navbar-dark">
         <div class="container container-full">
           <div class="navbar-header">
-            <router-link class="navbar-brand" to="/">
+            <a href="javascript:void(0)" class="btn-ms-menu btn-circle btn-circle-white ms-toggle-left animated zoomInDown animation-delay-3"><i class="zmdi zmdi-menu zmdi-hc-4x"></i></a>
+            <a class="navbar-brand btn-ms-menu ms-toggle-left" href="javascript:void(0)">
               <!-- <img src="assets/img/demo/logo-navbar.png" alt=""> -->
               <span class="ms-logo ms-logo-sm">TnT</span>
               <span class="ms-title">Tournament<strong>Tracker</strong></span>
-            </router-link>
+            </a>
           </div>
           <div class="collapse navbar-collapse" id="ms-navbar">     
 
@@ -211,7 +212,7 @@
               <input id="search-box" type="text" class="search-input" placeholder="Search..." name="q" />
               <label for="search-box"><i class="zmdi zmdi-search"></i></label>
             </form> -->
-            <a v-if="!isLogged()" href="javascript:void(0)" class="btn-circle btn-circle-primary no-focus animated zoomInDown animation-delay-8" data-toggle="modal" data-target="#ms-account-modal"><i class="zmdi zmdi-account"></i></a>
+            <a v-if="!isLogged()" href="javascript:void(0)" class="btn-circle btn-circle-white no-focus animated zoomInDown animation-delay-8" data-toggle="modal" data-target="#ms-account-modal"><i class="zmdi zmdi-account"></i></a>
             <!-- <i v-if="isLogged()" class="zmdi zmdi-account"></i> -->
             <span v-if="isLogged()">
 

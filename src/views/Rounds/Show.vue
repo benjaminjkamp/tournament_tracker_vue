@@ -1,9 +1,31 @@
 <template>
   <div class="rounds-show">
-    
+    <div class="ms-site-container">
+      <div class="modal modal-light" id="courseAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg modal-dialog-centered animated zoomIn animated-3x" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title color-dark">{{course.name}}</h2>
+
+              <button type="button" class="btn-dark close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+            </div>
+            
+            <!-- modal map -->
+            <div class="modal-header">
+              
+            </div>
+            <div class="modal-body">
+              <iframe width="100%" height="400px" :src="'https://www.google.com/maps/embed/v1/search?key=' + key + '&q=' + course.name + course.address"></iframe>                         
+            </div>
+              
+          </div>
+        </div>
+      </div>
     <div class="panel panel-black">
       <div class="panel-heading">
-          <b>{{ round.name }}</b>
+        <router-link :to="'/rounds/' + round.id + '/edit'" class="text-light">
+          <h3><i class="zmdi zmdi-hc-2x zmdi-edit"></i> <b>{{round.name}}</b></h3>
+        </router-link>
       </div>
       <div class="panel-body">
         <div>
@@ -83,90 +105,95 @@
       </div>
       <div class="panel-footer">
         <div>
-          <router-link :to="'/rounds/' + round.id + '/edit'" class="zmdi zmdi-hc-2x zmdi-edit">
-            Edit Round Info
-          </router-link> 
+           
         </div>
+       
         <div>
-          <router-link :to="'/matches/' + this.round.id + '/new'" class="zmdi zmdi-hc-2x zmdi-plus-circle">
-            Add Match
-          </router-link>
+          <a href="javascript:void(0)" class="no-focus animated zoomInDown" data-toggle="modal" data-target="#courseAdd">
+            <h3 class="text-dark"><button class="btn btn-black btn-raised">See Course Location</button></h3>
+          </a>
         </div>
+        
       </div>
     </div>
 
-<br><br>
+<br>
+  <div>
+    <button class="btn btn-raised btn-light">
+      <router-link :to="'/matches/' + this.round.id + '/new'" class="text-dark zmdi zmdi-hc-2x zmdi-plus-circle">
+        Add Match
+      </router-link>
+    </button>
+  </div>
+<br>
 
     <div v-for="match in matches">
       
-        <div class="panel panel-black">
-          <div class="panel-heading">
-            <router-link class="btn btn-raised btn-white" :to="'/matches/' + match.id + '/edit'">{{match.name}}</router-link>
-          </div>
-          <div class="panel-body">
-            <table class="table table-condensed table-hover active">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">{{match.name}}</th>
-                  <th scope="col">1</th>
-                  <th scope="col">2</th>
-                  <th scope="col">3</th>
-                  <th scope="col">4</th>
-                  <th scope="col">5</th>
-                  <th scope="col">6</th>
-                  <th scope="col">7</th>
-                  <th scope="col">8</th>
-                  <th scope="col">9</th>
-                  <th scope="col">10</th>
-                  <th scope="col">11</th>
-                  <th scope="col">12</th>
-                  <th scope="col">13</th>
-                  <th scope="col">14</th>
-                  <th scope="col">15</th>
-                  <th scope="col">16</th>
-                  <th scope="col">17</th>
-                  <th scope="col">18</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="team in match.teams" class="table-secondary">
-                  <th scope="row">{{team.name}}</th>
-                  <td>{{team.scores.score_1}}</td>
-                  <td>{{team.scores.score_2}}</td>
-                  <td>{{team.scores.score_3}}</td>
-                  <td>{{team.scores.score_4}}</td>
-                  <td>{{team.scores.score_5}}</td>
-                  <td>{{team.scores.score_6}}</td>
-                  <td>{{team.scores.score_7}}</td>
-                  <td>{{team.scores.score_8}}</td>
-                  <td>{{team.scores.score_9}}</td>
-                  <td>{{team.scores.score_10}}</td>
-                  <td>{{team.scores.score_11}}</td>
-                  <td>{{team.scores.score_12}}</td>
-                  <td>{{team.scores.score_13}}</td>
-                  <td>{{team.scores.score_14}}</td>
-                  <td>{{team.scores.score_15}}</td>
-                  <td>{{team.scores.score_16}}</td>
-                  <td>{{team.scores.score_17}}</td>
-                  <td>{{team.scores.score_18}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="panel-footer text-dark">
-            {{match.teams[0].name}}: {{match.team_1_score}}
-          </div>
-          <div class="panel-footer text-dark">
-            {{match.teams[1].name}}: {{match.team_2_score}}
-          </div>
-          
+      <div class="panel panel-black">
+        <div class="panel-heading">
+          <router-link class="btn btn-raised btn-white" :to="'/matches/' + match.id + '/edit'">{{match.name}}</router-link>
+        </div>
+        <div class="panel-body">
+          <table class="table table-condensed table-hover active">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">{{match.name}}</th>
+                <th scope="col">1</th>
+                <th scope="col">2</th>
+                <th scope="col">3</th>
+                <th scope="col">4</th>
+                <th scope="col">5</th>
+                <th scope="col">6</th>
+                <th scope="col">7</th>
+                <th scope="col">8</th>
+                <th scope="col">9</th>
+                <th scope="col">10</th>
+                <th scope="col">11</th>
+                <th scope="col">12</th>
+                <th scope="col">13</th>
+                <th scope="col">14</th>
+                <th scope="col">15</th>
+                <th scope="col">16</th>
+                <th scope="col">17</th>
+                <th scope="col">18</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="team in match.teams" class="table-secondary">
+                <th scope="row">{{team.name}}</th>
+                <td>{{team.scores.score_1}}</td>
+                <td>{{team.scores.score_2}}</td>
+                <td>{{team.scores.score_3}}</td>
+                <td>{{team.scores.score_4}}</td>
+                <td>{{team.scores.score_5}}</td>
+                <td>{{team.scores.score_6}}</td>
+                <td>{{team.scores.score_7}}</td>
+                <td>{{team.scores.score_8}}</td>
+                <td>{{team.scores.score_9}}</td>
+                <td>{{team.scores.score_10}}</td>
+                <td>{{team.scores.score_11}}</td>
+                <td>{{team.scores.score_12}}</td>
+                <td>{{team.scores.score_13}}</td>
+                <td>{{team.scores.score_14}}</td>
+                <td>{{team.scores.score_15}}</td>
+                <td>{{team.scores.score_16}}</td>
+                <td>{{team.scores.score_17}}</td>
+                <td>{{team.scores.score_18}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="panel-footer text-dark">
+          {{match.teams[0].name}}: {{match.team_1_score}}
+        </div>
+        <div class="panel-footer text-dark">
+          {{match.teams[1].name}}: {{match.team_2_score}}
         </div>
         
-      
-      
+      </div>
       
     </div>   
-    
+  </div>
 
   </div>
 </template>
@@ -183,7 +210,8 @@ export default {
       course: {},
       handicaps: {},
       pars: {},
-      matches: []
+      matches: [],
+      key: ""
     };
   },
   created: function() {
@@ -195,7 +223,8 @@ export default {
       this.pars = this.course.pars;
       this.matches = this.round.matches;
 
-    })
+    });
+    this.key = process.env.VUE_APP_MAP_KEY;
   },
   methods: {
     

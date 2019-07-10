@@ -24,13 +24,13 @@
                     <div class="form-group row is-empty">
                       <!-- <label for="playerName1" class="col-md-3 control-label">Player 1</label> -->
                       <div class="col-md-9">
-                        <input type="text" class="form-control" id="playerName1" placeholder="Player 1" v-model="player1">
+                        <input type="text" class="form-control" list="players" id="playerName1" placeholder="Player 1" v-model="player1">
                       </div>
                     </div>
                     <div class="form-group row is-empty">
                       <!-- <label for="playerName2" class="col-md-3 control-label">Player 2</label> -->
                       <div class="col-md-9">
-                        <input type="text" class="form-control" id="playerName2" placeholder="Player 2" v-model="player2">
+                        <input type="text" class="form-control" list="players" id="playerName2" placeholder="Player 2" v-model="player2">
                       </div>
                     </div>
                     <h1 class="color-primary text-center">Team 2</h1>
@@ -44,13 +44,13 @@
                     <div class="form-group row is-empty">
                       <!-- <label for="playerName3" class="col-md-3 control-label">Player 1</label> -->
                       <div class="col-md-9">
-                        <input type="text" class="form-control" id="playerName3" placeholder="Player 1" v-model="player3">
+                        <input type="text" class="form-control" list="players" id="playerName3" placeholder="Player 1" v-model="player3">
                       </div>
                     </div>
                     <div class="form-group row is-empty">
                       <!-- <label for="playerName4" class="col-md-3 control-label">Player 2</label> -->
                       <div class="col-md-9">
-                        <input type="text" class="form-control" id="playerName4" placeholder="Player 2" v-model="player4">
+                        <input type="text" class="form-control" list="players" id="playerName4" placeholder="Player 2" v-model="player4">
                       </div>
                     </div>
                     <button type="submit" class="btn btn-raised btn-primary btn-block">Add Match <i class="zmdi zmdi-long-arrow-right no-mr ml-1"></i></button>

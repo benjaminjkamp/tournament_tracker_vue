@@ -4,16 +4,22 @@
     <div class="ms-site-container">
 
         <div class="modal modal-light" id="courseAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog modal-dialog-centered animated zoomIn animated-3x" role="document">
+          <div class="modal-dialog modal-lg modal-dialog-centered animated zoomIn animated-3x" role="document">
             <div class="modal-content">
               <form v-on:submit.prevent="addCourse()">
                 <div class="modal-header">
                   <h4 class="modal-title color-dark"><input type="text" placeholder="Name" v-model="courseName"></h4>
 
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                  
+
+                  <button type="button" class="btn-dark close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
                 </div>
                 <div class="modal-header">
                   <h4 class="modal-title color-dark"><input size="40" type="text" placeholder="Address" v-model="address"></h4>
+                </div>
+                <!-- modal map -->
+                <div class="modal-header">
+                  <iframe width="100%" height="400px" :src="'https://www.google.com/maps/embed/v1/search?key=' + key + '&q=' + courseName + address"></iframe>
                 </div>
                 <div class="modal-body">
                     <table class="table">
@@ -24,6 +30,7 @@
                           <th scope="col">HDCP</th>
                         </tr>
                       </thead>
+                      <!-- pars & handicaps -->
                       <tbody>
                         <tr class="table-secondary">
                           <th scope="row">1</th>
@@ -150,6 +157,8 @@
                       <input type="text" class="form-control" id="inputName"  v-model="round.name">
                     </div>
                   </div>
+                  
+                  
                   <div class="form-group row">
                     <label for="inputFormat" autocomplete="false" class="col-lg-2 control-label">Format</label>
                     <div class="col-lg-9">
@@ -191,17 +200,17 @@
 
                     <p>
                       <!-- <router-link :to="'/courses/' + course.id + '/edit'"> {{course.id}} {{course.name}} - {{course.location || "Location Unknown"}}</router-link> -->
-                      <div v-on:click="changeLocation(course.location)"><i class="color-danger-light zmdi zmdi-pin mr-1"></i> <b>{{course.id}} {{course.name}}</b> - {{course.location || "Location Unknown"}}</div>
+                      <div v-on:click="changeLocation(course.name + course.location)"><i class="color-danger-light zmdi zmdi-pin mr-1"></i> <b>{{course.id}} {{course.name}}</b> - {{course.location || "Location Unknown"}}</div>
                     </p>
                     </div>
                   </address>
                 </div>
               </div>
-
+              
               <!-- map -->
               <!-- <div v-on:click="showMap()" id='map'></div> -->
               <div class="col-xl-7 col-lg-8 col-md-7">
-                <iframe width="100%" height="100%" :src="'https://www.google.com/maps/embed/v1/search?key=API_KEY&q=' + location"></iframe>
+                <iframe width="100%" height="100%" :src="'https://www.google.com/maps/embed/v1/search?key=' + key + '&q=' + location"></iframe>
               </div>
 
             </div>
@@ -242,8 +251,8 @@ export default {
       round: {},
       errors: [],
       courses: [],
-      courseName: "",
-      address: "",
+      courseName: "golf",
+      address: "Michigan",
       par1: "",
       par2: "",
       par3: "",
@@ -280,6 +289,8 @@ export default {
       hdcp16: "",
       hdcp17: "",
       hdcp18: "",
+      newCourseLocation: "",
+      key: "",
       zoom: 5,
       location: "golf+club+michigan",
       hills:"hills+golf+club+michigan",
@@ -295,33 +306,27 @@ export default {
     axios.get("/api/rounds/" + this.$route.params.id).then(response => {
       console.log(response.data);
       this.round = response.data;
-    })
+    });
+    this.key = process.env.VUE_APP_MAP_KEY;
   },
   mounted: function() {
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYmprYW1wIiwiYSI6ImNqeGFseHA1cDE4MzQzdHJ2bnBjZTdsMTEifQ.BMXm7D46lgju3qldWBeDeQ';
-
-    var map = new mapboxgl.Map({
-      container: 'map', // container id
-      style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-      center: [-74.50, 40], // starting position [lng, lat]
-      zoom: 9 // starting zoom
-    });
+  
   },
   methods: {
-    // submit: function() {
-    //   var params = {
-    //     name: this.round.name,
-    //     course_id: this.round.course.id
-    //   };
+    submit: function() {
+      var params = {
+        name: this.round.name,
+        course_id: this.round.course.id
+      };
 
-    //   axios.patch("/api/rounds/" + this.$route.params.id, params).then(response => {
-    //     console.log(response.data);
-    //     this.$router.push("/rounds/" + this.round.id);
-    //   }).catch(error => {
-    //     console.log(error.data);
-    //     this.errors = error.data;
-    //   });
-    // },
+      axios.patch("/api/rounds/" + this.$route.params.id, params).then(response => {
+        console.log(response.data);
+        this.$router.push("/rounds/" + this.round.id);
+      }).catch(error => {
+        console.log(error.data);
+        this.errors = error.data;
+      });
+    },
    
     addCourse: function() {
       var params = {
@@ -377,50 +382,20 @@ export default {
       });
     },
     changeLocation: function(courseAddress) {
-      if (courseAddress === "2520 Kerlikowske Rd, Benton Harbor, MI 49022"){
-        this.location = this.hills;
-        this.zoom = 9;
-      } else {
-        this.location = this.moor;
-      }
+      // if (courseAddress === "2520 Kerlikowske Rd, Benton Harbor, MI 49022"){
+      //   this.location = this.hills;
+      //   this.zoom = 9;
+      // } else {
+      //   this.location = this.moor;
+      // }
+      this.location = courseAddress
 
       // this.location = "http://www.google.com/maps/place/" + courseAddress
     },
-    showMap: function(){
-      // mapboxgl.accessToken = 'pk.eyJ1IjoiYmprYW1wIiwiYSI6ImNqeGFseHA1cDE4MzQzdHJ2bnBjZTdsMTEifQ.BMXm7D46lgju3qldWBeDeQ';
+    searchCourse: function(search) {
+      axios.get('https://maps.googleapis.com/maps/api/place/findplacefromtext/output?parameters')
+    },
 
-      // var map = new mapboxgl.Map({
-      //   container: 'map', // container id
-      //   style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-      //   center: this.location, // starting position [lng, lat]
-      //   zoom: this.zoom // starting zoom
-      // });
-
-      mapboxgl.accessToken = 'pk.eyJ1IjoiYmprYW1wIiwiYSI6ImNqeGFseHA1cDE4MzQzdHJ2bnBjZTdsMTEifQ.BMXm7D46lgju3qldWBeDeQ';
-      // eslint-disable-next-line no-undef
-      var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
-      mapboxClient.geocoding.forwardGeocode({
-      query: 'Lake Michigan Hills Golf Club, 2520 Kerlikowske Rd, Benton Harbor, MI 49022',
-      autocomplete: false,
-      limit: 1
-      })
-      .send()
-      .then(function (response) {
-      if (response && response.body && response.body.features && response.body.features.length) {
-      var feature = response.body.features[0];
-       
-      var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: feature.center,
-      zoom: 10
-      });
-      new mapboxgl.Marker()
-      .setLngLat(feature.center)
-      .addTo(map);
-      }
-      });
-    }
 
   }
 };
