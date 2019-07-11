@@ -351,7 +351,8 @@ export default {
       logo2: "Tracker",
       componentKey: 0,
       tabIndex: 0,
-      tabs: ['#ms-register-tab', '#ms-login-tab']
+      tabs: ['#ms-register-tab', '#ms-login-tab'],
+      mapKey: process.env.VUE_APP_MAP_KEY
     };
   },
   mounted() {

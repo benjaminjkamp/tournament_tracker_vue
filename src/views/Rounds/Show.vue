@@ -109,9 +109,22 @@
         </div>
        
         <div>
+          <h3 class="text-dark">
           <a href="javascript:void(0)" class="no-focus animated zoomInDown" data-toggle="modal" data-target="#courseAdd">
-            <h3 class="text-dark"><button class="btn btn-black btn-raised">See Course Location</button></h3>
+            
+              <button class="btn btn-black btn-raised">
+                See Course Location
+              </button>
+            
           </a>
+          <router-link :to="'/courses/' + round.course.id + '/edit'" class="no-focus animated zoomInDown">
+           
+              <button class="btn btn-black btn-raised">
+                Edit Course Information
+              </button>
+           
+          </router-link>
+           </h3>
         </div>
         
       </div>

@@ -10,7 +10,7 @@
         <div class="row">
 
           <div class="col-xl-5 order-xl-1">
-            <div class="card card-primary animated fadeInUp animation-delay-7">
+            <div class="card card-primary animated fadeInUp animation-delay-3">
               <div class="card-body">
                 <h1 class="color-primary text-center">Team 1</h1>
                 <form v-on:submit.prevent="submit()" class="form-horizontal">

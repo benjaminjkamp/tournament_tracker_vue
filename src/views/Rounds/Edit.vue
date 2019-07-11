@@ -2,208 +2,83 @@
   <div class="rounds-new">
     
     <div class="ms-site-container">
-        <!-- Course Add Modal -->
-        <div class="modal modal-light" id="courseAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog modal-lg modal-dialog-centered animated zoomIn animated-3x" role="document">
-            <div class="modal-content">
-              <form v-on:submit.prevent="addCourse()">
-                <div class="modal-header">
-                  <h4 class="modal-title color-dark"><input type="text" placeholder="Name" v-model="courseName"></h4>
 
-                  
+      <!-- Course Add Modal Component -->
+      <ModalCourseAdd :mapKey="mapKey" :courseName="courseName" :address="address" @addCourse="addCourse" />      
 
-                  <button type="button" class="btn-dark close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
-                </div>
-                <div class="modal-header">
-                  <h4 class="modal-title color-dark"><input size="40" type="text" placeholder="Address" v-model="address"></h4>
-                </div>
-                <!-- modal map -->
-                <div class="modal-header">
-                  <iframe width="100%" height="400px" :src="'https://www.google.com/maps/embed/v1/search?key=' + mapKey + '&q=' + courseName + address"></iframe>
-                </div>
-                <div class="modal-body">
-                    <table class="table">
-                      <thead class="thead-dark">
-                        <tr>
-                          <th scope="col">Hole</th>
-                          <th scope="col">Par</th>
-                          <th scope="col">HDCP</th>
-                        </tr>
-                      </thead>
-                      <!-- pars & handicaps -->
-                      <tbody>
-                        <tr class="table-secondary">
-                          <th scope="row">1</th>
-                          <td><input size="2" step="any" type="text" v-model="par1"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp1"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">2</th>
-                          <td><input size="2" step="any" type="text" v-model="par2"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp2"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">3</th>
-                          <td><input size="2" step="any" type="text" v-model="par3"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp3"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">4</th>
-                          <td><input size="2" step="any" type="text" v-model="par4"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp4"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">5</th>
-                          <td><input size="2" step="any" type="text" v-model="par5"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp5"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">6</th>
-                          <td><input size="2" step="any" type="text" v-model="par6"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp6"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">7</th>
-                          <td><input size="2" step="any" type="text" v-model="par7"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp7"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">8</th>
-                          <td><input size="2" step="any" type="text" v-model="par8"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp8"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">9</th>
-                          <td><input size="2" step="any" type="text" v-model="par9"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp9"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">10</th>
-                          <td><input size="2" step="any" type="text" v-model="par10"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp10"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">11</th>
-                          <td><input size="2" step="any" type="text" v-model="par11"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp11"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">12</th>
-                          <td><input size="2" step="any" type="text" v-model="par12"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp12"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">13</th>
-                          <td><input size="2" step="any" type="text" v-model="par13"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp13"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">14</th>
-                          <td><input size="2" step="any" type="text" v-model="par14"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp14"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">15</th>
-                          <td><input size="2" step="any" type="text" v-model="par15"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp15"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">16</th>
-                          <td><input size="2" step="any" type="text" v-model="par16"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp16"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">17</th>
-                          <td><input size="2" step="any" type="text" v-model="par17"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp17"></td>                            
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">18</th>
-                          <td><input size="2" step="any" type="text" v-model="par18"></td>
-                          <td><input size="2" step="any" type="text" v-model="hdcp18"></td>                            
-                        </tr>
-                      </tbody>
-                    </table>                            
-                </div>
-                <div class="modal-footer">
-                
-                  <button type="submit" class="btn btn-raised btn-primary btn-block">Add Course</button>
-                  <button type="button" class="btn btn-danger btn-raised btn-block" data-dismiss="modal">Close</button>
-                </div>
-                <div class="modal-footer">
-                  
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <!-- Round Edit Header -->
-        <div class="ms-hero-page-override ms-hero-img-team ms-hero-bg-primary">
-          <div class="container">
-            <div class="text-center">
-              <h1 class="no-m ms-site-title color-white center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5">Edit Round</h1>
-              <h3 text-primary>{{round.name}}</h3>
-              <p class="lead lead-lg color-light text-center center-block mt-2 mw-800 text-uppercase fw-300 animated fadeInUp animation-delay-7"></p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Round Edit Form -->
+      <!-- Round Edit Header -->
+      <div class="ms-hero-page-override ms-hero-img-team ms-hero-bg-primary">
         <div class="container">
-          <div class="card card-hero animated fadeInUp animation-delay-7">
-            <div class="card-body">
-              <form class="form-horizontal" v-on:submit.prevent="submit()">
-                <fieldset class="container">
-                  <div class="form-group row">
-                    <label for="inputName" autocomplete="false" class="col-lg-2 control-label">Name</label>
-                    <div class="col-lg-9">
-                      <input type="text" class="form-control" id="inputName"  v-model="round.name">
-                    </div>
-                  </div>
-                  
-                  
-                  <div class="form-group row">
-                    <label for="inputFormat" autocomplete="false" class="col-lg-2 control-label">Format</label>
-                    <div class="col-lg-9">
-                      <input type="text" class="form-control" id="inputFormat" placeholder="Format" v-model="round.format">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputCourse" autocomplete="false" class="col-lg-2 control-label">Course</label>
-                    <div class="col-lg-9">
-                      <input list="courses" type="text" class="form-control" id="inputCourse" placeholder="Course" v-model="round.course.id">
-                    </div>
-                  </div>
-                  <div class="form-group row justify-content-end">
-                    <div class="col-lg-10">
-                      <button type="submit" class="btn btn-raised btn-primary">Edit Round</button>
-                      <button type="button" class="btn btn-danger" v-on:click="$router.go(-1)">Cancel</button>
-                    </div>
-                  </div>
-                </fieldset>
-              </form>
-            </div>
-          </div> <!-- end form -->
-          
-        </div>
-          
-        <!-- Course Info Card Component -->
-        <div class="container">
-          <CourseInfoCard :mapKey="mapKey" :courses="courses" :location="location" @changeLocation="changeLocation" />
-        </div>
-
-        <div class="btn-back-top">
-          <a href="#" data-scroll id="back-top" class="btn-circle btn-circle-primary btn-circle-sm btn-circle-raised "><i class="zmdi zmdi-long-arrow-up"></i></a>
+          <div class="text-center">
+            <h1 class="no-m ms-site-title color-white center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5">Edit Round Info</h1>
+            <h3 text-primary></h3>
+            <p class="lead lead-lg color-light text-center center-block mt-2 mw-800 text-uppercase fw-300 animated fadeInUp animation-delay-7">{{round.name}}</p>
+          </div>
         </div>
       </div>
 
-      <!-- Course Data List -->
-      <datalist id="courses">
-        <option v-for="course in courses">
-          {{ course.id }} {{ course.name }}
-        </option>
-      </datalist>
+      <!-- Round Edit Form -->
+      <div class="container">
+        <div class="card card-hero animated fadeInUp animation-delay-2">
+          <div class="card-body">
+            <form class="form-horizontal" v-on:submit.prevent="submit()">
+              <fieldset class="container">
+                <div class="form-group row">
+                  <label for="inputName" autocomplete="false" class="col-lg-2 control-label">Name</label>
+                  <div class="col-lg-9">
+                    <input type="text" class="form-control" id="inputName"  v-model="round.name">
+                  </div>
+                </div>
+                
+                
+                <div class="form-group row">
+                  <label for="inputFormat" autocomplete="false" class="col-lg-2 control-label">Format</label>
+                  <div class="col-lg-9">
+                    <input type="text" class="form-control" id="inputFormat" placeholder="Format" v-model="round.format">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputCourse" autocomplete="false" class="col-lg-2 control-label">Course</label>
+                  <div class="col-lg-9">
+                    <input list="courses" type="text" class="form-control" id="inputCourse" placeholder="Course" v-model="round.course.id">
+                  </div>
+                </div>
+                <div class="form-group row justify-content-end">
+                  <div class="col-lg-10">
+                    <button type="submit" class="btn btn-raised btn-primary">Edit Round</button>
+                    <router-link :to="'/rounds/' + round.id">
+                      <button type="button" class="btn btn-danger">
+                        Cancel
+                      </button>
+                    </router-link>
+                    
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div> <!-- end form -->
+        
+      </div>
+        
+      <!-- Course Info Card Component -->
+      <div class="container">
+        <CourseInfoCard :mapKey="mapKey" :courses="courses" :location="location" @changeLocation="changeLocation" />
+      </div>
+
+     <!--  <div class="btn-back-top">
+
+        <a href="#" data-scroll id="back-top" class="btn-circle btn-circle-primary btn-circle-sm btn-circle-raised "><i class="zmdi zmdi-long-arrow-up"></i></a>
+      </div> -->
+
+    </div> <!-- End Site Container -->
+
+    <!-- Course Data List -->
+    <datalist id="courses">
+      <option v-for="course in courses">
+        {{ course.id }} {{ course.name }}
+      </option>
+    </datalist>
 
   </div>
   
@@ -220,10 +95,12 @@
 
 <script>
 import CourseInfoCard from "../../components/CourseInfoCard.vue";
+import ModalCourseAdd from "../../components/ModalCourseAdd.vue";
 import axios from "axios";
 export default {
   components: {
-    CourseInfoCard
+    CourseInfoCard,
+    ModalCourseAdd
   },
   
   data: function() {
@@ -269,13 +146,10 @@ export default {
       hdcp16: "",
       hdcp17: "",
       hdcp18: "",
-      newCourseLocation: "",
       mapKey: "",
       zoom: 5,
       location: "golf+club+michigan",
-      hills:"hills+golf+club+michigan",
-      hillsExact: "hills+golf+club,2520+Kerlikowske+Rd,Benton+Harbor,MI+49022",
-      moor: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1477951.3202837228!2d-85.08729566294394!3d43.65599744115602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x881775b0ebfe97f7%3A0xd718f55e0c79b28a!2sMoors+Golf+Club!5e0!3m2!1sen!2sus!4v1562174401947!5m2!1sen!2sus"
+     
     };
   },
   created: function() {

@@ -8,7 +8,7 @@
           <div class="mb-2">
             <span class="ms-logo ms-logo-sm mr-1">TnT</span>
             <h3 class="no-m ms-site-title"><span>Courses</span></h3>
-            <a href="javascript:void(0)" class="btn-circle btn-circle-primary no-focus animated zoomInDown animation-delay-8" data-toggle="modal" data-target="#courseAdd"><i class="zmdi zmdi-account"></i>Add</a>
+            <a href="javascript:void(0)" class="btn-circle btn-circle-primary no-focus animated zoomInDown animation-delay-3" data-toggle="modal" data-target="#courseAdd"><i class="zmdi zmdi-account"></i>Add</a>
           </div>
           <address id="courseList" class="no-mb">
             <div v-for="course in $parent.courses">
@@ -20,7 +20,7 @@
       
       <!-- map -->
       <div class="col-xl-7 col-lg-8 col-md-7">
-        <iframe width="100%" height="100%" :src="'https://www.google.com/maps/embed/v1/search?key=' + $parent.mapKey + '&q=' + $parent.location"></iframe>
+        <iframe width="100%" height="100%" :src="'https://www.google.com/maps/embed/v1/search?key=' + mapKey + '&q=' + location"></iframe>
       </div>
 
     </div>

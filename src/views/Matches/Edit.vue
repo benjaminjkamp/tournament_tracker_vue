@@ -434,6 +434,7 @@ export default {
     },
     userScores: function(){
 
+      // inputs for player 1 strokes
       var player1Scores = [
         Number(this.player1Score1),
         Number(this.player1Score2),
@@ -456,6 +457,7 @@ export default {
       ]
       var i = 0;
 
+      // set player 1 scores with handicaps
       for (i = 0; i < 18; i++){
         if (this.match.teams[0].players[0].low_net_handicap >= Object.values(this.match.round.course.handicaps)[i]){
           player1Scores[i]--;
@@ -463,6 +465,8 @@ export default {
       }
       console.log("player1scores", player1Scores);
 
+
+      // inputs for player 2 scores
       var player2Scores = [
         Number(this.player2Score1),
         Number(this.player2Score2),
@@ -485,6 +489,7 @@ export default {
       ]
       var i = 0;
 
+      // set player 2 scores with handicaps
       for (i = 0; i < 18; i++){
         if (this.match.teams[0].players[1].low_net_handicap >= Object.values(this.match.round.course.handicaps)[i]){
           player2Scores[i]--;
@@ -492,6 +497,7 @@ export default {
       }
       console.log("player2scores", player2Scores);
 
+      // inputs for player 3 scores
       var player3Scores = [
         Number(this.player3Score1),
         Number(this.player3Score2),
@@ -514,6 +520,7 @@ export default {
       ]
       var i = 0;
 
+      // set player 3 scores with handicaps
       for (i = 0; i < 18; i++){
         if (this.match.teams[1].players[0].low_net_handicap >= Object.values(this.match.round.course.handicaps)[i]){
           player3Scores[i]--;
@@ -521,6 +528,7 @@ export default {
       }
       console.log("player3scores", player3Scores);
 
+      // inputs for player 4 scores
       var player4Scores = [
         Number(this.player4Score1),
         Number(this.player4Score2),
@@ -542,6 +550,7 @@ export default {
         Number(this.player4Score18),
       ]
 
+      // set player 4 scores with handicaps
       for (i = 0; i < 18; i++){
         if (this.match.teams[1].players[1].low_net_handicap >= Object.values(this.match.round.course.handicaps)[i]){
           player4Scores[i]--;
@@ -550,9 +559,13 @@ export default {
 
       console.log("player4scores", player4Scores);
 
+
+      // 2-man-total-score
+
       var team1Strokes = [];
       var team2Strokes = [];
 
+      // Add each team's player stroke totals after handicaps
       for (i = 0; i < 18; i++){
         team1Strokes.push(player1Scores[i] + player2Scores[i]);
         team2Strokes.push(player3Scores[i] + player4Scores[i]);
@@ -563,6 +576,7 @@ export default {
       var team1Scores = [];
       var team2Scores = [];
       
+      // assign points to teams based on lower totals per hole
       for (var i = 0; i < 18; i++) {
         if (team1Strokes[i] < team2Strokes[i]) {
           team1Scores.push(1);
