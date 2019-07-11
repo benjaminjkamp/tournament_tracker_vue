@@ -186,15 +186,10 @@
                 </div>
                 <address class="no-mb">
 
-
-
-
-
                   <div v-for="course in courses">
 
                   <p>
-                   <!--  <router-link :to="'/courses/' + course.id + '/edit'"> {{course.id}} {{course.name}} - {{course.location || "Location Unknown"}}</router-link> -->
-
+          
                    <div v-on:click="changeLocation(course.name)"><i class="color-danger-light zmdi zmdi-pin mr-1"></i> {{course.id}} {{course.name}} - {{course.location || "Location Unknown"}}</div>
                   </p>
                   </div>
@@ -202,13 +197,6 @@
                 </address>
               </div>
             </div>
-
-            <!-- <div class="map">
-              <h1>Map</h1>
-              <div id="map"></div>
-              
-            </div> -->
-
 
 
             <div class="col-xl-9 col-lg-8 col-md-7">

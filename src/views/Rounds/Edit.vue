@@ -2,7 +2,7 @@
   <div class="rounds-new">
     
     <div class="ms-site-container">
-
+        <!-- Course Add Modal -->
         <div class="modal modal-light" id="courseAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog modal-lg modal-dialog-centered animated zoomIn animated-3x" role="document">
             <div class="modal-content">
@@ -19,7 +19,7 @@
                 </div>
                 <!-- modal map -->
                 <div class="modal-header">
-                  <iframe width="100%" height="400px" :src="'https://www.google.com/maps/embed/v1/search?key=' + key + '&q=' + courseName + address"></iframe>
+                  <iframe width="100%" height="400px" :src="'https://www.google.com/maps/embed/v1/search?key=' + mapKey + '&q=' + courseName + address"></iframe>
                 </div>
                 <div class="modal-body">
                     <table class="table">
@@ -137,6 +137,8 @@
             </div>
           </div>
         </div>
+
+        <!-- Round Edit Header -->
         <div class="ms-hero-page-override ms-hero-img-team ms-hero-bg-primary">
           <div class="container">
             <div class="text-center">
@@ -146,6 +148,8 @@
             </div>
           </div>
         </div>
+
+        <!-- Round Edit Form -->
         <div class="container">
           <div class="card card-hero animated fadeInUp animation-delay-7">
             <div class="card-body">
@@ -181,48 +185,20 @@
               </form>
             </div>
           </div> <!-- end form -->
-
-
-          <!-- Course Card -->
-          <div class="card card-primary">
-           
-            <div class="row">
-              <div class="col-xl-5">
-                <div  class="card-body wow fadeInUp">
-
-                  <div class="mb-2">
-                    <span class="ms-logo ms-logo-sm mr-1">TnT</span>
-                    <h3 class="no-m ms-site-title"><span>Courses</span></h3>
-                    <a href="javascript:void(0)" class="btn-circle btn-circle-primary no-focus animated zoomInDown animation-delay-8" data-toggle="modal" data-target="#courseAdd"><i class="zmdi zmdi-account"></i>Add</a>
-                  </div>
-                  <address id="courseList" class="no-mb">
-                    <div v-for="course in courses">
-
-                    <p>
-                      <!-- <router-link :to="'/courses/' + course.id + '/edit'"> {{course.id}} {{course.name}} - {{course.location || "Location Unknown"}}</router-link> -->
-                      <div v-on:click="changeLocation(course.name + course.location)"><i class="color-danger-light zmdi zmdi-pin mr-1"></i> <b>{{course.id}} {{course.name}}</b> - {{course.location || "Location Unknown"}}</div>
-                    </p>
-                    </div>
-                  </address>
-                </div>
-              </div>
-              
-              <!-- map -->
-              <!-- <div v-on:click="showMap()" id='map'></div> -->
-              <div class="col-xl-7 col-lg-8 col-md-7">
-                <iframe width="100%" height="100%" :src="'https://www.google.com/maps/embed/v1/search?key=' + key + '&q=' + location"></iframe>
-              </div>
-
-            </div>
-          </div>
+          
         </div>
           
+        <!-- Course Info Card Component -->
+        <div class="container">
+          <CourseInfoCard :mapKey="mapKey" :courses="courses" :location="location" @changeLocation="changeLocation" />
+        </div>
+
         <div class="btn-back-top">
           <a href="#" data-scroll id="back-top" class="btn-circle btn-circle-primary btn-circle-sm btn-circle-raised "><i class="zmdi zmdi-long-arrow-up"></i></a>
         </div>
       </div>
 
-
+      <!-- Course Data List -->
       <datalist id="courses">
         <option v-for="course in courses">
           {{ course.id }} {{ course.name }}
@@ -239,13 +215,17 @@
     max-height: 300px;
     max-width: 1000px;
   }
-  body { margin:0; padding:0; }
-  #map { top:0; bottom:0; width:100%; }
+  
 </style>
 
 <script>
+import CourseInfoCard from "../../components/CourseInfoCard.vue";
 import axios from "axios";
 export default {
+  components: {
+    CourseInfoCard
+  },
+  
   data: function() {
     return {
       round: {},
@@ -290,7 +270,7 @@ export default {
       hdcp17: "",
       hdcp18: "",
       newCourseLocation: "",
-      key: "",
+      mapKey: "",
       zoom: 5,
       location: "golf+club+michigan",
       hills:"hills+golf+club+michigan",
@@ -300,14 +280,14 @@ export default {
   },
   created: function() {
     axios.get("/api/courses").then(response => {
-      console.log(response.data);
+      console.log("courses", response.data);
       this.courses = response.data;
-    }),
+    });
     axios.get("/api/rounds/" + this.$route.params.id).then(response => {
       console.log(response.data);
       this.round = response.data;
     });
-    this.key = process.env.VUE_APP_MAP_KEY;
+    this.mapKey = process.env.VUE_APP_MAP_KEY;
   },
   mounted: function() {
   
@@ -382,19 +362,10 @@ export default {
       });
     },
     changeLocation: function(courseAddress) {
-      // if (courseAddress === "2520 Kerlikowske Rd, Benton Harbor, MI 49022"){
-      //   this.location = this.hills;
-      //   this.zoom = 9;
-      // } else {
-      //   this.location = this.moor;
-      // }
+     
       this.location = courseAddress
 
-      // this.location = "http://www.google.com/maps/place/" + courseAddress
-    },
-    searchCourse: function(search) {
-      axios.get('https://maps.googleapis.com/maps/api/place/findplacefromtext/output?parameters')
-    },
+    }
 
 
   }
