@@ -12,7 +12,8 @@ import MatchesNew from './views/Matches/New.vue'
 import MatchesEdit from './views/Matches/Edit.vue'
 import CoursesNew from './views/Courses/New.vue'
 import CoursesEdit from './views/Courses/Edit.vue'
-
+import TournamentsStandings from './views/Tournaments/Standings.vue'
+import TournamentsEdit from './views/Tournaments/Edit.vue'
 
 Vue.use(Router)
 
@@ -47,7 +48,7 @@ export default new Router({
       component: UsersEdit
     },
     {
-      path: '/rounds/new',
+      path: '/rounds/:id/new',
       name: 'rounds-new',
       component: RoundsNew
     },
@@ -81,6 +82,16 @@ export default new Router({
       path: '/courses/:id/edit',
       name: 'courses-edit',
       component: CoursesEdit
+    },
+    {
+      path: '/tournaments/:id/standings',
+      name: 'tournaments-standings',
+      component: TournamentsStandings
+    },
+    {
+      path: '/tournaments/:id/edit',
+      name: 'tournaments-edit',
+      component: TournamentsEdit
     }
   ]
 })

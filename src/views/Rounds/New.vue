@@ -1,13 +1,13 @@
 <template>
   <div class="rounds-new">
     
-    <div class="ms-site-container">
+    <div class="ms-site-container golf-background">
 
       <!-- Course Add Modal Component -->
       <ModalCourseAdd :mapKey="mapKey" :courseName="courseName" :address="address" @addCourse="addCourse" />
 
       <!-- New Round Header -->
-      <div class="ms-hero-page-override ms-hero-img-team ms-hero-bg-primary">
+      <div class="ms-hero-page-override  ms-hero-bg-success">
         <div class="container">
           <div class="text-center">
             <h1 class="no-m ms-site-title color-white center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5">New Round</h1>
@@ -75,21 +75,11 @@
 </template>
 
 <style>
-  #map {  height: 300px; top:10px; bottom:10px; left: 10px; width: 100%; width: 500px;}
-
-  #marker {
-  background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/washington-monument.jpg');
+.golf-background{
+  background-image: url("../../../public/assets/img/golf_panorama.png");
   background-size: cover;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-  }
-   
-  .mapboxgl-popup {
-  max-width: 200px;
-  }
-
+}
+  
 </style>
 
 <script>
@@ -163,13 +153,15 @@ export default {
       var params = {
         year: this.newRoundYear,
         format: this.newRoundFormat,
-        course_id: this.newRoundCourseID
+        course_id: this.newRoundCourseID,
+        tournament_id: this.$route.params.id
       };
 
       axios.post("/api/rounds", params).then(response => {
         console.log(response.data);
         this.round = response.data;
         this.$router.push("/rounds/" + this.round.id);
+        location.reload();
       }).catch(error => {
         console.log(error.data);
         this.errors = error.data;

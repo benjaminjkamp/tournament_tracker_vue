@@ -1,12 +1,14 @@
 <template>
   <div class="users-edit">
-    <div class="ms-site-container">
-      <div>
-        <div class="col-lg-12 ms-paper-content-container">
+    
+    <div class="ms-site-container" id="background">
+      <div class="container">
+        <div class="col-lg-9 ms-paper-content-container">
           <div class="ms-paper-content">
             <div class="row">
               <div class="col-lg-8">
                 <div class="card">
+                  
                   <div class="card-tabs">
                     <ul class="nav nav-tabs shadow-2dp" role="tablist">
                       <li class="nav-item"><a href="#stats" aria-controls="home" role="tab" data-toggle="tab" class="active withoutripple nav-link "><i class="zmdi zmdi-home"></i> <span class="d-none d-sm-inline">Stats</span></a></li>
@@ -14,50 +16,75 @@
                     </ul>
                   </div>
                   <div class="card-body">
+                    
                     <form v-on:submit.prevent="submit()" class="form-horizontal" autocomplete="off">
                       <div class="tab-content">
                         <div role="tabpanel" class="tab-pane fade active show" id="stats"> 
+
+                          <!-- stats form -->
                           <fieldset>
-                            <div class="form-group row">
+                            <table class="table table-no-border table-striped">
+                              <tr>
+                                <th><i class="zmdi zmdi-account mr-1 color-royal"></i> Low Net Handicap</th>
+                                <td>
+                                  <input type="text" class="col-sm-4" id="lowNetHDCP" placeholder="Low-Net"v-model="user.low_net_handicap">
+                                </td>
+                                
+                              </tr>
+                              <tr>
+                                <th><i class="zmdi zmdi-face mr-1 color-warning"></i> Skins Handicap</th>
+                                <td>
+                                  <input type="text" class="col-sm-4" id="skins" placeholder="Skins" v-model="user.skins_handicap">
+                                </td>
+                              </tr>
+                              <tr>
+                                <th><i class="zmdi zmdi-male-female mr-1 color-success"></i> GNC Average</th>
+                                <td>
+                                  <input type="text" class="col-sm-4" id="gncAverage" placeholder="GNC Avg"v-model="user.gnc_average">
+                                </td>
+                              </tr>
+                              <tr>
+                                <th><i class="zmdi zmdi-email mr-1 color-primary"></i> 
+                                  Two Year Average
+                                </th>
+                                <td>
+                                  <input type="text" class="col-sm-4" id="avg2017" placeholder="2yr Avg"v-model="user.two_year_average">
+                                </td>
+                              </tr>
+                              <tr>
+                                <th>
+                                  <i class="zmdi zmdi-link mr-1 color-danger"></i>
+                                  GNC Record
+                                </th>
+                                <td>
+                                  <input type="text" class="col-sm-3" id="gncRecord" placeholder="W" v-model="user.ryder_cup_record.ryder_cup_wins"> --
+                                  <input type="text" class="col-sm-3" id="gncRecord" placeholder="L" v-model="user.ryder_cup_record.ryder_cup_losses"> --
+                                  <input type="text" class="col-sm-3" id="gncRecord" placeholder="T" v-model="user.ryder_cup_record.ryder_cup_ties">
+                                </td>
+                              </tr>
+                              <tr>
+                                <th class="">
+                                  <i class="zmdi zmdi-calendar mr-1 color-info"></i> 
+                                  2017 Record
+                                </th>
+                                <td class="">
+                                  <input type="text" class="col-sm-3" id="2017Record" placeholder="W" v-model="wins2017"> --
+                                  <input type="text" class="col-sm-3" id="2017Record" placeholder="L" v-model="losses2017"> --
+                                  <input type="text" class="col-sm-3" id="2017Record" placeholder="T" v-model="ties2017">
+                                </td>
+                              </tr>
                               
-                              <div class="col-lg-8">
-                                <label class="control-label" for="2017Record">2017 Record</label><br>
-                                <input type="text" class="col-sm-2" id="2017Record" placeholder="Wins" v-model="wins2017">--
-                                <input type="text" class="col-sm-2" id="2017Record" placeholder="Losses" v-model="losses2017">--
-                                <input type="text" class="col-sm-2" id="2017Record" placeholder="Ties" v-model="ties2017">
-                                <br>
-
-                                <label for="gncRecord" class="control-label">GNC Record</label><br>
-                                <input type="text" class="col-sm-2" id="gncRecord" placeholder="Wins" v-model="user.ryder_cup_record.ryder_cup_wins">--
-                                <input type="text" class="col-sm-2" id="gncRecord" placeholder="Losses" v-model="user.ryder_cup_record.ryder_cup_losses">--
-                                <input type="text" class="col-sm-2" id="gncRecord" placeholder="Ties" v-model="user.ryder_cup_record.ryder_cup_ties">
-                                <br>
-
-                                <label for="gncAverage" class="control-label">GNC Average</label><br>
-                                <input type="text" class="col-sm-3" id="gncAverage" placeholder="Wins"v-model="user.gnc_average">
-                                <br>
-
-                                <label for="avg2017" class="control-label">Two Year Average</label><br>
-                                <input type="text" class="col-sm-3" id="avg2017" placeholder="Wins"v-model="user.two_year_average">
-                                <br>
-
-                                <label for="skins" class="control-label">Skins Handicap</label><br>
-                                <input type="text" class="col-sm-3" id="skins" placeholder="Skins" v-model="user.skins_handicap">
-                                <br>
-
-                                <label for="lowNetHDCP" class="control-label">Low Net Handicap</label><br>
-                                <input type="text" class="col-sm-3" id="lowNetHDCP" placeholder="Low-Net"v-model="user.low_net_handicap">
-                              </div>
-                              
-                            </div>
-                            <div class="form-group row justify-content-end">
-                                <div class="col-lg-10">
-                                    <button type="submit" class="btn btn-raised btn-primary">Submit</button>
+                              <div class="form-group row">
+                                <div class="">
+                                    <button type="submit" class="btn btn-block btn-raised btn-primary">Submit</button>
                                     <button type="button" class="btn btn-danger" v-on:click="$router.go(-1)">Cancel</button>
                                 </div>
-                            </div>
+                              </div>
+                            </table>
                           </fieldset>
                         </div>
+
+                        <!-- Profile Form -->
                         <div role="tabpanel" class="tab-pane fade" id="profile">  
                           <fieldset>
                             <div class="form-group row">
@@ -103,6 +130,7 @@
                         </div>
                       </div>
                     </form>
+                    
                   </div>
                 </div>
               </div>
@@ -111,11 +139,16 @@
         </div>  
       </div>
     </div>
-
   </div>
 </template>
 
 <style>
+/*#background {
+      background-image: url("../../../public/assets/img/papyrus-dark/papyrus-dark.png");*/
+      /*padding-top: 0px;*/
+
+
+    /*}*/
 </style>
 
 <script>

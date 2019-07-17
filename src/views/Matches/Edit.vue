@@ -1,171 +1,265 @@
 <template>
   <div class="matches-edit">
+    <div class="ms-site-container">
+      <div class="container">
 
-    <div class="col-lg-14 ms-paper-content-container">
-      <div class="ms-paper-content">
-        <div class="row">
-          <div class="col-lg-13">
-            <div class="card">
-              <div class="card-tabs">
-                <ul class="nav nav-tabs shadow-2dp" role="tablist">
-                  <li class="nav-item"><a href="#strokes" aria-controls="strokes" role="tab" data-toggle="tab" class="active withoutripple nav-link "><i class="zmdi zmdi-home"></i> <span class="d-none d-sm-inline">Strokes</span></a></li>
-                  <li class="nav-item"><a href="#points" aria-controls="points" role="tab" data-toggle="tab" class="withoutripple nav-link "><i class="zmdi zmdi-male"></i> <span class="d-none d-sm-inline">Points</span></a></li>
-                </ul>
-              </div>
-              <div class="card-body">
-                <div class="tab-content">                  
-                  <div role="tabpanel" class="tab-pane fade active show" id="strokes"> 
-                    <form v-on:submit.prevent="userScores()" class="form-horizontal" autocomplete="off">
-                      <fieldset>
+        <div class="col-lg-14 ms-paper-content-container">
+          <div class="ms-paper-content">
+            <div class="row">
+              <div class="col-lg-13">
+                <div class="card">
+                  <div class="card-tabs">
+                    <ul class="nav nav-tabs shadow-2dp" role="tablist">
+                      <li class="nav-item"><a href="#strokes" aria-controls="strokes" role="tab" data-toggle="tab" class="active withoutripple nav-link "><i class="zmdi zmdi-home"></i> <span class="d-none d-sm-inline">Strokes</span></a></li>
+                      <li class="nav-item"><a href="#points" aria-controls="points" role="tab" data-toggle="tab" class="withoutripple nav-link "><i class="zmdi zmdi-male"></i> <span class="d-none d-sm-inline">Points</span></a></li>
+                      <li class="nav-item"><a href="#" aria-controls="points" role="tab" data-toggle="tab" class="withoutripple nav-link"> <span class="d-none d-sm-inline"><strong>{{match.teams[0].players[0].name}} & {{match.teams[0].players[1].name}} Vs. {{match.teams[1].players[0].name}} & {{match.teams[1].players[1].name}}</strong></span></a></li>
+                      
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <div class="tab-content">                  
+                      <div role="tabpanel" class="tab-pane fade active show" id="strokes"> 
+                        <form v-on:submit.prevent="userScores()" class="form-horizontal" autocomplete="off">
+                          <fieldset>
 
-                        <table class="table active table-condensed">
-                          <thead class="thead-dark">
-                            <tr>
-                              <th scope="col">TEAM<input size="12" type="text" v-model="match.teams[0].name"></th>
-                              <th scope="col">1</th>
-                              <th scope="col">2</th>
-                              <th scope="col">3</th>
-                              <th scope="col">4</th>
-                              <th scope="col">5</th>
-                              <th scope="col">6</th>
-                              <th scope="col">7</th>
-                              <th scope="col">8</th>
-                              <th scope="col">9</th>
-                              <th scope="col">10</th>
-                              <th scope="col">11</th>
-                              <th scope="col">12</th>
-                              <th scope="col">13</th>
-                              <th scope="col">14</th>
-                              <th scope="col">15</th>
-                              <th scope="col">16</th>
-                              <th scope="col">17</th>
-                              <th scope="col">18</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr  class="table-secondary">
-                              <th scope="row"><input size="12" type="text" v-model="match.teams[0].players[0].name"></th>
-                              <td><input size="2" step="0.5" type="text" v-model="player1Score1"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score2"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score3"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score4"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score5"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score6"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score7"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score8"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score9"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score10"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score11"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score12"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score13"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score14"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score15"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score16"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score17"></td>
-                              <td><input size="2" step="any" type="text" v-model="player1Score18"></td>
+                            <table class="table active table-condensed">
+                              <thead class="thead-dark">
+                                <tr>
+                                  <th scope="col" class="color-danger">{{match.teams[0].name}}</th>
+                                  <th scope="col">1</th>
+                                  <th scope="col">2</th>
+                                  <th scope="col">3</th>
+                                  <th scope="col">4</th>
+                                  <th scope="col">5</th>
+                                  <th scope="col">6</th>
+                                  <th scope="col">7</th>
+                                  <th scope="col">8</th>
+                                  <th scope="col">9</th>
+                                  <th scope="col">10</th>
+                                  <th scope="col">11</th>
+                                  <th scope="col">12</th>
+                                  <th scope="col">13</th>
+                                  <th scope="col">14</th>
+                                  <th scope="col">15</th>
+                                  <th scope="col">16</th>
+                                  <th scope="col">17</th>
+                                  <th scope="col">18</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr  class="table-secondary">
+                                  <th scope="row">{{match.teams[0].players[0].name}}</th>
+                                  <td><input size="2" step="0.5" type="text" v-model="player1Score1"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score2"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score3"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score4"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score5"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score6"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score7"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score8"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score9"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score10"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score11"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score12"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score13"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score14"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score15"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score16"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score17"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player1Score18"></td>
+                                  
+                                  
+                                </tr>
+                                <tr class="table-secondary">
+                                  <th scope="row">{{match.teams[0].players[1].name}}</th>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score1"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score2"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score3"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score4"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score5"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score6"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score7"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score8"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score9"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score10"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score11"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score12"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score13"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score14"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score15"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score16"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score17"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player2Score18"></td>
+                                  
+                                </tr>
                               
+                              </tbody>
+                            </table>
+                            <br>
+                            <table class="table active table-condensed">
+                              <thead class="thead-dark">
+                                <tr>
+                                  <th scope="col" class="color-primary">{{match.teams[1].name}} </th>
+                                  <th scope="col">1</th>
+                                  <th scope="col">2</th>
+                                  <th scope="col">3</th>
+                                  <th scope="col">4</th>
+                                  <th scope="col">5</th>
+                                  <th scope="col">6</th>
+                                  <th scope="col">7</th>
+                                  <th scope="col">8</th>
+                                  <th scope="col">9</th>
+                                  <th scope="col">10</th>
+                                  <th scope="col">11</th>
+                                  <th scope="col">12</th>
+                                  <th scope="col">13</th>
+                                  <th scope="col">14</th>
+                                  <th scope="col">15</th>
+                                  <th scope="col">16</th>
+                                  <th scope="col">17</th>
+                                  <th scope="col">18</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr  class="table-secondary">
+                                  <th scope="row">{{match.teams[1].players[0].name}}</th>
+                                  <td><input size="2" step="0.5" type="text" v-model="player3Score1"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score2"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score3"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score4"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score5"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score6"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score7"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score8"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score9"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score10"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score11"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score12"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score13"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score14"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score15"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score16"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score17"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player3Score18"></td>
+                                  
+                                  
+                                </tr>
+                                <tr class="table-secondary">
+                                  <th scope="row">{{match.teams[1].players[1].name}}</th>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score1"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score2"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score3"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score4"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score5"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score6"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score7"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score8"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score9"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score10"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score11"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score12"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score13"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score14"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score15"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score16"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score17"></td>
+                                  <td><input size="2" step="any" type="text" v-model="player4Score18"></td>
+                                  
+                                </tr>
                               
-                            </tr>
-                            <tr class="table-secondary">
-                              <th scope="row"><input size="12" type="text" v-model="match.teams[0].players[1].name"></th>
-                              <td><input size="2" step="any" type="text" v-model="player2Score1"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score2"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score3"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score4"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score5"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score6"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score7"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score8"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score9"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score10"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score11"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score12"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score13"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score14"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score15"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score16"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score17"></td>
-                              <td><input size="2" step="any" type="text" v-model="player2Score18"></td>
+                              </tbody>
+                            </table>
+                            <div class="form-group row">
+                                <div class="col-lg-10">
+
+                                  <button type="submit" class="btn btn-raised btn-primary">Update</button>
+                                  <button type="button" class="btn btn-raised btn-warning" v-on:click="$router.go(-1)">Cancel</button>
+                                </div>
+                                <div class="col-lg-10">
+                                  <button type="button" class="btn btn-raised btn-danger" v-on:click="destroy()">Delete Match</button>
+                                </div>
+                            </div>
+                          </fieldset>
+                        </form>
+                      </div>
+
+                      <div role="tabpanel" class="tab-pane fade" id="points">  
+                        <form v-on:submit.prevent="teamScores()" class="form-horizontal" autocomplete="off">
+                          <fieldset>
+                            
+                            <table class="table active table-condensed">
+                              <thead class="thead-dark">
+                                <tr>
+                                  <th scope="col"></th>
+                                  <th scope="col">1</th>
+                                  <th scope="col">2</th>
+                                  <th scope="col">3</th>
+                                  <th scope="col">4</th>
+                                  <th scope="col">5</th>
+                                  <th scope="col">6</th>
+                                  <th scope="col">7</th>
+                                  <th scope="col">8</th>
+                                  <th scope="col">9</th>
+                                  <th scope="col">10</th>
+                                  <th scope="col">11</th>
+                                  <th scope="col">12</th>
+                                  <th scope="col">13</th>
+                                  <th scope="col">14</th>
+                                  <th scope="col">15</th>
+                                  <th scope="col">16</th>
+                                  <th scope="col">17</th>
+                                  <th scope="col">18</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr  class="table-secondary">
+                                  <th scope="row" class="color-danger">{{match.teams[0].name}}</th>
+                                  <td><input size="2" step="0.5" type="text" min="0" max="1" v-model="match.teams[0].scores.score_1"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_2"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_3"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_4"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_5"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_6"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_7"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_8"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_9"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_10"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_11"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_12"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_13"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_14"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_15"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_16"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_17"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_18"></td>
+                                  
+                                  
+                                </tr>
+                                <tr class="table-secondary">
+                                  <th scope="row" class="color-primary">{{match.teams[1].name}}</th>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_1"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_2"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_3"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_4"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_5"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_6"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_7"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_8"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_9"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_10"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_11"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_12"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_13"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_14"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_15"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_16"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_17"></td>
+                                  <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_18"></td>
+                                  
+                                </tr>
                               
-                            </tr>
-                          
-                          </tbody>
-                        </table>
-                        <br>
-                        <table class="table active table-condensed">
-                          <thead class="thead-dark">
-                            <tr>
-                              <th scope="col">TEAM<input size="12" type="text" v-model="match.teams[1].name"> </th>
-                              <th scope="col">1</th>
-                              <th scope="col">2</th>
-                              <th scope="col">3</th>
-                              <th scope="col">4</th>
-                              <th scope="col">5</th>
-                              <th scope="col">6</th>
-                              <th scope="col">7</th>
-                              <th scope="col">8</th>
-                              <th scope="col">9</th>
-                              <th scope="col">10</th>
-                              <th scope="col">11</th>
-                              <th scope="col">12</th>
-                              <th scope="col">13</th>
-                              <th scope="col">14</th>
-                              <th scope="col">15</th>
-                              <th scope="col">16</th>
-                              <th scope="col">17</th>
-                              <th scope="col">18</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr  class="table-secondary">
-                              <th scope="row"><input size="12" type="text" v-model="match.teams[1].players[0].name"></th>
-                              <td><input size="2" step="0.5" type="text" v-model="player3Score1"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score2"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score3"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score4"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score5"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score6"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score7"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score8"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score9"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score10"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score11"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score12"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score13"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score14"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score15"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score16"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score17"></td>
-                              <td><input size="2" step="any" type="text" v-model="player3Score18"></td>
-                              
-                              
-                            </tr>
-                            <tr class="table-secondary">
-                              <th scope="row"><input size="12" type="text" v-model="match.teams[1].players[1].name"></th>
-                              <td><input size="2" step="any" type="text" v-model="player4Score1"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score2"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score3"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score4"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score5"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score6"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score7"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score8"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score9"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score10"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score11"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score12"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score13"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score14"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score15"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score16"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score17"></td>
-                              <td><input size="2" step="any" type="text" v-model="player4Score18"></td>
-                              
-                            </tr>
-                          
-                          </tbody>
-                        </table>
-                        <div class="form-group row">
+                              </tbody>
+                            </table>
                             <div class="col-lg-10">
 
                               <button type="submit" class="btn btn-raised btn-primary">Update</button>
@@ -173,107 +267,19 @@
                             </div>
                             <div class="col-lg-10">
                               <button type="button" class="btn btn-raised btn-danger" v-on:click="destroy()">Delete Match</button>
-                            </div>
-                        </div>
-                      </fieldset>
-                    </form>
-                  </div>
-
-                  <div role="tabpanel" class="tab-pane fade" id="points">  
-                    <form v-on:submit.prevent="teamScores()" class="form-horizontal" autocomplete="off">
-                      <fieldset>
-                        
-                        <table class="table active table-condensed">
-                          <thead class="thead-dark">
-                            <tr>
-                              <th scope="col"></th>
-                              <th scope="col">1</th>
-                              <th scope="col">2</th>
-                              <th scope="col">3</th>
-                              <th scope="col">4</th>
-                              <th scope="col">5</th>
-                              <th scope="col">6</th>
-                              <th scope="col">7</th>
-                              <th scope="col">8</th>
-                              <th scope="col">9</th>
-                              <th scope="col">10</th>
-                              <th scope="col">11</th>
-                              <th scope="col">12</th>
-                              <th scope="col">13</th>
-                              <th scope="col">14</th>
-                              <th scope="col">15</th>
-                              <th scope="col">16</th>
-                              <th scope="col">17</th>
-                              <th scope="col">18</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr  class="table-secondary">
-                              <th scope="row"><input size="12" type="text" v-model="match.teams[0].name"></th>
-                              <td><input size="2" step="0.5" type="text" min="0" max="1" v-model="match.teams[0].scores.score_1"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_2"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_3"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_4"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_5"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_6"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_7"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_8"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_9"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_10"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_11"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_12"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_13"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_14"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_15"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_16"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_17"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[0].scores.score_18"></td>
-                              
-                              
-                            </tr>
-                            <tr class="table-secondary">
-                              <th scope="row"><input size="12" type="text" v-model="match.teams[1].name"></th>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_1"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_2"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_3"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_4"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_5"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_6"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_7"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_8"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_9"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_10"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_11"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_12"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_13"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_14"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_15"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_16"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_17"></td>
-                              <td><input size="2" step="any" type="text" v-model="match.teams[1].scores.score_18"></td>
-                              
-                            </tr>
-                          
-                          </tbody>
-                        </table>
-                        <div class="col-lg-10">
-
-                          <button type="submit" class="btn btn-raised btn-primary">Update</button>
-                          <button type="button" class="btn btn-raised btn-warning" v-on:click="$router.go(-1)">Cancel</button>
-                        </div>
-                        <div class="col-lg-10">
-                          <button type="button" class="btn btn-raised btn-danger" v-on:click="destroy()">Delete Match</button>
-                        </div>                           
-                      </fieldset> 
-                    </form>
+                            </div>                           
+                          </fieldset> 
+                        </form>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div> 
       </div>
-    </div>  
+    </div> 
   </div>
 </template>
 

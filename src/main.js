@@ -6,7 +6,7 @@ import axios from "axios";
 
 
 axios.defaults.baseURL = 
-  process.env.NODE_ENV === "development" ? "https://morning-anchorage-49614.herokuapp.com" : "/";
+  process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
 
 var jwt = localStorage.getItem("jwt");
 if (jwt) {
@@ -19,3 +19,6 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
+
+
+// https://morning-anchorage-49614.herokuapp.com

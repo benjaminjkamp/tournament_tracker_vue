@@ -11,7 +11,7 @@ export default {
     delete axios.defaults.headers.common["Authorization"];
     localStorage.removeItem("jwt");
     this.$router.push("/");
-    location.reload();
+    // location.reload();
   }
 };
 </script>

@@ -27,6 +27,12 @@
   </div>
 </template>
 
+<style>
+  .card-body {
+    min-height: 400px;
+  }
+</style>
+
 <script>
   export default {
     props: {

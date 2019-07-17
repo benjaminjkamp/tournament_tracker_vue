@@ -12,47 +12,39 @@
           <div class="col-xl-5 order-xl-1">
             <div class="card card-primary animated fadeInUp animation-delay-3">
               <div class="card-body">
-                <h1 class="color-primary text-center">Team 1</h1>
+                <h1 class="color-danger text-center">Team Red</h1>
                 <form v-on:submit.prevent="submit()" class="form-horizontal">
                   <fieldset>
-                    <div class="form-group row is-empty">
-                      <!-- <label for="teamName1" class="col-md-3 control-label">Team Name</label> -->
-                      <div class="col-md-9">
-                        <input type="text" class="form-control" id="teamName1" placeholder="Team 1" v-model="newTeamName1">
-                      </div>
-                    </div>
+                    
                     <div class="form-group row is-empty">
                       <!-- <label for="playerName1" class="col-md-3 control-label">Player 1</label> -->
                       <div class="col-md-9">
                         <input type="text" class="form-control" list="players" id="playerName1" placeholder="Player 1" v-model="player1">
                       </div>
                     </div>
+                    <br>
                     <div class="form-group row is-empty">
                       <!-- <label for="playerName2" class="col-md-3 control-label">Player 2</label> -->
                       <div class="col-md-9">
                         <input type="text" class="form-control" list="players" id="playerName2" placeholder="Player 2" v-model="player2">
                       </div>
                     </div>
-                    <h1 class="color-primary text-center">Team 2</h1>
-               
-                    <div class="form-group row is-empty">
-                      <!-- <label for="teamName2" class="col-md-3 control-label">Team Name</label> -->
-                      <div class="col-md-9">
-                        <input type="text" class="form-control" id="teamName2" placeholder="Team 2" v-model="newTeamName2">
-                      </div>
-                    </div>
+                    <br><br>
+                    <h1 class="color-primary text-center">Team Blue</h1>
                     <div class="form-group row is-empty">
                       <!-- <label for="playerName3" class="col-md-3 control-label">Player 1</label> -->
                       <div class="col-md-9">
                         <input type="text" class="form-control" list="players" id="playerName3" placeholder="Player 1" v-model="player3">
                       </div>
                     </div>
+                    <br>
                     <div class="form-group row is-empty">
                       <!-- <label for="playerName4" class="col-md-3 control-label">Player 2</label> -->
                       <div class="col-md-9">
                         <input type="text" class="form-control" list="players" id="playerName4" placeholder="Player 2" v-model="player4">
                       </div>
                     </div>
+                    <br><br>
                     <button type="submit" class="btn btn-raised btn-primary btn-block">Add Match <i class="zmdi zmdi-long-arrow-right no-mr ml-1"></i></button>
                     <button v-on:click="$router.go(-1)" class="btn btn-raised btn-warning btn-block">Cancel</button>
                   </fieldset>

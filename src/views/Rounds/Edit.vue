@@ -1,13 +1,13 @@
 <template>
   <div class="rounds-new">
     
-    <div class="ms-site-container">
+    <div class="ms-site-container golf-background">
 
       <!-- Course Add Modal Component -->
       <ModalCourseAdd :mapKey="mapKey" :courseName="courseName" :address="address" @addCourse="addCourse" />      
 
       <!-- Round Edit Header -->
-      <div class="ms-hero-page-override ms-hero-img-team ms-hero-bg-primary">
+      <div class="ms-hero-page-override  ms-hero-bg-success">
         <div class="container">
           <div class="text-center">
             <h1 class="no-m ms-site-title color-white center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5">Edit Round Info</h1>
@@ -89,6 +89,10 @@
     overflow: scroll;
     max-height: 300px;
     max-width: 1000px;
+  }
+  .golf-background{
+    background-image: url("../../../public/assets/img/golf_panorama.png");
+    background-size: cover;
   }
   
 </style>
