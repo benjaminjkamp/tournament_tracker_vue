@@ -25,7 +25,7 @@
 
           <div class="modal-body">
               <table class="table">
-                <thead class="thead-dark">
+                <thead class="thead-dark text-center">
                   <tr>
                     <th scope="col">{{courseName}}</th>
                     <th scope="col">1</th>
@@ -50,7 +50,7 @@
                 </thead>
 
                 <!-- pars & handicaps -->
-                <tbody>
+                <tbody class="text-center">
                   <tr class="table-secondary">
                     <th scope="row">Handicaps</th>
                     <td><input size="2" step="any" type="text" v-model="$parent.hdcp1"></td>

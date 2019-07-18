@@ -34,7 +34,7 @@
             <div class="modal-body">
               <div class="table-responsive">
                 <form v-on:submit.prevent="submit()">
-                  <table class="table">
+                  <table class="table text-center">
                     <thead class="thead-dark">
                       <tr>
                         <th scope="col"><input type="text" placeholder="Course Name" v-model="course.name"></th>

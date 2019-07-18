@@ -63,10 +63,6 @@
       <CourseInfoCard :mapKey="mapKey" :courses="courses" :location="location" @changeLocation="changeLocation" />
     </div>
 
-    <div class="btn-back-top">
-      <a href="#" data-scroll id="back-top" class="btn-circle btn-circle-primary btn-circle-sm btn-circle-raised "><i class="zmdi zmdi-long-arrow-up"></i></a>
-    </div>
-
     <datalist id="courses">
       <option v-for="course in courses">{{ course.id }} {{ course.name }}</option>
     </datalist>
