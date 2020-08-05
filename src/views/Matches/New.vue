@@ -6,7 +6,7 @@
       </datalist>
       
       <div class="container">
-
+        <img src="../../assets/logo.png" alt="">
         <div class="row">
 
           <div class="col-xl-5 order-xl-1">

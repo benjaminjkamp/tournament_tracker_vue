@@ -5,6 +5,7 @@
 
       <!-- Course Add Modal Component -->
       <ModalCourseAdd :mapKey="mapKey" :courseName="courseName" :address="address" @addCourse="addCourse" />
+      <!-- <NavBar /> -->
 
       <!-- New Round Header -->
       <div class="ms-hero-page-override  ms-hero-bg-success">

@@ -152,7 +152,7 @@ export default {
       hdcp18: "",
       mapKey: "",
       zoom: 5,
-      location: "golf+club+michigan",
+      location: "golf+club+michigan"
      
     };
   },

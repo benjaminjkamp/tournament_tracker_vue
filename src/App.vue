@@ -345,7 +345,7 @@
                 <ul id="sc2" class="" role="tabpanel" aria-labelledby="sch2" data-parent="#sc1">
                   <!-- <li> -->
                   <li  class="card">
-                    <router-link id="tournament-sub-links" :to="'/tournaments/' + tournament.id + '/standings'" >
+                    <router-link id="tournament-sub-links" :to="`/tournaments/${tournament.id}/standings`" >
                       <i id="link-standings" class="zmdi text-dark zmdi-format-list-numbered">
                          Standings
                       </i>
@@ -449,7 +449,7 @@ export default {
       console.log("rounds", response.data);
       this.rounds = response.data;
     }),
-    axios.get("/api/users/1").then(response => {
+    axios.get("/api/users/me").then(response => {
       console.log("users", response.data);
       this.currentUser = response.data;
     }),
@@ -526,10 +526,7 @@ export default {
       } else {
         return false;
       }
-    },
-    forceRerender() {
-      this.componentKey += 1;  
-    },
+    }
 
     
   }

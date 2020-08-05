@@ -350,7 +350,7 @@
             <div  class="card">
               <div  class="row">
 
-                <div v-for="match in matches" class="col-lg-6">
+                <div v-bind:key="match.id" v-for="match in matches" class="col-lg-6">
                   <div class="panel-heading">
                     <span class="">
                       <!-- <strong><h3 class="text-danger">{{match.teams[0].players[0].name}} and {{match.teams[0].players[1].name}}</h3> <h3 class="text-primary">{{match.teams[1].players[0].name}} and {{match.teams[1].players[1].name}}</h3></strong> -->
