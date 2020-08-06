@@ -19,7 +19,7 @@
                   <div class="card-body">
                     <div class="tab-content">                  
                       <div role="tabpanel" class="tab-pane fade active show" id="strokes"> 
-                        <form v-on:submit.prevent="submit()" class="form-horizontal" autocomplete="off">
+                        <form v-on:submit.prevent="userScores()" class="form-horizontal" autocomplete="off">
                           <fieldset>
 
                             <table class="table active table-condensed">
@@ -49,47 +49,47 @@
                               <tbody>
                                 <tr  class="table-secondary">
                                   <th scope="row">{{match.teams[0].players[0].name}}</th>
-                                  <td><input :blur="updateScore(player1Scores[0])" size="2" step="0.5" type="text" v-model="player1Scores[0].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[1])" size="2" step="any" type="text" v-model="player1Scores[1].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[2])" size="2" step="any" type="text" v-model="player1Scores[2].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[3])" size="2" step="any" type="text" v-model="player1Scores[3].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[4])" size="2" step="any" type="text" v-model="player1Scores[4].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[5])" size="2" step="any" type="text" v-model="player1Scores[5].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[6])" size="2" step="any" type="text" v-model="player1Scores[6].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[7])" size="2" step="any" type="text" v-model="player1Scores[7].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[8])" size="2" step="any" type="text" v-model="player1Scores[8].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[9])" size="2" step="any" type="text" v-model="player1Scores[9].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[10])" size="2" step="any" type="text" v-model="player1Scores[10].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[11])" size="2" step="any" type="text" v-model="player1Scores[11].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[12])" size="2" step="any" type="text" v-model="player1Scores[12].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[13])" size="2" step="any" type="text" v-model="player1Scores[13].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[14])" size="2" step="any" type="text" v-model="player1Scores[14].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[15])" size="2" step="any" type="text" v-model="player1Scores[15].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[16])" size="2" step="any" type="text" v-model="player1Scores[16].score"></td>
-                                  <td><input :blur="updateScore(player1Scores[17])" size="2" step="any" type="text" v-model="player1Scores[17].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[0])" size="2" step="0.5" type="text" v-model="player1Scores[0].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[1])" size="2" step="any" type="text" v-model="player1Scores[1].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[2])" size="2" step="any" type="text" v-model="player1Scores[2].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[3])" size="2" step="any" type="text" v-model="player1Scores[3].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[4])" size="2" step="any" type="text" v-model="player1Scores[4].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[5])" size="2" step="any" type="text" v-model="player1Scores[5].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[6])" size="2" step="any" type="text" v-model="player1Scores[6].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[7])" size="2" step="any" type="text" v-model="player1Scores[7].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[8])" size="2" step="any" type="text" v-model="player1Scores[8].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[9])" size="2" step="any" type="text" v-model="player1Scores[9].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[10])" size="2" step="any" type="text" v-model="player1Scores[10].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[11])" size="2" step="any" type="text" v-model="player1Scores[11].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[12])" size="2" step="any" type="text" v-model="player1Scores[12].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[13])" size="2" step="any" type="text" v-model="player1Scores[13].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[14])" size="2" step="any" type="text" v-model="player1Scores[14].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[15])" size="2" step="any" type="text" v-model="player1Scores[15].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[16])" size="2" step="any" type="text" v-model="player1Scores[16].score"></td>
+                                  <td><input @blur="updateScore(player1Scores[17])" size="2" step="any" type="text" v-model="player1Scores[17].score"></td>
                                   
                                   
                                 </tr>
                                 <tr class="table-secondary">
                                   <th scope="row">{{match.teams[0].players[1].name}}</th>
-                                  <td><input :blur="updateScore(player2Scores[0])" size="2" step="0.5" type="text" v-model="player2Scores[0].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[1])" size="2" step="any" type="text" v-model="player2Scores[1].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[2])" size="2" step="any" type="text" v-model="player2Scores[2].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[3])" size="2" step="any" type="text" v-model="player2Scores[3].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[4])" size="2" step="any" type="text" v-model="player2Scores[4].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[5])" size="2" step="any" type="text" v-model="player2Scores[5].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[6])" size="2" step="any" type="text" v-model="player2Scores[6].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[7])" size="2" step="any" type="text" v-model="player2Scores[7].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[8])" size="2" step="any" type="text" v-model="player2Scores[8].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[9])" size="2" step="any" type="text" v-model="player2Scores[9].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[10])" size="2" step="any" type="text" v-model="player2Scores[10].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[11])" size="2" step="any" type="text" v-model="player2Scores[11].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[12])" size="2" step="any" type="text" v-model="player2Scores[12].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[13])" size="2" step="any" type="text" v-model="player2Scores[13].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[14])" size="2" step="any" type="text" v-model="player2Scores[14].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[15])" size="2" step="any" type="text" v-model="player2Scores[15].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[16])" size="2" step="any" type="text" v-model="player2Scores[16].score"></td>
-                                  <td><input :blur="updateScore(player2Scores[17])" size="2" step="any" type="text" v-model="player2Scores[17].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[0])" size="2" step="0.5" type="text" v-model="player2Scores[0].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[1])" size="2" step="any" type="text" v-model="player2Scores[1].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[2])" size="2" step="any" type="text" v-model="player2Scores[2].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[3])" size="2" step="any" type="text" v-model="player2Scores[3].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[4])" size="2" step="any" type="text" v-model="player2Scores[4].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[5])" size="2" step="any" type="text" v-model="player2Scores[5].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[6])" size="2" step="any" type="text" v-model="player2Scores[6].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[7])" size="2" step="any" type="text" v-model="player2Scores[7].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[8])" size="2" step="any" type="text" v-model="player2Scores[8].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[9])" size="2" step="any" type="text" v-model="player2Scores[9].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[10])" size="2" step="any" type="text" v-model="player2Scores[10].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[11])" size="2" step="any" type="text" v-model="player2Scores[11].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[12])" size="2" step="any" type="text" v-model="player2Scores[12].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[13])" size="2" step="any" type="text" v-model="player2Scores[13].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[14])" size="2" step="any" type="text" v-model="player2Scores[14].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[15])" size="2" step="any" type="text" v-model="player2Scores[15].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[16])" size="2" step="any" type="text" v-model="player2Scores[16].score"></td>
+                                  <td><input @blur="updateScore(player2Scores[17])" size="2" step="any" type="text" v-model="player2Scores[17].score"></td>
                                   
                                 </tr>
                               
@@ -123,47 +123,47 @@
                               <tbody>
                                 <tr  class="table-secondary">
                                   <th scope="row">{{match.teams[1].players[0].name}}</th>
-                                  <td><input :blur="updateScore(player3Scores[0])" size="2" step="0.5" type="text" v-model="player3Scores[0].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[1])" size="2" step="any" type="text" v-model="player3Scores[1].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[2])" size="2" step="any" type="text" v-model="player3Scores[2].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[3])" size="2" step="any" type="text" v-model="player3Scores[3].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[4])" size="2" step="any" type="text" v-model="player3Scores[4].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[5])" size="2" step="any" type="text" v-model="player3Scores[5].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[6])" size="2" step="any" type="text" v-model="player3Scores[6].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[7])" size="2" step="any" type="text" v-model="player3Scores[7].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[8])" size="2" step="any" type="text" v-model="player3Scores[8].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[9])" size="2" step="any" type="text" v-model="player3Scores[9].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[10])" size="2" step="any" type="text" v-model="player3Scores[10].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[11])" size="2" step="any" type="text" v-model="player3Scores[11].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[12])" size="2" step="any" type="text" v-model="player3Scores[12].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[13])" size="2" step="any" type="text" v-model="player3Scores[13].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[14])" size="2" step="any" type="text" v-model="player3Scores[14].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[15])" size="2" step="any" type="text" v-model="player3Scores[15].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[16])" size="2" step="any" type="text" v-model="player3Scores[16].score"></td>
-                                  <td><input :blur="updateScore(player3Scores[17])" size="2" step="any" type="text" v-model="player3Scores[17].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[0])" size="2" step="0.5" type="text" v-model="player3Scores[0].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[1])" size="2" step="any" type="text" v-model="player3Scores[1].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[2])" size="2" step="any" type="text" v-model="player3Scores[2].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[3])" size="2" step="any" type="text" v-model="player3Scores[3].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[4])" size="2" step="any" type="text" v-model="player3Scores[4].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[5])" size="2" step="any" type="text" v-model="player3Scores[5].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[6])" size="2" step="any" type="text" v-model="player3Scores[6].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[7])" size="2" step="any" type="text" v-model="player3Scores[7].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[8])" size="2" step="any" type="text" v-model="player3Scores[8].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[9])" size="2" step="any" type="text" v-model="player3Scores[9].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[10])" size="2" step="any" type="text" v-model="player3Scores[10].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[11])" size="2" step="any" type="text" v-model="player3Scores[11].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[12])" size="2" step="any" type="text" v-model="player3Scores[12].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[13])" size="2" step="any" type="text" v-model="player3Scores[13].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[14])" size="2" step="any" type="text" v-model="player3Scores[14].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[15])" size="2" step="any" type="text" v-model="player3Scores[15].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[16])" size="2" step="any" type="text" v-model="player3Scores[16].score"></td>
+                                  <td><input @blur="updateScore(player3Scores[17])" size="2" step="any" type="text" v-model="player3Scores[17].score"></td>
                                   
                                   
                                 </tr>
                                 <tr class="table-secondary">
                                   <th scope="row">{{match.teams[1].players[1].name}}</th>
-                                  <td><input :blur="updateScore(player4Scores[0])" size="2" step="0.5" type="text" v-model="player4Scores[0].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[1])" size="2" step="any" type="text" v-model="player4Scores[1].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[2])" size="2" step="any" type="text" v-model="player4Scores[2].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[3])" size="2" step="any" type="text" v-model="player4Scores[3].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[4])" size="2" step="any" type="text" v-model="player4Scores[4].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[5])" size="2" step="any" type="text" v-model="player4Scores[5].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[6])" size="2" step="any" type="text" v-model="player4Scores[6].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[7])" size="2" step="any" type="text" v-model="player4Scores[7].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[8])" size="2" step="any" type="text" v-model="player4Scores[8].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[9])" size="2" step="any" type="text" v-model="player4Scores[9].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[10])" size="2" step="any" type="text" v-model="player4Scores[10].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[11])" size="2" step="any" type="text" v-model="player4Scores[11].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[12])" size="2" step="any" type="text" v-model="player4Scores[12].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[13])" size="2" step="any" type="text" v-model="player4Scores[13].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[14])" size="2" step="any" type="text" v-model="player4Scores[14].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[15])" size="2" step="any" type="text" v-model="player4Scores[15].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[16])" size="2" step="any" type="text" v-model="player4Scores[16].score"></td>
-                                  <td><input :blur="updateScore(player4Scores[17])" size="2" step="any" type="text" v-model="player4Scores[17].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[0])" size="2" step="0.5" type="text" v-model="player4Scores[0].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[1])" size="2" step="any" type="text" v-model="player4Scores[1].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[2])" size="2" step="any" type="text" v-model="player4Scores[2].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[3])" size="2" step="any" type="text" v-model="player4Scores[3].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[4])" size="2" step="any" type="text" v-model="player4Scores[4].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[5])" size="2" step="any" type="text" v-model="player4Scores[5].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[6])" size="2" step="any" type="text" v-model="player4Scores[6].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[7])" size="2" step="any" type="text" v-model="player4Scores[7].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[8])" size="2" step="any" type="text" v-model="player4Scores[8].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[9])" size="2" step="any" type="text" v-model="player4Scores[9].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[10])" size="2" step="any" type="text" v-model="player4Scores[10].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[11])" size="2" step="any" type="text" v-model="player4Scores[11].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[12])" size="2" step="any" type="text" v-model="player4Scores[12].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[13])" size="2" step="any" type="text" v-model="player4Scores[13].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[14])" size="2" step="any" type="text" v-model="player4Scores[14].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[15])" size="2" step="any" type="text" v-model="player4Scores[15].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[16])" size="2" step="any" type="text" v-model="player4Scores[16].score"></td>
+                                  <td><input @blur="updateScore(player4Scores[17])" size="2" step="any" type="text" v-model="player4Scores[17].score"></td>
                                   
                                 </tr>
                               
@@ -386,140 +386,179 @@ export default {
     userScores: function(){
 
       // inputs for player 1 strokes
-      var player1Scores = [
-        Number(this.player1Score1),
-        Number(this.player1Score2),
-        Number(this.player1Score3),
-        Number(this.player1Score4),
-        Number(this.player1Score5),
-        Number(this.player1Score6),
-        Number(this.player1Score7),
-        Number(this.player1Score8),
-        Number(this.player1Score9),
-        Number(this.player1Score10),
-        Number(this.player1Score11),
-        Number(this.player1Score12),
-        Number(this.player1Score13),
-        Number(this.player1Score14),
-        Number(this.player1Score15),
-        Number(this.player1Score16),
-        Number(this.player1Score17),
-        Number(this.player1Score18),
-      ]
+      // var player1Scores = [
+      //   Number(this.player1Scores[0]),
+      //   Number(this.player1Scores[1]),
+      //   Number(this.player1Scores[2]),
+      //   Number(this.player1Scores[3]),
+      //   Number(this.player1Scores[4]),
+      //   Number(this.player1Scores[0]),
+      //   Number(this.player1Scores[0]),
+      //   Number(this.player1Scores[0]),
+      //   Number(this.player1Scores[0]),
+      //   Number(this.player1Scores[0]0),
+      //   Number(this.player1Scores[0]1),
+      //   Number(this.player1Scores[0]2),
+      //   Number(this.player1Scores[0]3),
+      //   Number(this.player1Scores[0]4),
+      //   Number(this.player1Scores[0]5),
+      //   Number(this.player1Scores[0]6),
+      //   Number(this.player1Scores[0]7),
+      //   Number(this.player1Scores[0]8),
+      // ]
+      var team1NetScores = [];
+      var player1NetScores = this.player1Scores;
+      var player2NetScores = this.player2Scores;
+      var team2NetScores = [];
+      var player3NetScores = this.player3Scores;
+      var player4NetScores = this.player4Scores;
+
+      team1NetScores.push(player1NetScores);
+      team1NetScores.push(player2NetScores);
+      team2NetScores.push(player3NetScores);
+      team2NetScores.push(player4NetScores);
+      var handicap;
+      var index = 0;
+      var h = 0;
+      var courseHandicaps = Object.values(this.match.round.course.handicaps);
+      console.log("handicaps", courseHandicaps);
+      // Team 1 Player Net Scores (after handicaps)
+
+      this.match.teams[0].players.forEach(player => {
+        console.log("player info", player);
+        handicap = player.low_net_handicap;
+        console.log("handicap", handicap);
+        h = 0;
+                
+        for (i = 0; i < handicap; i++){
+          h = courseHandicaps.findIndex(element => element == i + 1);
+          console.log("hole", h+1, i+1);
+          if (handicap >= courseHandicaps[h]){
+            team1NetScores[index][h].score--;
+          }
+          if(i > 16){
+            handicap = handicap - 18;
+            i = -1;
+          }
+        }
+        index++;
+      });
+
+      index = 0;
+      // Team 2 Player Net Scores (after handicaps)
+      this.match.teams[1].players.forEach(player => {
+        console.log("player info", player);
+        handicap = player.low_net_handicap;
+        console.log("handicap", handicap);
+        h = 0;
+                
+        for (i = 0; i < handicap; i++){
+          h = courseHandicaps.findIndex(element => element == i + 1);
+          console.log("hole", h+1, i+1);
+          if (handicap >= courseHandicaps[h]){
+            team2NetScores[index][h].score--;
+          }
+          if(i > 16){
+            handicap = handicap - 18;
+            i = -1;
+          }
+        }
+        index++;
+      });
+     
+
+      // // set player 1 scores with handicaps
+      // var handicap = this.match.teams[0].players[0].low_net_handicap;
+      // var h = 0;
+      // var courseHandicaps = Object.values(this.match.round.course.handicaps);
+      // console.log("handicaps", courseHandicaps);
+      // for (i = 0; i < handicap; i++){
+      //   h = courseHandicaps.findIndex(element => element == i + 1);
+      //   console.log("hole", h+1, i+1);
+      //   if (handicap >= courseHandicaps[h]){
+      //     player1NetScores[h].score--;
+      //   }
+      //   if(i > 16){
+      //     handicap = handicap - 18;
+      //     i = -1;
+      //   }
+      // }
+        
+      
+      console.log("player1 Net scores", player1NetScores);
+
+      // // set player 2 scores with handicaps
+      // var handicap = this.match.teams[0].players[0].low_net_handicap;
+      // var h = 0;
+      // var courseHandicaps = Object.values(this.match.round.course.handicaps);
+      // console.log("handicaps", courseHandicaps);
+      // for (i = 0; i < handicap; i++){
+      //   h = courseHandicaps.findIndex(element => element == i + 1);
+      //   console.log("hole", h+1, i+1);
+      //   if (handicap >= courseHandicaps[h]){
+      //     player2NetScores[h].score--;
+      //   }
+      //   if(i > 16){
+      //     handicap = handicap - 18;
+      //     i = -1;
+      //   }
+      // }
+      console.log("player2 net scores", player2NetScores);
+
+    
       var i = 0;
 
-      // set player 1 scores with handicaps
-      for (i = 0; i < 18; i++){
-        if (this.match.teams[0].players[0].low_net_handicap >= Object.values(this.match.round.course.handicaps)[i]){
-          player1Scores[i]--;
-        }
-      }
-      console.log("player1scores", player1Scores);
+      // // set player 3 scores with handicaps
+      // handicap = this.match.teams[0].players[0].low_net_handicap;
+      // h = 0;
+      // for (i = 0; i < handicap; i++){
+      //   if (handicap >= Object.values(this.match.round.course.handicaps)[h]){
+      //     player3NetScores[h].score--;
+      //   }
+      //   h++;
+      //   if(h > 17){
+      //     h = 0;
+      //     handicap = handicap - 18;
+      //   }
+      // }
+      console.log("player3Netscores", player3NetScores);
+
+ 
+
+      // // set player 4 scores with handicaps
+      // handicap = this.match.teams[0].players[0].low_net_handicap;
+      // h = 1;
+      // for (i = 0; i < handicap; i++){
+      //   if (handicap >= Object.values(this.match.round.course.handicaps)[h]){
+      //     player4NetScores[h].score--;
+      //   }
+      //   h++;
+      //   if(h > 17){
+      //     h = 0;
+      //     handicap = handicap - 18;
+      //   }
+      // }
+
+      console.log("player4Netscores", player4NetScores);
 
 
-      // inputs for player 2 scores
-      var player2Scores = [
-        Number(this.player2Score1),
-        Number(this.player2Score2),
-        Number(this.player2Score3),
-        Number(this.player2Score4),
-        Number(this.player2Score5),
-        Number(this.player2Score6),
-        Number(this.player2Score7),
-        Number(this.player2Score8),
-        Number(this.player2Score9),
-        Number(this.player2Score10),
-        Number(this.player2Score11),
-        Number(this.player2Score12),
-        Number(this.player2Score13),
-        Number(this.player2Score14),
-        Number(this.player2Score15),
-        Number(this.player2Score16),
-        Number(this.player2Score17),
-        Number(this.player2Score18),
-      ]
-      var i = 0;
-
-      // set player 2 scores with handicaps
-      for (i = 0; i < 18; i++){
-        if (this.match.teams[0].players[1].low_net_handicap >= Object.values(this.match.round.course.handicaps)[i]){
-          player2Scores[i]--;
-        }
-      }
-      console.log("player2scores", player2Scores);
-
-      // inputs for player 3 scores
-      var player3Scores = [
-        Number(this.player3Score1),
-        Number(this.player3Score2),
-        Number(this.player3Score3),
-        Number(this.player3Score4),
-        Number(this.player3Score5),
-        Number(this.player3Score6),
-        Number(this.player3Score7),
-        Number(this.player3Score8),
-        Number(this.player3Score9),
-        Number(this.player3Score10),
-        Number(this.player3Score11),
-        Number(this.player3Score12),
-        Number(this.player3Score13),
-        Number(this.player3Score14),
-        Number(this.player3Score15),
-        Number(this.player3Score16),
-        Number(this.player3Score17),
-        Number(this.player3Score18),
-      ]
-      var i = 0;
-
-      // set player 3 scores with handicaps
-      for (i = 0; i < 18; i++){
-        if (this.match.teams[1].players[0].low_net_handicap >= Object.values(this.match.round.course.handicaps)[i]){
-          player3Scores[i]--;
-        }
-      }
-      console.log("player3scores", player3Scores);
-
-      // inputs for player 4 scores
-      var player4Scores = [
-        Number(this.player4Score1),
-        Number(this.player4Score2),
-        Number(this.player4Score3),
-        Number(this.player4Score4),
-        Number(this.player4Score5),
-        Number(this.player4Score6),
-        Number(this.player4Score7),
-        Number(this.player4Score8),
-        Number(this.player4Score9),
-        Number(this.player4Score10),
-        Number(this.player4Score11),
-        Number(this.player4Score12),
-        Number(this.player4Score13),
-        Number(this.player4Score14),
-        Number(this.player4Score15),
-        Number(this.player4Score16),
-        Number(this.player4Score17),
-        Number(this.player4Score18),
-      ]
-
-      // set player 4 scores with handicaps
-      for (i = 0; i < 18; i++){
-        if (this.match.teams[1].players[1].low_net_handicap >= Object.values(this.match.round.course.handicaps)[i]){
-          player4Scores[i]--;
-        }
-      }
-
-      console.log("player4scores", player4Scores);
-
-
-      // 2-man-total-score
+      // 2-man-Best-Ball
 
       var team1Strokes = [];
       var team2Strokes = [];
 
       // Add each team's player stroke totals after handicaps
       for (i = 0; i < 18; i++){
-        team1Strokes.push(player1Scores[i] + player2Scores[i]);
-        team2Strokes.push(player3Scores[i] + player4Scores[i]);
+        if(player1NetScores[i].score < player2NetScores[i].score){
+          team1Strokes.push(player1NetScores[i].score);
+        }else{
+          team1Strokes.push(player2NetScores[i].score);
+        }
+        if(player3NetScores[i].score < player4NetScores[i].score){
+          team2Strokes.push(player3NetScores[i].score);
+        }else{
+          team2Strokes.push(player4NetScores[i].score);
+        }
       }
 
       console.log("team1strokes", team1Strokes, "team2strokes", team2Strokes)
@@ -540,6 +579,16 @@ export default {
           team1Scores.push(0);
         }
       }
+
+      // mike m: 0; mike d: 3; mark c: 5; geoff k: 0
+
+      // mike d: 5, 6, 11
+      // mark c: 5, 6, 8, 11, 15
+
+      // team 1: 0 0 0 1 1 // 1 0.5 0 0 0 // 0 0 0 0 0 // 0.5 0.5 0 = 4.5
+      // team 2: 1 1 1 0 0 // 0 0.5 1 1 1 // 1 1 1 1 1 // 0.5 0.5 1 = 13.5
+
+
       console.log("team1scores", team1Scores);
       console.log("team2scores", team2Scores);
 

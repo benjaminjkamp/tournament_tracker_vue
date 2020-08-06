@@ -14,7 +14,7 @@
             
             <!-- modal map -->
             <div class="modal-body">
-              <iframe width="100%" height="400px" :src="'https://www.google.com/maps/embed/v1/search?key=' + key + '&q=' + course.name + course.address"></iframe>                         
+              <iframe width="100%" height="400px" :src="'https://www.google.com/maps/embed/v1/search?key=' + key + '&q=' + course.name + course.location"></iframe>                         
             </div>
               
           </div>
