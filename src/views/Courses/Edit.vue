@@ -31,46 +31,46 @@
               <tbody>
                 <tr class="table-secondary">
                   <th scope="row">Handicaps</th>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole1_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole2_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole3_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole4_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole5_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole6_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole7_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole8_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole9_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole10_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole11_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole12_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole13_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole14_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole15_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole16_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole17_handicap"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.handicaps.hole18_handicap"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[0]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[1]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[2]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[3]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[4]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[5]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[6]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[7]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[8]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[9]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[10]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[11]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[12]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[13]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[14]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[15]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[16]"></td>
+                  <td><input size="2" step="any" type="text" v-model="handicaps[17]"></td>
                   
                 </tr>
                 <tr class="table-secondary">
                   <th scope="row">Pars</th>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole1_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole2_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole3_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole4_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole5_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole6_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole7_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole8_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole9_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole10_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole11_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole12_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole13_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole14_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole15_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole16_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole17_par"></td>
-                  <td><input size="2" step="any" type="text" v-model="course.pars.hole18_par"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[0]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[1]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[2]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[3]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[4]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[5]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[6]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[7]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[8]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[9]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[10]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[11]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[12]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[13]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[14]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[15]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[16]"></td>
+                  <td><input size="2" step="any" type="text" v-model="pars[17]"></td>
                   
                   
                 </tr>
@@ -99,6 +99,8 @@ export default {
       course: {},
       errors: [],
       courseName: "",
+      handicaps: [],
+      pars: [],
       par1: "",
       par2: "",
       par3: "",
@@ -142,6 +144,8 @@ export default {
     axios.get("/api/courses/" + this.$route.params.id).then(response => {
       console.log(response.data);
       this.course = response.data;
+      this.handicaps = Object.values(this.course.handicaps);
+      this.pars = Object.values(this.course.pars);
     })
   },
   methods: {

@@ -61,46 +61,46 @@
                     <tbody>
                       <tr class="table-secondary">
                         <th scope="row">Handicaps</th>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole1_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole2_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole3_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole4_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole5_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole6_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole7_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole8_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole9_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole10_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole11_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole12_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole13_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole14_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole15_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole16_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole17_handicap"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.handicaps.hole18_handicap"></td>
+                        <td><input @blur="updateHandicap(handicaps[0], 1)" size="2" step="any" type="text" v-model="handicaps[0]"></td>
+                        <td><input @blur="updateHandicap(handicaps[1], 2)" size="2" step="any" type="text" v-model="handicaps[1]"></td>
+                        <td><input @blur="updateHandicap(handicaps[2], 3)" size="2" step="any" type="text" v-model="handicaps[2]"></td>
+                        <td><input @blur="updateHandicap(handicaps[3], 4)" size="2" step="any" type="text" v-model="handicaps[3]"></td>
+                        <td><input @blur="updateHandicap(handicaps[4], 5)" size="2" step="any" type="text" v-model="handicaps[4]"></td>
+                        <td><input @blur="updateHandicap(handicaps[5], 6)" size="2" step="any" type="text" v-model="handicaps[5]"></td>
+                        <td><input @blur="updateHandicap(handicaps[6], 7)" size="2" step="any" type="text" v-model="handicaps[6]"></td>
+                        <td><input @blur="updateHandicap(handicaps[7], 8)" size="2" step="any" type="text" v-model="handicaps[7]"></td>
+                        <td><input @blur="updateHandicap(handicaps[8], 9)" size="2" step="any" type="text" v-model="handicaps[8]"></td>
+                        <td><input @blur="updateHandicap(handicaps[9], 10)" size="2" step="any" type="text" v-model="handicaps[9]"></td>
+                        <td><input @blur="updateHandicap(handicaps[10], 11)" size="2" step="any" type="text" v-model="handicaps[10]"></td>
+                        <td><input @blur="updateHandicap(handicaps[11], 12)" size="2" step="any" type="text" v-model="handicaps[11]"></td>
+                        <td><input @blur="updateHandicap(handicaps[12], 13)" size="2" step="any" type="text" v-model="handicaps[12]"></td>
+                        <td><input @blur="updateHandicap(handicaps[13], 14)" size="2" step="any" type="text" v-model="handicaps[13]"></td>
+                        <td><input @blur="updateHandicap(handicaps[14], 15)" size="2" step="any" type="text" v-model="handicaps[14]"></td>
+                        <td><input @blur="updateHandicap(handicaps[15], 16)" size="2" step="any" type="text" v-model="handicaps[15]"></td>
+                        <td><input @blur="updateHandicap(handicaps[16], 17)" size="2" step="any" type="text" v-model="handicaps[16]"></td>
+                        <td><input @blur="updateHandicap(handicaps[17], 18)" size="2" step="any" type="text" v-model="handicaps[17]"></td>
                         
                       </tr>
                       <tr class="table-secondary">
                         <th scope="row">Pars</th>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole1_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole2_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole3_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole4_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole5_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole6_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole7_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole8_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole9_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole10_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole11_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole12_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole13_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole14_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole15_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole16_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole17_par"></td>
-                        <td><input size="2" step="any" type="text" v-model="round.course.pars.hole18_par"></td>
+                        <td><input @blur="updatePar(pars[0], 1)" size="2" step="any" type="text" v-model="pars[0]"></td>
+                        <td><input @blur="updatePar(pars[1], 2)" size="2" step="any" type="text" v-model="pars[1]"></td>
+                        <td><input @blur="updatePar(pars[2], 3)" size="2" step="any" type="text" v-model="pars[2]"></td>
+                        <td><input @blur="updatePar(pars[3], 4)" size="2" step="any" type="text" v-model="pars[3]"></td>
+                        <td><input @blur="updatePar(pars[4], 5)" size="2" step="any" type="text" v-model="pars[4]"></td>
+                        <td><input @blur="updatePar(pars[5], 6)" size="2" step="any" type="text" v-model="pars[5]"></td>
+                        <td><input @blur="updatePar(pars[6], 7)" size="2" step="any" type="text" v-model="pars[6]"></td>
+                        <td><input @blur="updatePar(pars[7], 8)" size="2" step="any" type="text" v-model="pars[7]"></td>
+                        <td><input @blur="updatePar(pars[8], 9)" size="2" step="any" type="text" v-model="pars[8]"></td>
+                        <td><input @blur="updatePar(pars[9], 10)" size="2" step="any" type="text" v-model="pars[9]"></td>
+                        <td><input @blur="updatePar(pars[10], 11)" size="2" step="any" type="text" v-model="pars[10]"></td>
+                        <td><input @blur="updatePar(pars[11], 12)" size="2" step="any" type="text" v-model="pars[11]"></td>
+                        <td><input @blur="updatePar(pars[12], 13)" size="2" step="any" type="text" v-model="pars[12]"></td>
+                        <td><input @blur="updatePar(pars[13], 14)" size="2" step="any" type="text" v-model="pars[13]"></td>
+                        <td><input @blur="updatePar(pars[14], 15)" size="2" step="any" type="text" v-model="pars[14]"></td>
+                        <td><input @blur="updatePar(pars[15], 16)" size="2" step="any" type="text" v-model="pars[15]"></td>
+                        <td><input @blur="updatePar(pars[16], 17)" size="2" step="any" type="text" v-model="pars[16]"></td>
+                        <td><input @blur="updatePar(pars[17], 18)" size="2" step="any" type="text" v-model="pars[17]"></td>
                         
                         
                       </tr>
@@ -120,7 +120,7 @@
         <div class="modal modal-light" id="matchScores" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog modal-xl modal-dialog-centered animated zoomIn animated-3x" role="document">
             <div class="modal-content">
-              <div v-for="match in matches">
+              <div v-bind:key="match" v-for="match in matches">
                 <div class="modal-header">
                   <!-- <h2 class="modal-title color-dark">{{course.name}}</h2> -->
                   <h2 class="modal-title color-dark"><span class="text-danger">{{match.teams[0].players[0].name}} and {{match.teams[0].players[1].name}}</span> Vs. <span class="text-primary">{{match.teams[1].players[0].name}} and {{match.teams[1].players[1].name}}</span></h2>
@@ -153,48 +153,48 @@
                         <th scope="col">18</th>
                       </tr>
                     </thead>
-                    <tbody v-for="team in match.teams" class="table-hover">
+                    <tbody v-bind:key="team" v-for="team in match.teams" class="table-hover">
                       <tr v-if="team.name === 'Team Red'" class="table-secondary danger">
                         <th class="text-danger" scope="row">{{team.name}}</th>
-                        <td>{{team.scores.score_1}}</td>
-                        <td>{{team.scores.score_2}}</td>
-                        <td>{{team.scores.score_3}}</td>
-                        <td>{{team.scores.score_4}}</td>
-                        <td>{{team.scores.score_5}}</td>
-                        <td>{{team.scores.score_6}}</td>
-                        <td>{{team.scores.score_7}}</td>
-                        <td>{{team.scores.score_8}}</td>
-                        <td>{{team.scores.score_9}}</td>
-                        <td>{{team.scores.score_10}}</td>
-                        <td>{{team.scores.score_11}}</td>
-                        <td>{{team.scores.score_12}}</td>
-                        <td>{{team.scores.score_13}}</td>
-                        <td>{{team.scores.score_14}}</td>
-                        <td>{{team.scores.score_15}}</td>
-                        <td>{{team.scores.score_16}}</td>
-                        <td>{{team.scores.score_17}}</td>
-                        <td>{{team.scores.score_18}}</td>
+                        <td>{{team.team_scores.score_1}}</td>
+                        <td>{{team.team_scores.score_2}}</td>
+                        <td>{{team.team_scores.score_3}}</td>
+                        <td>{{team.team_scores.score_4}}</td>
+                        <td>{{team.team_scores.score_5}}</td>
+                        <td>{{team.team_scores.score_6}}</td>
+                        <td>{{team.team_scores.score_7}}</td>
+                        <td>{{team.team_scores.score_8}}</td>
+                        <td>{{team.team_scores.score_9}}</td>
+                        <td>{{team.team_scores.score_10}}</td>
+                        <td>{{team.team_scores.score_11}}</td>
+                        <td>{{team.team_scores.score_12}}</td>
+                        <td>{{team.team_scores.score_13}}</td>
+                        <td>{{team.team_scores.score_14}}</td>
+                        <td>{{team.team_scores.score_15}}</td>
+                        <td>{{team.team_scores.score_16}}</td>
+                        <td>{{team.team_scores.score_17}}</td>
+                        <td>{{team.team_scores.score_18}}</td>
                       </tr>
                       <tr v-if="team.name === 'Team Blue'" class="table-secondary primary">
                         <th class="text-primary" scope="row" id="team-red">{{team.name}}</th>
-                        <td>{{team.scores.score_1}}</td>
-                        <td>{{team.scores.score_2}}</td>
-                        <td>{{team.scores.score_3}}</td>
-                        <td>{{team.scores.score_4}}</td>
-                        <td>{{team.scores.score_5}}</td>
-                        <td>{{team.scores.score_6}}</td>
-                        <td>{{team.scores.score_7}}</td>
-                        <td>{{team.scores.score_8}}</td>
-                        <td>{{team.scores.score_9}}</td>
-                        <td>{{team.scores.score_10}}</td>
-                        <td>{{team.scores.score_11}}</td>
-                        <td>{{team.scores.score_12}}</td>
-                        <td>{{team.scores.score_13}}</td>
-                        <td>{{team.scores.score_14}}</td>
-                        <td>{{team.scores.score_15}}</td>
-                        <td>{{team.scores.score_16}}</td>
-                        <td>{{team.scores.score_17}}</td>
-                        <td>{{team.scores.score_18}}</td>
+                        <td>{{team.team_scores.score_1}}</td>
+                        <td>{{team.team_scores.score_2}}</td>
+                        <td>{{team.team_scores.score_3}}</td>
+                        <td>{{team.team_scores.score_4}}</td>
+                        <td>{{team.team_scores.score_5}}</td>
+                        <td>{{team.team_scores.score_6}}</td>
+                        <td>{{team.team_scores.score_7}}</td>
+                        <td>{{team.team_scores.score_8}}</td>
+                        <td>{{team.team_scores.score_9}}</td>
+                        <td>{{team.team_scores.score_10}}</td>
+                        <td>{{team.team_scores.score_11}}</td>
+                        <td>{{team.team_scores.score_12}}</td>
+                        <td>{{team.team_scores.score_13}}</td>
+                        <td>{{team.team_scores.score_14}}</td>
+                        <td>{{team.team_scores.score_15}}</td>
+                        <td>{{team.team_scores.score_16}}</td>
+                        <td>{{team.team_scores.score_17}}</td>
+                        <td>{{team.team_scores.score_18}}</td>
                       </tr>
                       
                     </tbody>
@@ -243,47 +243,48 @@
                 <tbody>
                   <tr class="table-secondary">
                     <th scope="row">HDCP</th>
-                    <td>{{handicaps.hole1_handicap}}</td>
-                    <td>{{handicaps.hole2_handicap}}</td>
-                    <td>{{handicaps.hole3_handicap}}</td>
-                    <td>{{handicaps.hole4_handicap}}</td>
-                    <td>{{handicaps.hole5_handicap}}</td>
-                    <td>{{handicaps.hole6_handicap}}</td>
-                    <td>{{handicaps.hole7_handicap}}</td>
-                    <td>{{handicaps.hole8_handicap}}</td>
-                    <td>{{handicaps.hole9_handicap}}</td>
-                    <td>{{handicaps.hole10_handicap}}</td>
-                    <td>{{handicaps.hole11_handicap}}</td>
-                    <td>{{handicaps.hole12_handicap}}</td>
-                    <td>{{handicaps.hole13_handicap}}</td>
-                    <td>{{handicaps.hole14_handicap}}</td>
-                    <td>{{handicaps.hole15_handicap}}</td>
-                    <td>{{handicaps.hole16_handicap}}</td>
-                    <td>{{handicaps.hole17_handicap}}</td>
-                    <td>{{handicaps.hole18_handicap}}</td>
+                    <td>{{handicaps[0]}}</td>
+                    <td>{{handicaps[1]}}</td>
+                    <td>{{handicaps[2]}}</td>
+                    <td>{{handicaps[3]}}</td>
+                    <td>{{handicaps[4]}}</td>
+                    <td>{{handicaps[5]}}</td>
+                    <td>{{handicaps[6]}}</td>
+                    <td>{{handicaps[7]}}</td>
+                    <td>{{handicaps[8]}}</td>
+                    <td>{{handicaps[9]}}</td>
+                    <td>{{handicaps[10]}}</td>
+                    <td>{{handicaps[11]}}</td>
+                    <td>{{handicaps[12]}}</td>
+                    <td>{{handicaps[13]}}</td>
+                    <td>{{handicaps[14]}}</td>
+                    <td>{{handicaps[15]}}</td>
+                    <td>{{handicaps[16]}}</td>
+                    <td>{{handicaps[17]}}</td>
                     
                     
                   </tr>
                   <tr class="table-secondary">
                     <th scope="row">PAR</th>
-                    <td>{{pars.hole1_par}}</td>
-                    <td>{{pars.hole2_par}}</td>
-                    <td>{{pars.hole3_par}}</td>
-                    <td>{{pars.hole4_par}}</td>
-                    <td>{{pars.hole5_par}}</td>
-                    <td>{{pars.hole6_par}}</td>
-                    <td>{{pars.hole7_par}}</td>
-                    <td>{{pars.hole8_par}}</td>
-                    <td>{{pars.hole9_par}}</td>
-                    <td>{{pars.hole10_par}}</td>
-                    <td>{{pars.hole11_par}}</td>
-                    <td>{{pars.hole12_par}}</td>
-                    <td>{{pars.hole13_par}}</td>
-                    <td>{{pars.hole14_par}}</td>
-                    <td>{{pars.hole15_par}}</td>
-                    <td>{{pars.hole16_par}}</td>
-                    <td>{{pars.hole17_par}}</td>
-                    <td>{{pars.hole18_par}}</td>
+                    <td>{{pars[0]}}</td>
+                    <td>{{pars[1]}}</td>
+                    <td>{{pars[2]}}</td>
+                    <td>{{pars[3]}}</td>
+                    <td>{{pars[4]}}</td>
+                    <td>{{pars[5]}}</td>
+                    <td>{{pars[6]}}</td>
+                    <td>{{pars[7]}}</td>
+                    <td>{{pars[8]}}</td>
+                    <td>{{pars[9]}}</td>
+                    <td>{{pars[10]}}</td>
+                    <td>{{pars[11]}}</td>
+                    <td>{{pars[12]}}</td>
+                    <td>{{pars[13]}}</td>
+                    <td>{{pars[14]}}</td>
+                    <td>{{pars[15]}}</td>
+                    <td>{{pars[16]}}</td>
+                    <td>{{pars[17]}}</td>
+                    
                     
                   </tr>                  
                 </tbody>
@@ -419,8 +420,8 @@ export default {
     return {
       round: {},
       course: {},
-      handicaps: {},
-      pars: {},
+      handicaps: [],
+      pars: [],
       matches: [],
       key: "",
       errors: [],
@@ -468,8 +469,12 @@ export default {
       console.log("round", response.data);
       this.round = response.data;
       this.course = this.round.course;
-      this.handicaps = this.course.handicaps;
-      this.pars = this.course.pars;
+      this.course.handicaps.forEach(handicap => {
+        this.handicaps.push(handicap.value);
+      })
+      this.course.pars.forEach(par => {
+        this.pars.push(par.value)
+      })
       this.matches = this.round.matches;
 
     });
@@ -480,46 +485,29 @@ export default {
     this.key = process.env.VUE_APP_MAP_KEY;
   },
   methods: {
+    updatePar: function(par, hole){
+      
+      var params = {
+        hole: hole,
+        par: par
+      }
+      axios.patch("/api/courses/" + this.course.id, params).then(response => {
+        console.log("Par Update", response.data);
+      })
+    },
+    updateHandicap: function(handicap, hole){
+      
+      var params = {
+        hole: hole,
+        handicap: handicap
+      }
+      axios.patch("/api/courses/" + this.course.id, params).then(response => {
+        console.log("Handicap Update", response.data);
+      })
+    },
     submit: function() {
       var params = {
-        name: this.course.name,
-        par_hole_1: this.course.pars.hole1_par,
-        par_hole_2: this.course.pars.hole2_par,
-        par_hole_3: this.course.pars.hole3_par,
-        par_hole_4: this.course.pars.hole4_par,
-        par_hole_5: this.course.pars.hole5_par,
-        par_hole_6: this.course.pars.hole6_par,
-        par_hole_7: this.course.pars.hole7_par,
-        par_hole_8: this.course.pars.hole8_par,
-        par_hole_9: this.course.pars.hole9_par,
-        par_hole_10: this.course.pars.hole10_par,
-        par_hole_11: this.course.pars.hole11_par,
-        par_hole_12: this.course.pars.hole12_par,
-        par_hole_13: this.course.pars.hole13_par,
-        par_hole_14: this.course.pars.hole14_par,
-        par_hole_15: this.course.pars.hole15_par,
-        par_hole_16: this.course.pars.hole16_par,
-        par_hole_17: this.course.pars.hole17_par,
-        par_hole_18: this.course.pars.hole18_par,
-        hdcp_hole_1: this.course.handicaps.hole1_handicap,
-        hdcp_hole_2: this.course.handicaps.hole2_handicap,
-        hdcp_hole_3: this.course.handicaps.hole3_handicap,
-        hdcp_hole_4: this.course.handicaps.hole4_handicap,
-        hdcp_hole_5: this.course.handicaps.hole5_handicap,
-        hdcp_hole_6: this.course.handicaps.hole6_handicap,
-        hdcp_hole_7: this.course.handicaps.hole7_handicap,
-        hdcp_hole_8: this.course.handicaps.hole8_handicap,
-        hdcp_hole_9: this.course.handicaps.hole9_handicap,
-        hdcp_hole_10: this.course.handicaps.hole10_handicap,
-        hdcp_hole_11: this.course.handicaps.hole11_handicap,
-        hdcp_hole_12: this.course.handicaps.hole12_handicap,
-        hdcp_hole_13: this.course.handicaps.hole13_handicap,
-        hdcp_hole_14: this.course.handicaps.hole14_handicap,
-        hdcp_hole_15: this.course.handicaps.hole15_handicap,
-        hdcp_hole_16: this.course.handicaps.hole16_handicap,
-        hdcp_hole_17: this.course.handicaps.hole17_handicap,
-        hdcp_hole_18: this.course.handicaps.hole18_handicap
-        
+        name: this.course.name,      
       };
 
       axios.patch("/api/courses/" + this.course.id, params).then(response => {

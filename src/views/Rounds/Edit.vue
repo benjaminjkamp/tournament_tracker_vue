@@ -40,7 +40,7 @@
                 <div class="form-group row">
                   <label for="inputCourse" autocomplete="false" class="col-lg-2 control-label">Course</label>
                   <div class="col-lg-9">
-                    <input list="courses" type="text" class="form-control" id="inputCourse" placeholder="Course" v-model="round.course.id">
+                    <input list="courses" type="text" class="form-control" id="inputCourse" placeholder="Course" v-model="course.id">
                   </div>
                 </div>
                 <div class="form-group row justify-content-end">
@@ -75,7 +75,7 @@
 
     <!-- Course Data List -->
     <datalist id="courses">
-      <option v-for="course in courses">
+      <option v-bind:key="course.id" v-for="course in courses">
         {{ course.id }} {{ course.name }}
       </option>
     </datalist>
@@ -111,6 +111,7 @@ export default {
     return {
       round: {},
       errors: [],
+      course: {},
       courses: [],
       courseName: "golf",
       address: "Michigan",
@@ -164,6 +165,7 @@ export default {
     axios.get("/api/rounds/" + this.$route.params.id).then(response => {
       console.log(response.data);
       this.round = response.data;
+      this.course = this.round.course;
     });
     this.mapKey = process.env.VUE_APP_MAP_KEY;
   },

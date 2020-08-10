@@ -32,7 +32,16 @@
                 <div class="form-group row">
                   <label for="format" autocomplete="false" class="col-lg-2 control-label">Format</label>
                   <div class="col-lg-9">
-                    <input type="text" class="form-control" id="format" placeholder="Format" v-model="newRoundFormat">
+                    <select class="form-control" placeholder="format" name="formatList" id="formatList" v-model="newRoundFormat">
+                      <option value="" placeholder="format"></option>
+                      <option value="2 Man Best Ball">2 Man Best Ball</option>
+                      <option value="2 Man Total Score">2 Man Total Score</option>
+                      <option value="Alternate Shot">Alternate Shot</option>
+                      <option value="Stableford">Stableford</option>
+                      <option value="1v1">1v1</option>
+                      <option value="Scramble">Scramble</option>
+                    </select>
+                    <!-- <input type="text" class="form-control" id="format" placeholder="Format" v-model="newRoundFormat"> -->
                   </div>
                 </div>
                 <div class="form-group row">
