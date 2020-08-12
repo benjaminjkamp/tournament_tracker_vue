@@ -175,7 +175,7 @@
                         <td>{{team.team_scores.score_16}}</td>
                         <td>{{team.team_scores.score_17}}</td>
                         <td>{{team.team_scores.score_18}}</td>
-                        <td>{{match.team1_score}}</td>
+                        <td>{{match.team_1_score}}</td>
                       </tr>
                       <tr v-if="team.name === 'Team Blue'" class="table-secondary primary">
                         <th class="text-primary" scope="row" id="team-red">{{team.name}}</th>
@@ -197,7 +197,7 @@
                         <td>{{team.team_scores.score_16}}</td>
                         <td>{{team.team_scores.score_17}}</td>
                         <td>{{team.team_scores.score_18}}</td>
-                        <td>{{match.team2_score}}</td>
+                        <td>{{match.team_2_score}}</td>
                       </tr>
                       
                     </tbody>
