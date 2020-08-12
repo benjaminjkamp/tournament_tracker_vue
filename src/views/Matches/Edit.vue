@@ -351,6 +351,10 @@ export default {
 
       axios.patch("/api/matches/" + this.$route.params.id, params).then(response => {
         console.log(response.data);
+        this.player1Scores = response.data.teams[0].scores.filter(scores => scores.user_id == this.match.teams[0].players[0].id);
+        this.player2Scores = response.data.teams[0].scores.filter(scores => scores.user_id == this.match.teams[0].players[1].id);
+        this.player3Scores = response.data.teams[1].scores.filter(scores => scores.user_id == this.match.teams[1].players[0].id);
+        this.player4Scores = response.data.teams[1].scores.filter(scores => scores.user_id == this.match.teams[1].players[1].id);
         // this.$router.push("/rounds/" + this.match.round.id);
       }).catch(error => {
         console.log(error.response.data);

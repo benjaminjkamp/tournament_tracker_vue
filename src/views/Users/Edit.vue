@@ -56,11 +56,11 @@
                                   <i class="zmdi zmdi-link mr-1 color-danger"></i>
                                   GNC Record
                                 </th>
-                                <td>
+                                <!-- <td>
                                   <input type="text" class="col-sm-3" id="gncRecord" placeholder="W" v-model="user.ryder_cup_record.ryder_cup_wins"> --
                                   <input type="text" class="col-sm-3" id="gncRecord" placeholder="L" v-model="user.ryder_cup_record.ryder_cup_losses"> --
                                   <input type="text" class="col-sm-3" id="gncRecord" placeholder="T" v-model="user.ryder_cup_record.ryder_cup_ties">
-                                </td>
+                                </td> -->
                               </tr>
                               <tr>
                                 <th class="">
@@ -164,7 +164,7 @@ export default {
     };
   },
   created: function() {
-    axios.get("/api/users/1" ).then(response => {
+    axios.get("/api/users/me" ).then(response => {
       console.log("user", response.data);
       this.user = response.data;
     });
@@ -179,7 +179,7 @@ export default {
         email: this.user.personal_info.email,
         avg_gnc: this.user.gnc_average,
         avg_two_year: this.user.two_year_average,
-        ryder_cup_wins: this.user.ryder_cup_record.ryder_cup_wins,
+        // ryder_cup_wins: this.user.ryder_cup_record.ryder_cup_wins,
         ryder_cup_losses: this.user.ryder_cup_record.ryder_cup_losses,
         ryder_cup_ties: this.user.ryder_cup_record.ryder_cup_ties,
         record_2017: record2017,

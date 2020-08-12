@@ -450,7 +450,7 @@ export default {
       this.rounds = response.data;
     }),
     axios.get("/api/users/me").then(response => {
-      console.log("users", response.data);
+      console.log("user", response.data);
       this.currentUser = response.data;
     }),
     axios.get("/api/tournaments").then(response => {
