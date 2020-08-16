@@ -202,26 +202,26 @@
         </div>
       </div>
 
-      <!--ms-header-white-->
-      <header class="ms-header ms-header-white">
+      <!--ms-header-dark-->
+      <header class="ms-header ms-header-dark">
 
         
         <div class="container container-full">
 
           <div class="ms-title">
 
-            <a href="javascript:void(0)" class="btn-circle-primary ms-toggle-left zoomInDown animation-delay-10">
+            <a href="javascript:void(0)" class="btn-circle-white ms-toggle-left zoomInDown animation-delay-10">
               <h1 class="animated fadeInRight animation-delay-6">Tournament<span>Tracker</span></h1>
             </a>
-            <a href="javascript:void(0)" class="btn-circle-primary ms-toggle-left zoomInDown animation-delay-10"><span class="ms-logo animated zoomInDown animation-delay-5">TnT</span></a>
+            <a href="javascript:void(0)" class="btn-circle-dark ms-toggle-left zoomInDown animation-delay-10"><span class="ms-logo animated zoomInDown animation-delay-5">TnT</span></a>
           </div>
           
         </div>
       </header>
-      <nav class="navbar navbar-expand-md  navbar-static ms-navbar ms-navbar-dark">
+      <nav class="navbar navbar-expand-md  navbar-static ms-navbar ms-navbar-white">
         <div class="container container-full">
           <div class="navbar-header">
-            <a href="javascript:void(0)" class="btn-ms-menu btn-circle btn-circle-white ms-toggle-left animated zoomInDown animation-delay-3"><i class="zmdi zmdi-menu zmdi-hc-4x"></i></a>
+            <a href="javascript:void(0)" class="btn-ms-menu btn-circle btn-circle-dark ms-toggle-left animated zoomInDown animation-delay-3"><i class="zmdi zmdi-menu zmdi-hc-4x"></i></a>
             <a class="navbar-brand btn-ms-menu ms-toggle-left" href="javascript:void(0)">
               <!-- <img src="assets/img/demo/logo-navbar.png" alt=""> -->
               <span class="ms-logo ms-logo-sm">TnT</span>
@@ -233,7 +233,7 @@
             <ul class="navbar-nav">
 
               <!-- slidebar toggle -->
-              <a href="javascript:void(0)" class="btn-ms-menu btn-circle btn-circle-white ms-toggle-left animated zoomInDown animation-delay-10"><i class="zmdi zmdi-menu zmdi-hc-4x"></i></a>
+              <a href="javascript:void(0)" class="btn-ms-menu btn-circle btn-circle-dark ms-toggle-left animated zoomInDown animation-delay-10"><i class="zmdi zmdi-menu zmdi-hc-4x"></i></a>
               
               <li class="nav-item dropdown active">
                 <router-link :to="'/tournaments/' + latestTournament + '/standings'" class="nav-link animated fadeIn animation-delay-7" role="button" aria-haspopup="true" aria-expanded="false" data-name="home">
@@ -258,7 +258,7 @@
           </div>
           <div class="header-right">
            
-            <a v-if="!isLogged()" href="javascript:void(0)" class="btn-circle btn-circle-white no-focus animated zoomInDown animation-delay-4" data-toggle="modal" data-target="#ms-account-modal"><i class="zmdi zmdi-account"></i></a>
+            <a v-if="!isLogged()" href="javascript:void(0)" class="btn-circle btn-circle-dark no-focus animated zoomInDown animation-delay-4" data-toggle="modal" data-target="#ms-account-modal"><i class="zmdi zmdi-account"></i></a>
             <!-- <i v-if="isLogged()" class="zmdi zmdi-account"></i> -->
             <span v-if="isLogged()">
 
@@ -386,6 +386,9 @@
 
 <style>
 
+  .ms-header.ms-header-dark{
+    background-color: #424242;
+  }
   .ms-site-container, .ms-slidebar {
     background-image: url("../public/assets/img/papyrus/papyrus.png");
     /*padding-top: 0px;*/

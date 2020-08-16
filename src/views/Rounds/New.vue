@@ -38,7 +38,7 @@
                       <option value="2 Man Total Score">2 Man Total Score</option>
                       <option value="Alternate Shot">Alternate Shot</option>
                       <option value="Stableford">Stableford</option>
-                      <option value="1v1">1v1</option>
+                      <option value="Match Play">Match Play</option>
                       <option value="Scramble">Scramble</option>
                     </select>
                     <!-- <input type="text" class="form-control" id="format" placeholder="Format" v-model="newRoundFormat"> -->

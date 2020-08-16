@@ -116,14 +116,19 @@
         </div>
       </div>
 
-      <!-- match scores modal -->
-        <div class="modal modal-light" id="matchScores" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <!-- Non-Scramble match box scores modal -->
+        <div v-if="round.format !== 'Scramble'" class="modal modal-light" id="matchScores" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog modal-xl modal-dialog-centered animated zoomIn animated-3x" role="document">
             <div class="modal-content">
               <div v-bind:key="match" v-for="match in matches">
                 <div class="modal-header">
                   <!-- <h2 class="modal-title color-dark">{{course.name}}</h2> -->
-                  <h2 class="modal-title color-dark"><span class="text-danger">{{match.teams[0].players[0].name}} and {{match.teams[0].players[1].name}}</span> Vs. <span class="text-primary">{{match.teams[1].players[0].name}} and {{match.teams[1].players[1].name}}</span></h2>
+                  <h2 class="modal-title color-dark"><span class="text-danger">{{match.teams[0].players[0].name}} and 
+                  <!-- {{match.teams[0].players[1].name}} -->
+                </span> Vs. <span class="text-primary">
+                {{match.teams[1].players[0].name}} 
+              <!-- and {{match.teams[1].players[1].name}} -->
+            </span></h2>
                   <button type="button" class="btn-dark close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
                 </div>
                 
@@ -207,6 +212,77 @@
             </div>
           </div>
         </div>
+
+        <!-- Scramble match box scores modal -->
+          <div v-if="round.format === 'Scramble'" class="modal modal-light" id="matchScores" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-xl modal-dialog-centered animated zoomIn animated-3x" role="document">
+              <div class="modal-content">
+                <div v-bind:key="match" v-for="match in matches">
+                  <div class="modal-header">
+                    <!-- <h2 class="modal-title color-dark">{{course.name}}</h2> -->
+                    
+                    <button type="button" class="btn-dark close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                  </div>
+                  
+                  <div class="modal-body">
+                    
+                    <table class="table table-condensed">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col">1</th>
+                          <th scope="col">2</th>
+                          <th scope="col">3</th>
+                          <th scope="col">4</th>
+                          <th scope="col">5</th>
+                          <th scope="col">6</th>
+                          <th scope="col">7</th>
+                          <th scope="col">8</th>
+                          <th scope="col">9</th>
+                          <th scope="col">10</th>
+                          <th scope="col">11</th>
+                          <th scope="col">12</th>
+                          <th scope="col">13</th>
+                          <th scope="col">14</th>
+                          <th scope="col">15</th>
+                          <th scope="col">16</th>
+                          <th scope="col">17</th>
+                          <th scope="col">18</th>
+                          <th scope="col">Total</th>
+                        </tr>
+                      </thead>
+                      <tbody v-bind:key="team" v-for="team in match.teams" class="table-hover">
+                        <tr v-if="team.name === 'Team Red'" class="table-secondary danger">
+                          <th class="text-danger" scope="row">{{team.name}}</th>
+                          <td>{{team.team_scores.score_1}}</td>
+                          <td>{{team.team_scores.score_2}}</td>
+                          <td>{{team.team_scores.score_3}}</td>
+                          <td>{{team.team_scores.score_4}}</td>
+                          <td>{{team.team_scores.score_5}}</td>
+                          <td>{{team.team_scores.score_6}}</td>
+                          <td>{{team.team_scores.score_7}}</td>
+                          <td>{{team.team_scores.score_8}}</td>
+                          <td>{{team.team_scores.score_9}}</td>
+                          <td>{{team.team_scores.score_10}}</td>
+                          <td>{{team.team_scores.score_11}}</td>
+                          <td>{{team.team_scores.score_12}}</td>
+                          <td>{{team.team_scores.score_13}}</td>
+                          <td>{{team.team_scores.score_14}}</td>
+                          <td>{{team.team_scores.score_15}}</td>
+                          <td>{{team.team_scores.score_16}}</td>
+                          <td>{{team.team_scores.score_17}}</td>
+                          <td>{{team.team_scores.score_18}}</td>
+                          <td>{{match.team_1_score}}</td>
+                        </tr>
+                        
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
       <!-- Course Info Card -->
@@ -331,8 +407,8 @@
 
 <br>
 
-      <!-- Match Score Cards -->
-      <div class="container">
+      <!-- Non-Scramble Match Score Cards -->
+      <div v-if="round.format !== 'Scramble'" class="container">
         <div >
           <div class="col-xs-1">
             <h3 class="text-center">
@@ -345,7 +421,7 @@
                   <!-- See Course Location -->
                 </button>
               </a>
-              <router-link :to="'/matches/' + this.round.id + '/new'">
+              <router-link :to="'/matches/' + round.id + '/new'">
                 <button class="btn btn-raised btn-white">
                   <i class="zmdi zmdi-hc-lg text-dark zmdi-plus-circle"> Add Match</i>
                 </button>
@@ -355,17 +431,13 @@
               <div  class="row">
 
                 <div v-bind:key="match.id" v-for="match in matches" class="col-lg-6">
-                  <div class="panel-heading">
-                    <span class="">
-                      <!-- <strong><h3 class="text-danger">{{match.teams[0].players[0].name}} and {{match.teams[0].players[1].name}}</h3> <h3 class="text-primary">{{match.teams[1].players[0].name}} and {{match.teams[1].players[1].name}}</h3></strong> -->
-                    </span>
-                    
-                  </div>
-                  
+                                    
                   <table class="table table-condensed table-striped">
                     <tr class="border-box border-danger">
                       <th class="">
-                        <strong><h3 class="text-danger">{{match.teams[0].players[0].name}} & <br> {{match.teams[0].players[1].name}}</h3> </strong>
+                        <strong v-if="match.teams[0].players.length > 1"><h3 class="text-danger">{{match.teams[0].players[0].name}} & {{match.teams[0].players[1].name}}</h3></strong>
+                        <strong v-if="match.teams[0].players.length < 2"><h3 class="text-danger">{{match.teams[0].players[0].name}}</h3></strong>
+                          <!-- & <br>  -->
                       </th>
                       <th class="text-danger">
                         <strong><h3 class="text-danger">{{match.team_1_score}}</h3></strong>
@@ -374,9 +446,8 @@
                     </tr>
                     <tr class="border-box border-primary">
                       <th>
-                        <strong>
-                          <h3 class="text-primary">{{match.teams[1].players[0].name}} & <br> {{match.teams[1].players[1].name}}</h3>
-                        </strong>
+                        <strong v-if="match.teams[1].players[1]"><h3 class="text-primary">{{match.teams[1].players[0].name}} & {{match.teams[1].players[1].name}}</h3></strong>
+                        <strong v-if="!match.teams[1].players[1]"><h3 class="text-primary">{{match.teams[1].players[0].name}}</h3></strong>
                       </th>
                       <th>
                         <strong>
@@ -408,6 +479,69 @@
           
         </div>  
       </div>   
+
+      <!-- Scramble Match Score Cards -->
+      <div v-if="round.format === 'Scramble'" class="container">
+        <div >
+          <div class="col-xs-1">
+            <h3 class="text-center">
+              <strong>Matches </strong>
+            </h3>
+            <h3 class="text-center">  
+              <a href="javascript:void(0)" class="no-focus animated zoomInDown" data-toggle="modal" data-target="#matchScores">
+                <button class="btn btn-white btn-raised">
+                  <i class="color-dark-light zmdi-eye zmdi zmdi-hc-lg "> Box Scores</i>
+                  <!-- See Course Location -->
+                </button>
+              </a>
+              <router-link :to="'/matches/' + round.id + '/new'">
+                <button class="btn btn-raised btn-white">
+                  <i class="zmdi zmdi-hc-lg text-dark zmdi-plus-circle"> Add Match</i>
+                </button>
+              </router-link>
+            </h3>
+            <div  class="card">
+              <div  class="row">
+
+                <div v-bind:key="match.id" v-for="match in matches" class="col-lg-6">
+                  
+                  <table class="table table-condensed table-striped">
+                    <tr class="border-box border-danger">
+                      <th class="">
+                        <strong><h3 class="text-dark">{{match.teams[0].players[0].name}} & {{match.teams[0].players[1].name}} &</h3></strong>
+                        <strong><h3 class="text-dark">{{match.teams[0].players[2].name}} & {{match.teams[0].players[3].name}}</h3></strong>
+                          <!-- & <br>  -->
+                      </th>
+                      <th class="text-danger">
+                        <strong><h3 class="text-danger">{{match.team_1_score}}</h3></strong>
+                        <strong><h3 class="text-primary">({{match.team_1_score - parTotal}})</h3></strong>
+                      </th>
+                      
+                    </tr>
+                   
+                    <!-- <div class="panel-footer "> -->
+                      
+                    <tr class=" text-center">  
+                      <td>
+                        <router-link class="btn btn-raised btn-white" :to="'/matches/' + match.id + '/edit'"><i class="zmdi zmdi-edit zmdi-hc-lg"> Update Scores</i></router-link>
+                      </td>
+                      <th></th>
+                    </tr>
+                     
+                      
+                    <!-- </div> -->
+                  </table>
+                <hr>
+                </hr>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+      
+          
+        </div>  
+      </div> 
     </div>
 
   </div>
@@ -428,6 +562,7 @@ export default {
       matches: [],
       key: "",
       errors: [],
+      parTotal: 0,
       courseName: "",
       par1: "",
       par2: "",
@@ -476,16 +611,18 @@ export default {
         this.handicaps.push(handicap.value);
       })
       this.course.pars.forEach(par => {
-        this.pars.push(par.value)
+        this.pars.push(par.value);
+        this.parTotal = this.parTotal + par.value;
       })
       this.matches = this.round.matches;
 
     });
-    axios.get("/api/courses/" + this.$route.params.id).then(response => {
-      console.log(response.data);
-      this.course = response.data;
-    });
+    // axios.get("/api/courses/" + this.$route.params.id).then(response => {
+    //   console.log(response.data);
+    //   this.course = response.data;
+    // });
     this.key = process.env.VUE_APP_MAP_KEY;
+
   },
   methods: {
     updatePar: function(par, hole){
