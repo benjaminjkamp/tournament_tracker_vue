@@ -6,7 +6,7 @@ import axios from "axios";
 
 
 axios.defaults.baseURL = 
-  process.env.NODE_ENV === "development" ? "https://great-northern-classic.herokuapp.com" : "/";
+  process.env.NODE_ENV === "production" ? "https://great-northern-classic.herokuapp.com" : "/";
 
 var jwt = localStorage.getItem("jwt");
 if (jwt) {
