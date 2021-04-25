@@ -9,7 +9,7 @@
             </div>
             <ul class="nav nav-tabs nav-tabs-full nav-tabs-3 nav-tabs-transparent indicator-primary" role="tablist">
               <li class="nav-item" role="presentation"><a href="#ms-login-tab" aria-controls="ms-login-tab" role="tab" data-toggle="tab" class="nav-link withoutripple active"><i class="zmdi zmdi-account"></i> Login</a></li>
-              <li class="nav-item" role="presentation"><a href="#ms-register-tab" aria-controls="ms-register-tab" role="tab" data-toggle="tab" class="nav-link withoutripple"><i class="zmdi zmdi-account-add"></i> Register</a></li>
+              <!-- <li class="nav-item" role="presentation"><a href="#ms-register-tab" aria-controls="ms-register-tab" role="tab" data-toggle="tab" class="nav-link withoutripple"><i class="zmdi zmdi-account-add"></i> Register</a></li> -->
               <li class="nav-item" role="presentation"><a href="#ms-recovery-tab" aria-controls="ms-recovery-tab" role="tab" data-toggle="tab" class="nav-link withoutripple"><i class="zmdi zmdi-key"></i> Recovery</a></li>
             </ul>
             <div class="card-body">
@@ -31,27 +31,27 @@
                           <input type="password" id="ms-form-pass" class="form-control" v-model="password">
                         </div>
                       </div>
-                      <div class="row mt-2">
-                        <div class="col-5">
+                      <div class="row mt-6">
+                       <!--  <div class="col-5">
                           <div class="form-group mt-1">
                             <div class="checkbox">
                               <label>
                                 <input type="checkbox"> Remember </label>
                             </div>
                           </div>
-                        </div>
+                        </div> -->
                         <div class="col-7">
                           <button class="btn btn-raised btn-primary pull-right">Login</button>
                         </div>
                       </div>
                     </fieldset>
                   </form>
-                  <div class="text-center">
+               <!--    <div class="text-center">
                     <h3>Login with</h3>
                     <a href="javascript:void(0)" class="wave-effect-light btn btn-raised btn-facebook"><i class="zmdi zmdi-facebook"></i> Facebook</a>
                     <a href="javascript:void(0)" class="wave-effect-light btn btn-raised btn-twitter"><i class="zmdi zmdi-twitter"></i> Twitter</a>
                     <a href="javascript:void(0)" class="wave-effect-light btn btn-raised btn-google"><i class="zmdi zmdi-google"></i> Google</a>
-                  </div>
+                  </div> -->
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="ms-register-tab">
                   <form>
@@ -112,7 +112,7 @@
             </div>
           </div>
           <div class="text-center animated fadeInUp animation-delay-7">
-            <a href="index.html" class="btn btn-white"><i class="zmdi zmdi-home"></i> Go Home</a>
+            <router-view :to="'/'" class="btn btn-white"><i class="zmdi zmdi-home"></i> Go Home</router-view>
           </div>
         </div>
       </div>
@@ -171,7 +171,7 @@ export default {
             "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
           this.$router.push("/");
-          forceRerender();
+          // forceRerender();
 
           // location.reload();
         })

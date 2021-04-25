@@ -240,7 +240,7 @@
                   Standings 
                   <!-- <i class="zmdi zmdi-chevron-down"></i> -->
                 </router-link>
-                <router-link to="/" class="nav-link animated fadeIn animation-delay-7" role="button" aria-haspopup="true" aria-expanded="false" data-name="home">
+                <router-link to="/users" class="nav-link animated fadeIn animation-delay-7" role="button" aria-haspopup="true" aria-expanded="false" data-name="home">
                   Players 
                   <!-- <i class="zmdi zmdi-chevron-down"></i> -->
                 </router-link>
@@ -259,7 +259,22 @@
           <div class="header-right">
            
             <a v-if="!isLogged()" href="javascript:void(0)" class="btn-circle btn-circle-dark no-focus animated zoomInDown animation-delay-4" data-toggle="modal" data-target="#ms-account-modal"><i class="zmdi zmdi-account"></i></a>
+            <!-- <div v-if="!isLogged()" class="btn-group">
+                <a href="javascript:void(0)" type="button" class="btn btn-grey btn-raised dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="zmdi zmdi-account zmdi-hc-lg"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-left dropdown-menu-white">
+                    <li class="dropdown-header">{{currentUser.name}}</li>
+                    <li><router-link class="dropdown-item" to="/login">Login</router-link></li>
+                    <li role="separator" class="dropdown-divider"></li>
+                    <li><a href="javascript:void(0)" class="" data-toggle="modal" data-target="#ms-account-modal">Sign Up</a></li>
+                    
+                    
+                </ul>
+                
+            </div> -->
             <!-- <i v-if="isLogged()" class="zmdi zmdi-account"></i> -->
+
             <span v-if="isLogged()">
 
               <div class="btn-group">
@@ -268,9 +283,9 @@
                   </button>
                   <ul class="dropdown-menu dropdown-menu-left dropdown-menu-white">
                       <li class="dropdown-header">{{currentUser.name}}</li>
-                      <li><router-link class="dropdown-item" to="/users/edit">Edit Profile</router-link></li>
+                      <li><router-link class="dropdown-item" to="/users/me/edit">Edit Profile</router-link></li>
                       <li role="separator" class="dropdown-divider"></li>
-                      <li><router-link class="dropdown-item" to="/logout">Logout</router-link></li>
+                      <li><router-link v-on:click="isAdmin()" class="dropdown-item" to="/logout">Logout</router-link></li>
                   </ul>
                   <button type="button" class="btn btn-white btn-raised" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{currentUser.name}}</button>
               </div>
@@ -309,7 +324,7 @@
             <!-- </router-link> -->
           </div>
           <div v-if="isLogged()" class="ms-slidebar-login">
-            <router-link to="/users/edit" class="withripple"><i class="zmdi zmdi-account"></i> Profile</router-link>
+            <router-link to="/users/me/edit" class="withripple"><i class="zmdi zmdi-account"></i> Profile</router-link>
             <router-link to="/logout" class="withripple"><i class="zmdi zmdi-sign-in"></i> Logout</router-link>
             
           </div>
@@ -319,12 +334,12 @@
               <label for="search-box-slidebar"><i class="zmdi zmdi-search"></i></label>
             </form>
             <div class="ms-slidebar-t">
-              <h3 class="no-m ms-site-title"><b v-if="currentUser.id == null">{{logo1}}</b><big><span>{{currentUser.name || logo2}}</span></big></h3>
-              <span class="ms-logo ms-logo-sm">TnT</span>
+              <h3 v-if="isLogged()" class="no-m ms-site-title"><b v-if="currentUser.id == null">{{logo1}}</b><big><span>{{currentUser.name || logo2}}</span></big></h3>
+              <span v-if="!isLogged()" class="ms-logo ms-logo-sm">TnT</span>
             </div>
           </div>
         </header>
-        <ul class="ms-slidebar-menu" id="slidebar-menu" role="tablist" aria-multiselectable="true">
+        <ul v-if="isLogged()" class="ms-slidebar-menu" id="slidebar-menu" role="tablist" aria-multiselectable="true">
           <li class="card" role="tab" id="sch1">
             <a class="collapsed" role="button" data-toggle="collapse" href="#sc1" aria-expanded="false" aria-controls="sc1">
               <i class="zmdi zmdi-hc-lg ">
@@ -439,23 +454,29 @@ export default {
       logo2: "Tracker",
       componentKey: 0,
       tabIndex: 0,
+      admin: false,
       tabs: ['#ms-register-tab', '#ms-login-tab'],
       mapKey: process.env.VUE_APP_MAP_KEY,
       errors: []
     };
   },
   mounted() {
-    this.tabIndex = this.tabs.findIndex(tab => tab === this.$route.hash)
+    this.tabIndex = this.tabs.findIndex(tab => tab === this.$route.hash);
+    
   },
   created: function() {
+    axios.get("/api/users/me").then(response => {
+      console.log("user", response.data);
+      this.currentUser = response.data;
+      if (this.currentUser.admin) {
+        this.admin = true;
+      }
+    })
     axios.get("/api/rounds").then(response => {
       console.log("rounds", response.data);
       this.rounds = response.data;
     }),
-    axios.get("/api/users/me").then(response => {
-      console.log("user", response.data);
-      this.currentUser = response.data;
-    }),
+    
     axios.get("/api/tournaments").then(response => {
       console.log("tournaments", response.data);
       this.tournaments = response.data;
@@ -473,10 +494,12 @@ export default {
         password: this.password,
         password_confirmation: this.passwordConfirmation
       };
+      console.log(params);
       axios
         .post("/api/users", params)
         .then(response => {
-          // this.$router.push("/login");
+          console.log("test");
+          this.$router.push("/login");
         })
         .catch(error => {
           this.errors = error.response.data.errors;
@@ -493,12 +516,22 @@ export default {
           axios.defaults.headers.common["Authorization"] =
             "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
-          $('#ms-account-modal').modal('hide');
+          console.log("logged in", response.data);
+          if (response.data.admin){
+            this.admin = true;
+          } else {
+            this.admin = false;
+          }
+          // this.currentUser = response.data;
+          // this.$router.push("users/me/edit");
           // this.$router.push("/");
+          $('#ms-account-modal').modal('hide');
+          this.$router.push("/users");
           
-          location.reload();
+          // location.reload();
         })
         .catch(error => {
+          console.log(error.response.data.errors);
           this.errors = ["Invalid email or password."];
           this.email = "";
           this.password = "";
@@ -522,6 +555,15 @@ export default {
           this.errors = error.response.data;
           console.log(this.errors);
         });
+    },
+    isAdmin: function(){
+      if (this.currentUser.admin){
+        this.admin = true;
+        return true;
+      } else {
+        this.admin = false;
+        return false;
+      }
     },
     isLogged: function() {
       if (localStorage.getItem('jwt')) {

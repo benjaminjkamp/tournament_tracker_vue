@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import UsersIndex from './views/Users/Index.vue'
+import UsersNew from './views/Users/New.vue'
 import Signup from './views/Users/Signup.vue'
 import Login from './views/Users/Login.vue'
 import Logout from './views/Users/Logout.vue'
@@ -26,6 +28,16 @@ export default new Router({
       name: 'home',
       component: Home
     },
+    {
+      path: '/users',
+      name: 'users-index',
+      component: UsersIndex
+    },
+    {
+      path: '/users/new',
+      name: 'users-new',
+      component: UsersNew
+    },
     
     {
       path: '/signup',
@@ -43,7 +55,7 @@ export default new Router({
       component: Logout
     },
     {
-      path: '/users/edit',
+      path: '/users/:id/edit',
       name: 'users-edit',
       component: UsersEdit
     },

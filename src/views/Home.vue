@@ -1,72 +1,7 @@
 <template>
   <div class="home">
     
-    <br><br>
-  <!--   <div>
-      <div v-bind:key="round.id" v-for="round in orderBy(rounds, 'name')">
-        <router-link :to="'/rounds/' + round.id">{{ round.name }}</router-link>
-      </div>
-      <br>
-      <router-link to="/rounds/new">
-        <span>Add Round</span>
-      </router-link>
-
-    </div> -->
-    <div class="ms-site-container">
-      <div class="container">
-            
-        <div class="card card-primary">
-          
-          <table class="table table-no-border table-condensed">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col"><span v-on:click="selectSort('name')">Name</span></th>
-                <th scope="col"><span v-on:click="selectSort('low_net_handicap')">Low Net HDCP</span></th>
-                <th scope="col"><span v-on:click="selectSort('skins_handicap')">Skins HDCP</span></th>
-                <th scope="col"><span v-on:click="selectSort('gnc_average')">GNC AVG</span></th>
-                <th scope="col"><span v-on:click="selectSort('two_year_average')">2yr AVG</span></th>
-                <th scope="col"><span v-on:click="selectSort('ryder_cup_record.ryder_cup_wins')">Wins</span></th>
-                <th scope="col"><span v-on:click="selectSort('ryder_cup_record.ryder_cup_losses')">Losses</span></th>
-                <th scope="col"><span v-on:click="selectSort('ryder_cup_record.ryder_cup_ties')">Ties</span></th>
-                <th scope="col"><span v-on:click="selectSort('record_2017')">2017 Record</span></th>        
-                
-              </tr>
-            </thead>
-            <tbody class="table-hover" v-bind:key="user.id" v-for="user in orderBy(users, sortAttribute, sortAscending)">
-              <!-- <div v-if="user.id === currentUser.id"> -->
-                <tr class="table-secondary active">
-                  <th scope="row">{{user.name}}</th>
-                  <td>{{user.low_net_handicap}}</td>
-                  <td>{{user.skins_handicap}}</td>
-                  <td>{{user.gnc_average}}</td>
-                  <td>{{user.two_year_average}}</td>
-                  <td>{{user.ryder_cup_record.ryder_cup_wins}}</td>
-                  <td>{{user.ryder_cup_record.ryder_cup_losses}}</td>
-                  <td>{{user.ryder_cup_record.ryder_cup_ties}}</td>
-                  <td>{{user.record_2017}}</td>
-                  
-                </tr>
-              <!-- </div> -->
-              <!-- <div v-if="user.id !== currentUser.id"> -->
-               <!--  <tr class="table-secondary active">
-                  <th scope="row">{{user.name}}</th>
-                  <td>{{user.low_net_handicap}}</td>
-                  <td>{{user.skins_handicap}}</td>
-                  <td>{{user.gnc_average}}</td>
-                  <td>{{user.two_year_average}}</td>
-                  <td>{{user.ryder_cup_record.ryder_cup_wins}}</td>
-                  <td>{{user.ryder_cup_record.ryder_cup_losses}}</td>
-                  <td>{{user.ryder_cup_record.ryder_cup_ties}}</td>
-                  <td>{{user.record_2017}}</td>
-                  
-                </tr> -->
-              <!-- </div> -->
-              
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+  
   </div>
 </template>
 
@@ -81,6 +16,7 @@ export default {
   data: function() {
     return {
       users: [],
+      admin: false,
       currentUser: {},
       rounds: [],
       sortAttribute: 'name',
@@ -102,23 +38,6 @@ export default {
     });
   },
   methods: {
-    selectSort: function(attribute){
-      
-      if (this.sortAttribute === attribute) {
-        this.sortAscending = this.sortAscending * -1;
-      } else {
-        if (attribute === 'ryder_cup_record.ryder_cup_wins' || 
-        attribute === 'ryder_cup_record.ryder_cup_losses' || 
-        attribute === 'ryder_cup_record.ryder_cup_ties' || 
-        attribute === 'record_2017') 
-      {
-        this.sortAscending = -1;
-      } else{
-        this.sortAscending = 1;
-      }
-      };
-      this.sortAttribute = attribute;
-    }
   }
-};
+}
 </script>
