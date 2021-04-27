@@ -8,7 +8,7 @@
         <div class="row">
           <div id="standings" class="col-xl-4 order-xl-1"> 
         <!-- standings card -->
-            <router-link :to="'/tournaments/' + tournament.id + '/edit'">
+            <!-- <router-link :to="'/tournaments/' + tournament.id + '/edit'"> -->
               <!-- <div class="card card-primary col-lg-10"> -->
                 
               <table id="standings" class=" table ">
@@ -25,73 +25,111 @@
                 <tbody class="text-center table-hover">
                   <tr class="table-secondary active">
                     <th scope="row">2-Man Total Score</th>
-                    <td>{{tournament.red_team_2mantotal}}</td>
-                    <td>{{tournament.blue_team_2mantotal}}</td>
+                    <td class="text-danger" v-if="tournament.red_team_2mantotal > tournament.blue_team_2mantotal"><strong>{{tournament.red_team_2mantotal}}</strong></td>
+                    <td v-else><strong>{{tournament.red_team_2mantotal}}</strong></td>
+                    <td class="text-info" v-if="tournament.red_team_2mantotal < tournament.blue_team_2mantotal"><strong>{{tournament.blue_team_2mantotal}}</strong></td>
+                    
+                    <td v-else><strong>{{tournament.blue_team_2mantotal}}</strong></td>
                   </tr>
 
                   <tr class="table-secondary active">
                     <th scope="row">2-Man Best Ball</th>
-                    <td>{{tournament.red_team_2manbb}}</td>
-                    <td>{{tournament.blue_team_2manbb}}</td>
+                    <td class="text-danger" v-if="tournament.red_team_2manbb > tournament.blue_team_2manbb"><strong>{{tournament.red_team_2manbb}}</strong></td>
+                    <td v-else><strong>{{tournament.red_team_2manbb}}</strong></td>
+                    <td class="text-info" v-if="tournament.red_team_2manbb < tournament.blue_team_2manbb"><strong>{{tournament.blue_team_2manbb}}</strong></td>
+                    <td v-else><strong>{{tournament.blue_team_2manbb}}</strong></td>
                   </tr>
 
                   <tr class="table-secondary active">
                     <th scope="row">Alternate Shot</th>
-                    <td>{{tournament.red_team_altshot}}</td>
-                    <td>{{tournament.blue_team_altshot}}</td>
+                    <td class="text-danger" v-if="tournament.red_team_altshot > tournament.blue_team_altshot"><strong>{{tournament.red_team_altshot}}</strong></td>
+                    <td v-else><strong>{{tournament.red_team_altshot}}</strong></td>
+
+                    <td class="text-info" v-if="tournament.red_team_altshot < tournament.blue_team_altshot"><strong>{{tournament.blue_team_altshot}}</strong></td>
+                    <td v-else><strong>{{tournament.blue_team_altshot}}</strong></td>
                   </tr>
 
                   <tr class="table-secondary active">
                     <th scope="row">Stableford</th>
-                    <td>{{tournament.red_team_stableford}}</td>
-                    <td>{{tournament.blue_team_stableford}}</td>
+                    <td class="text-danger" v-if="tournament.red_team_stableford > tournament.blue_team_stableford"><strong>{{tournament.red_team_stableford}}</strong></td>
+                    <td v-else><strong>{{tournament.red_team_stableford}}</strong></td>
+
+                    <td class="text-info" v-if="tournament.red_team_stableford < tournament.blue_team_stableford"><strong>{{tournament.blue_team_stableford}}</strong></td>
+                    <td v-else><strong>{{tournament.blue_team_stableford}}</strong></td>
                   </tr>
 
                   <tr class="table-secondary active">
                     <th scope="row">Head to Head</th>
-                    <td>{{tournament.red_team_head2head}}</td>
-                    <td>{{tournament.blue_team_head2head}}</td>
+                    <td class="text-danger" v-if="tournament.red_team_head2head > tournament.blue_team_head2head"><strong>{{tournament.red_team_head2head}}</strong></td>
+                    <td v-else><strong>{{tournament.red_team_head2head}}</strong></td>
+
+                    <td class="text-info" v-if="tournament.red_team_head2head < tournament.blue_team_head2head"><strong>{{tournament.blue_team_head2head}}</strong></td>
+                    <td v-else><strong>{{tournament.blue_team_head2head}}</strong></td>
                   </tr>
+                  <tr class="table-dark active">
+                    <th scope="row"><h2><strong>TOTAL</strong></h2></th>
+                    <td class="text-danger"><h2><strong>{{totalRed}}</strong></h2></td>
+                    <td class="text-info"><h2><strong>{{totalBlue}}</strong></h2></td>
+                  </tr>
+                  
 
                   
                   
                 </tbody>
               </table>
             <!-- </div> -->
-            </router-link>
+            <!-- </router-link> -->
           </div>
         
         
         <!-- player stats card -->
         <!-- <div class="card card-primary col-lg-10"> -->
-          <div id="player-info" class="col-xl-8 order-xl-2">
+
+          <!-- Red Team -->
+          <div id="player-info" class="col-xl-4 order-xl-2">
             <table class="table table-condensed">
-              <thead class="thead-dark">
+              <thead class="color-danger-inverse">
                 <tr>
                   <th scope="col"><span v-on:click="selectSort('name')">Players</span></th>
                   <th scope="col"><span v-on:click="selectSort('low_net_handicap')">Low Net HDCP</span></th>
                   <th scope="col"><span v-on:click="selectSort('skins_handicap')">Skins HDCP</span></th>
-                  <th scope="col"><span v-on:click="selectSort('gnc_average')">GNC AVG</span></th>
-                  <th scope="col"><span v-on:click="selectSort('two_year_average')">2yr AVG</span></th>
-                  <th scope="col"><span v-on:click="selectSort('ryder_cup_record.ryder_cup_wins')">Wins</span></th>
-                  <th scope="col"><span v-on:click="selectSort('ryder_cup_record.ryder_cup_losses')">Losses</span></th>
-                  <th scope="col"><span v-on:click="selectSort('ryder_cup_record.ryder_cup_ties')">Ties</span></th>
-                  <th scope="col"><span v-on:click="selectSort('record_2017')">2017 Record</span></th>        
+                  <th scope="col"><span v-on:click="selectSort('ryder_cup_record.ryder_cup_wins')">Record</span></th>    
                   
                 </tr>
               </thead>
               <tbody id="player-info" class="table-hover table-condensed" v-bind:key="user.id" v-for="user in orderBy(users, sortAttribute, sortAscending)">
 
-                <tr class="table-secondary active">
+                <tr v-if="user.team === 'Red'" class="table-secondary active">
                   <th scope="row">{{user.name}}</th>
                   <td>{{user.low_net_handicap}}</td>
                   <td>{{user.skins_handicap}}</td>
-                  <td>{{user.gnc_average}}</td>
-                  <td>{{user.two_year_average}}</td>
-                  <td>{{user.ryder_cup_record.ryder_cup_wins}}</td>
-                  <td>{{user.ryder_cup_record.ryder_cup_losses}}</td>
-                  <td>{{user.ryder_cup_record.ryder_cup_ties}}</td>
-                  <td>{{user.record_2017}}</td>
+                  <td>{{user.ryder_cup_record.ryder_cup_wins}}-{{user.ryder_cup_record.ryder_cup_losses}}-{{user.ryder_cup_record.ryder_cup_ties}}</td>
+                  
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Blue Team -->
+          <div id="player-info" class="col-xl-4 order-xl-2">
+            <table class="table table-condensed">
+              <thead class="color-info-inverse">
+                <tr>
+                  <th scope="col"><span v-on:click="selectSort('name')">Players</span></th>
+                  <th scope="col"><span v-on:click="selectSort('low_net_handicap')">Low Net HDCP</span></th>
+                  <th scope="col"><span v-on:click="selectSort('skins_handicap')">Skins HDCP</span></th>
+                  <th scope="col"><span v-on:click="selectSort('ryder_cup_record.ryder_cup_wins')">Record</span></th>    
+                  
+                </tr>
+              </thead>
+              <tbody id="player-info" class="table-hover table-condensed" v-bind:key="user.id" v-for="user in orderBy(users, sortAttribute, sortAscending)">
+
+                <tr v-if="user.team === 'Blue'" class="table-secondary active">
+                  <th scope="row">{{user.name}}</th>
+                  <td>{{user.low_net_handicap}}</td>
+                  <td>{{user.skins_handicap}}</td>
+                  <td>{{user.ryder_cup_record.ryder_cup_wins}}-{{user.ryder_cup_record.ryder_cup_losses}}-{{user.ryder_cup_record.ryder_cup_ties}}</td>
                   
                 </tr>
                 
@@ -127,7 +165,9 @@ export default {
       users: [],
       tournament: {},
       sortAttribute: 'name',
-      sortAscending: 1
+      sortAscending: 1,
+      totalRed: 0,
+      totalBlue: 0
     };
   },
   created: function() {
@@ -138,6 +178,8 @@ export default {
     axios.get("/api/tournaments/" + this.$route.params.id).then(response => {
       console.log("tournament", response.data);
       this.tournament = response.data;
+      this.totalRed = this.tournament.red_team_2manbb + this.tournament.red_team_2mantotal + this.tournament.red_team_altshot + this.tournament.red_team_head2head + this.tournament.red_team_stableford;
+      this.totalBlue = this.tournament.blue_team_2manbb + this.tournament.blue_team_2mantotal + this.tournament.blue_team_altshot + this.tournament.blue_team_head2head + this.tournament.blue_team_stableford;
     })
   },
   methods: {

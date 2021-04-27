@@ -10,11 +10,23 @@
                 <div class="card">
                   
                   <div class="card-tabs">
-                    <ul class="nav nav-tabs shadow-2dp" role="tablist">
+                    <ul v-if="teamColor === 'Red'" style="background-color: #f44336;" class="nav nav-tabs shadow-2dp" role="tablist">
                       
                       <li class="av-item"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="active withoutripple nav-link "><i class="zmdi zmdi-male"></i> <span class="d-none d-sm-inline">Profile</span></a></li>
                       <li v-if="this.editorAdmin" class="nav-item"><a href="#stats" aria-controls="home" role="tab" data-toggle="tab" class="withoutripple nav-link "><i class="zmdi zmdi-home"></i> <span class="d-none d-sm-inline">Stats</span></a></li>
-                      <li class="col-lg-9"></li>
+                      <li class="col-lg-3"></li>
+                      <li class="col-lg-6">
+                        <!-- <div class="col-lg-3 color-danger slider slider-horizontal" style="margin-bottom: 30px; background-color: red;"> -->
+                          <div class="btn-group btn-group-justified btn-group-raised">
+                              <a v-on:click="selectTeam('Blue')" href="#" class="btn btn-info"><strong>Blue</strong></a>
+                              <a v-on:click="selectTeam('None')" href="#" class="btn btn-success">None</a>
+                              <a v-on:click="selectTeam('Red')" href="#" class="btn btn-danger"><strong>Red</strong></a>
+                          </div>
+
+
+                        <!-- </div> -->
+                      </li>
+
                       <li class="col-lg-1" v-if="!this.editorAdmin"></li>
                       
                       <span v-if="editorAdmin"><a v-on:click="makeAdmin()" v-if="!userAdmin" href="#"  class="btn-circle btn-circle-raised btn-circle-default"><i class="zmdi zmdi-shield-security"></i></a>
@@ -22,6 +34,56 @@
 
 
                     </ul>
+                    <ul v-if="teamColor === 'None'" style="background-color: #4caf50;" class="nav nav-tabs shadow-2dp" role="tablist">
+                      
+                      <li class="av-item"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="active withoutripple nav-link "><i class="zmdi zmdi-male"></i> <span class="d-none d-sm-inline">Profile</span></a></li>
+                      <li v-if="this.editorAdmin" class="nav-item"><a href="#stats" aria-controls="home" role="tab" data-toggle="tab" class="withoutripple nav-link "><i class="zmdi zmdi-home"></i> <span class="d-none d-sm-inline">Stats</span></a></li>
+                      <li class="col-lg-3"></li>
+                      <li class="col-lg-6">
+                        <!-- <div class="col-lg-3 color-danger slider slider-horizontal" style="margin-bottom: 30px; background-color: red;"> -->
+
+                          <div class="btn-group btn-group-justified btn-group-raised">
+                              <a v-on:click="selectTeam('Blue')" href="#" class="btn btn-info"><strong>Blue</strong></a>
+                              <a v-on:click="selectTeam('None')" href="#" class="btn btn-success">None</a>
+                              <a v-on:click="selectTeam('Red')" href="#" class="btn btn-danger"><strong>Red</strong></a>
+                          </div>
+
+
+                        <!-- </div> -->
+                      </li>
+
+                      <li class="col-lg-1" v-if="!this.editorAdmin"></li>
+                      
+                      <span v-if="editorAdmin"><a v-on:click="makeAdmin()" v-if="!userAdmin" href="#"  class="btn-circle btn-circle-raised btn-circle-default"><i class="zmdi zmdi-shield-security"></i></a>
+                      <a v-on:click="makeAdmin()" v-if="userAdmin" href="#" class="btn-circle btn-circle-raised btn-circle-danger"><i class="zmdi zmdi-shield-security"></i></a></span>
+
+
+                    </ul>
+                    <ul v-if="teamColor == 'Blue'" style="background-color: #00bcd4;" class="nav nav-tabs shadow-2dp" role="tablist">
+                      
+                      <li class="av-item"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="active withoutripple nav-link "><i class="zmdi zmdi-male"></i> <span class="d-none d-sm-inline">Profile</span></a></li>
+                      <li v-if="this.editorAdmin" class="nav-item"><a href="#stats" aria-controls="home" role="tab" data-toggle="tab" class="withoutripple nav-link "><i class="zmdi zmdi-home"></i> <span class="d-none d-sm-inline">Stats</span></a></li>
+                      <li class="col-lg-3"></li>
+                      <li class="col-lg-6">
+                        <!-- <div class="col-lg-3 color-danger slider slider-horizontal" style="margin-bottom: 30px; background-color: red;"> -->
+                          <div class="btn-group btn-group-justified btn-group-raised">
+                              <a v-on:click="selectTeam('Blue')" href="#" class="btn btn-info"><strong>Blue</strong></a>
+                              <a v-on:click="selectTeam('None')" href="#" class="btn btn-success">None</a>
+                              <a v-on:click="selectTeam('Red')" href="#" class="btn btn-danger"><strong>Red</strong></a>
+                          </div>
+
+
+                        <!-- </div> -->
+                      </li>
+
+                      <li class="col-lg-1" v-if="!this.editorAdmin"></li>
+                      
+                      <span v-if="editorAdmin"><a v-on:click="makeAdmin()" v-if="!userAdmin" href="#"  class="btn-circle btn-circle-raised btn-circle-default"><i class="zmdi zmdi-shield-security"></i></a>
+                      <a v-on:click="makeAdmin()" v-if="userAdmin" href="#" class="btn-circle btn-circle-raised btn-circle-danger"><i class="zmdi zmdi-shield-security"></i></a></span>
+
+
+                    </ul>
+                    
                   </div>
                   
                   <div class="card-body">
@@ -32,6 +94,8 @@
 
                         <!-- Profile Form -->
                         <div role="tabpanel" class="tab-pane fade active show" id="profile">  
+
+                     
                           <fieldset>
                             <div class="form-group row">
                               <label for="firstName" class="col-md-3 control-label">
@@ -182,7 +246,8 @@ export default {
       errors: [],
       winsLastYear: "",
       lossesLastYear: "",
-      tiesLastYear: ""
+      tiesLastYear: "",
+      teamColor: "None"
     };
   },
   created: function() {
@@ -194,6 +259,10 @@ export default {
       this.lastName = this.user.last_name;
       this.phoneNumber = this.user.personal_info.phone_number;
       this.email = this.user.personal_info.email;
+      if (this.user.team !== "Red" && this.user.team !== "Blue"){
+      } else {
+        this.teamColor = this.user.team;
+      }
 
       if(this.user.admin){
         this.userAdmin = true;
@@ -219,6 +288,7 @@ export default {
         last_name: this.user.last_name,
         phone_number: this.user.personal_info.phone_number,
         email: this.user.personal_info.email,
+        team_color: this.teamColor,
         avg_gnc: this.user.gnc_average,
         avg_two_year: this.user.two_year_average,
         // ryder_cup_wins: this.user.ryder_cup_record.ryder_cup_wins,
@@ -231,11 +301,14 @@ export default {
 
       axios.patch("/api/users/" + this.$route.params.id, params).then(response => {
         console.log(response.data);
-        this.$router.push('/')
+        this.$router.push('/users')
       }).catch(error => {
         console.log(error.response.data);
         this.errors = error.response.data;
       })
+    },
+    selectTeam: function(color){
+      this.teamColor = color;
     },
     makeAdmin: function(){
       var newValue = false;

@@ -27,6 +27,8 @@
             <thead class="thead-dark">
               <tr>
                 <th scope="col"><span v-on:click="selectSort('name')">Name</span></th>
+                <th scope="col"><span v-on:click="selectSort('team')">Team</span></th>
+                
                 <th scope="col"><span v-on:click="selectSort('low_net_handicap')">Low Net HDCP</span></th>
                 <th scope="col"><span v-on:click="selectSort('skins_handicap')">Skins HDCP</span></th>
                 <th scope="col"><span v-on:click="selectSort('gnc_average')">GNC AVG</span></th>
@@ -41,8 +43,14 @@
             <tbody class="table-hover" v-bind:key="user.id" v-for="user in orderBy(users, sortAttribute, sortAscending)">
               <!-- <div v-if="user.id === currentUser.id"> -->
                 <tr class="table-secondary active">
-                  <router-link v-if="isAdmin()" class="text-dark" :to="'/users/' + user.id + '/edit/'"><th scope="row">{{user.name}}</th></router-link>
+                  <router-link v-if="isAdmin()" class="text-dark" :to="'/users/' + user.id + '/edit/'"><th>{{user.name}}</th></router-link>
                   <th v-else scope="row">{{user.name}}</th>
+                  <td>
+                    <strong class="text-danger" v-if="user.team === 'Red'">{{user.team}}</strong>
+                    <strong class="text-info" v-if="user.team === 'Blue'">{{user.team}}</strong>
+                    <strong class="text-success" v-if="user.team === 'None'">{{user.team}}</strong>
+                    
+                  </td>
                   <td>{{user.low_net_handicap}}</td>
                   <td>{{user.skins_handicap}}</td>
                   <td>{{user.gnc_average}}</td>
@@ -91,7 +99,7 @@ export default {
       admin: false,
       currentUser: {},
       rounds: [],
-      sortAttribute: 'name',
+      sortAttribute: 'team',
       sortAscending: 1
     };
   },

@@ -4,7 +4,7 @@
       <div class="col-lg-12 ms-paper-content-container">
         <div class="ms-paper-content">
           <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-10">
               <div class="card">
                 
                 <div class="card-tabs">
@@ -12,7 +12,7 @@
                     
                     <li class="av-item"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="active withoutripple nav-link "><i class="zmdi zmdi-male"></i> <span class="d-none d-sm-inline">Profile</span></a></li>
                     <li v-if="this.editorAdmin" class="nav-item"><a href="#stats" aria-controls="home" role="tab" data-toggle="tab" class="withoutripple nav-link "><i class="zmdi zmdi-home"></i> <span class="d-none d-sm-inline">Stats</span></a></li>
-                    <li class="col-lg-9"></li>
+                    <li class="col-lg-8"></li>
                     <li class="col-lg-1" v-if="!this.editorAdmin"></li>
                     
                     <span v-if="editorAdmin"><a v-on:click="makeAdmin()" v-if="!userAdmin" href="#"  class="btn-circle btn-circle-raised btn-circle-default"><i class="zmdi zmdi-shield-security"></i></a>
@@ -43,7 +43,7 @@
                             <label for="lastName" class="col-md-3 control-label">
                               Last Name
                             </label>
-                            <div class="col-md-9">
+                            <div class="col-md-6">
                               <input type="text" class="form-control" id="lastName" placeholder="Last Name" v-model="lastName">
                             </div>
                           </div>
@@ -52,7 +52,7 @@
                             <label for="phoneNumber" class="col-md-3 control-label">
                               Phone Number
                             </label>
-                            <div class="col-md-9">
+                            <div class="col-md-6">
                               <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number" v-model="phoneNumber">
                             </div>
                           </div>
@@ -61,26 +61,8 @@
                             <label for="email" class="col-md-3 control-label">
                               Email
                             </label>
-                            <div class="col-md-9">
+                            <div class="col-md-6">
                               <input type="text" class="form-control" id="email" placeholder="Email" v-model="email">
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <br>
-                            <label for="password" class="col-md-3 control-label">
-                              Password
-                            </label>
-                            <div class="col-md-9">
-                              <input type="text" class="form-control" id="password" placeholder="Password" v-model="password">
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <br>
-                            <label for="passwordConfirmation" class="col-md-3 control-label">
-                              Password Confirmation
-                            </label>
-                            <div class="col-md-9">
-                              <input type="text" class="form-control" id="passwordConfirmation" placeholder="Confirm Password" v-model="passwordConfirmation">
                             </div>
                           </div>
                       
@@ -200,13 +182,14 @@ export default {
   methods: {
     submit: function() {
       var record2017 = this.winsLastYear + " - " + this.lossesLastYear + " - " + this.tiesLastYear;
+      var password = "gnc" + this.firstName.charAt(0) + this.lastName;
       var params = {
         first_name: this.firstName,
         last_name: this.lastName,
         phone_number: this.phoneNumber,
         email: this.email,
-        password: this.password,
-        password_confirmation: this.passwordConfirmation,
+        password: password,
+        password_confirmation: password,
         avg_gnc: this.gncAverage,
         avg_two_year: this.twoYearAverage,
         // ryder_cup_wins: this.ryderCupWins,
@@ -220,7 +203,7 @@ export default {
         .post("/api/users", params)
         .then(response => {
           console.log("User Created", response.data);
-          this.$router.push("/");
+          this.$router.push("/users");
         })
         .catch(error => {
           this.errors = error.response.data.errors;

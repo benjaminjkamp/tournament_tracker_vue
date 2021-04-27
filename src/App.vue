@@ -210,10 +210,16 @@
 
           <div class="ms-title">
 
-            <a href="javascript:void(0)" class="btn-circle-white ms-toggle-left zoomInDown animation-delay-10">
+            <a v-if="isLogged()" href="javascript:void(0)" class="btn-circle-white ms-toggle-left zoomInDown animation-delay-10">
               <h1 class="animated fadeInRight animation-delay-6">Tournament<span>Tracker</span></h1>
             </a>
-            <a href="javascript:void(0)" class="btn-circle-dark ms-toggle-left zoomInDown animation-delay-10"><span class="ms-logo animated zoomInDown animation-delay-5">TnT</span></a>
+            <a v-if="isLogged()" href="javascript:void(0)" class="btn-circle-dark ms-toggle-left zoomInDown animation-delay-10"><span class="ms-logo animated zoomInDown animation-delay-5">TnT</span></a>
+            <span v-if="!isLogged()" class="btn-circle-white ms-toggle-left zoomInDown animation-delay-10">
+              <h1 class="animated fadeInRight animation-delay-6">Tournament<span>Tracker</span></h1>
+            </span>
+            <!-- <a href="javascript:void(0)" class="btn-circle-dark ms-toggle-left zoomInDown animation-delay-10"> -->
+              <span v-if="!isLogged()" class="ms-logo animated zoomInDown animation-delay-5">TnT</span>
+            <!-- </a> -->
           </div>
           
         </div>
@@ -227,10 +233,11 @@
               <span class="ms-logo ms-logo-sm">TnT</span>
               <span class="ms-title">Tournament<strong>Tracker</strong></span>
             </a>
+
           </div>
           <div class="collapse navbar-collapse" id="ms-navbar">     
 
-            <ul class="navbar-nav">
+            <ul v-if="isLogged()" class="navbar-nav">
 
               <!-- slidebar toggle -->
               <a href="javascript:void(0)" class="btn-ms-menu btn-circle btn-circle-dark ms-toggle-left animated zoomInDown animation-delay-10"><i class="zmdi zmdi-menu zmdi-hc-4x"></i></a>
@@ -240,7 +247,7 @@
                   Standings 
                   <!-- <i class="zmdi zmdi-chevron-down"></i> -->
                 </router-link>
-                <router-link to="/users" class="nav-link animated fadeIn animation-delay-7" role="button" aria-haspopup="true" aria-expanded="false" data-name="home">
+                <router-link v-if="isAdmin()" to="/users" class="nav-link animated fadeIn animation-delay-7" role="button" aria-haspopup="true" aria-expanded="false" data-name="home">
                   Players 
                   <!-- <i class="zmdi zmdi-chevron-down"></i> -->
                 </router-link>
@@ -450,6 +457,8 @@ export default {
       password: "",
       passwordConfirmation: "",
       currentUser: {},
+      userID: "",
+      currentUserName: "",
       logo1: "Tournament",
       logo2: "Tracker",
       componentKey: 0,
@@ -505,6 +514,14 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
+    refreshUser: function(){
+      axios
+        .get("/api/users/" + this.userID)
+        .then(response => {
+          this.currentUser = response.data;
+          console.log("Current User after Login", response.data);
+        })
+    },
     login: function() {
       var params = {
         email: this.email,
@@ -516,6 +533,7 @@ export default {
           axios.defaults.headers.common["Authorization"] =
             "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
+          this.userID = response.data.user_id;
           console.log("logged in", response.data);
           if (response.data.admin){
             this.admin = true;
@@ -525,18 +543,24 @@ export default {
           // this.currentUser = response.data;
           // this.$router.push("users/me/edit");
           // this.$router.push("/");
+          
           $('#ms-account-modal').modal('hide');
-          this.$router.push("/users");
+          var id = this.tournaments[this.tournaments.length - 1].id
+          console.log("id", id);
+          this.refreshUser();
+          this.$router.push("/tournaments/" + id + "/standings");
           
           // location.reload();
         })
         .catch(error => {
-          console.log(error.response.data.errors);
+          // console.log(error.response.data.errors);
           this.errors = ["Invalid email or password."];
           this.email = "";
           this.password = "";
           console.log(this.errors);
         });
+
+      
     },
     addTournament: function() {
       var params = {

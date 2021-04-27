@@ -577,7 +577,7 @@
                 <br>
                 <a v-if="scoreInputAvailable" href="javascript:void(0)" class="no-focus animated zoomInDown" data-toggle="modal" data-target="#scoreInput">
                 
-                  <button class="btn btn-white btn-raised">
+                  <button v-if="!roundFinalized" class="btn btn-white btn-raised">
                     <i class="zmdi zmdi-grid zmdi-hc-lg">
                       Score Input
                     </i>
