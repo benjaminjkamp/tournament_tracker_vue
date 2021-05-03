@@ -284,8 +284,8 @@ export default {
     submit: function(){
       var record2017 = this.winsLastYear + " - " + this.lossesLastYear + " - " + this.tiesLastYear;
       var params = {
-        first_name: this.user.first_name,
-        last_name: this.user.last_name,
+        first_name: this.firstName,
+        last_name: this.lastName,
         phone_number: this.user.personal_info.phone_number,
         email: this.user.personal_info.email,
         team_color: this.teamColor,
@@ -294,6 +294,9 @@ export default {
         // ryder_cup_wins: this.user.ryder_cup_record.ryder_cup_wins,
         ryder_cup_losses: this.user.ryder_cup_record.ryder_cup_losses,
         ryder_cup_ties: this.user.ryder_cup_record.ryder_cup_ties,
+        wins_last_year: this.winsLastYear,
+        losses_last_year: this.lossesLastYear,
+        ties_last_year: this.tiesLastYear,
         record_2017: record2017,
         handicap_skins: this.user.skins_handicap,
         handicap_low_net: this.user.low_net_handicap

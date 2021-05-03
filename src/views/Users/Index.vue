@@ -33,10 +33,8 @@
                 <th scope="col"><span v-on:click="selectSort('skins_handicap')">Skins HDCP</span></th>
                 <th scope="col"><span v-on:click="selectSort('gnc_average')">GNC AVG</span></th>
                 <th scope="col"><span v-on:click="selectSort('two_year_average')">2yr AVG</span></th>
-                <th scope="col"><span v-on:click="selectSort('ryder_cup_record.ryder_cup_wins')">Wins</span></th>
-                <th scope="col"><span v-on:click="selectSort('ryder_cup_record.ryder_cup_losses')">Losses</span></th>
-                <th scope="col"><span v-on:click="selectSort('ryder_cup_record.ryder_cup_ties')">Ties</span></th>
-                <th scope="col"><span v-on:click="selectSort('record_2017')">2017 Record</span></th>        
+                <th scope="col"><span v-on:click="selectSort('ryder_cup_record.ryder_cup_wins')">GNC Record</span></th>
+                <th scope="col"><span v-on:click="selectSort('last_year_record.wins')">Last Year's Record</span></th>        
                 
               </tr>
             </thead>
@@ -55,10 +53,12 @@
                   <td>{{user.skins_handicap}}</td>
                   <td>{{user.gnc_average}}</td>
                   <td>{{user.two_year_average}}</td>
-                  <td>{{user.ryder_cup_record.ryder_cup_wins}}</td>
-                  <td>{{user.ryder_cup_record.ryder_cup_losses}}</td>
-                  <td>{{user.ryder_cup_record.ryder_cup_ties}}</td>
-                  <td>{{user.record_2017}}</td>
+                  <td>{{user.ryder_cup_record.ryder_cup_wins}} - 
+                  {{user.ryder_cup_record.ryder_cup_losses}} - 
+                  {{user.ryder_cup_record.ryder_cup_ties}}</td>
+                  <td>{{user.last_year_record.wins}} - 
+                  {{user.last_year_record.losses}} - 
+                  {{user.last_year_record.ties}}</td>
                   
                 </tr>
               <!-- </div> -->

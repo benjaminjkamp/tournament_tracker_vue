@@ -18,10 +18,8 @@
               <button type="button" class="close d-inline pull-right mt-2" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
               <div class="modal-title text-center">
                 
-                <h3 class="no-m ms-site-title">Tournament<span>Tracker</span></h3>
-                <span class="ms-logo ms-logo-white ms-logo-sm mr-1">TnT</span>
-
-                <h4>{{currentUser.name || "Tournament Tracker"}}</h4>
+                <h1 class=" animated fadeInRight animation-delay-6"><strong>Great<span class="color-"><strong>Northern</strong></span>Classic </strong></h1>
+                <span class="ms-logo ms-logo-white ms-logo-sm mr-1">GnC</span>
               </div>
               <div class="modal-header-tabs" v-model="tabIndex">
                 <ul class="nav nav-tabs nav-tabs-full nav-tabs-2 nav-tabs-light" role="tablist" v-model="tabIndex">
@@ -34,7 +32,7 @@
             <div class="modal-body" v-model="tabIndex">
               <div class="tab-content" v-model="tabIndex">
                 <div role="tabpanel" class="tab-pane fade active show" id="ms-login-tab" v-model="tabIndex">
-                  <form autocomplete="off" v-on:submit.prevent="login()">
+                  <form v-on:submit.prevent="login()">
                     <fieldset>
                       <div class="form-group label-floating">
                         <div class="input-group">
@@ -210,15 +208,17 @@
 
           <div class="ms-title">
 
-            <a v-if="isLogged()" href="javascript:void(0)" class="btn-circle-white ms-toggle-left zoomInDown animation-delay-10">
+          <!--   <a v-if="isLogged()" href="javascript:void(0)" class="btn-circle-white ms-toggle-left zoomInDown animation-delay-10">
               <h1 class="animated fadeInRight animation-delay-6">Tournament<span>Tracker</span></h1>
             </a>
-            <a v-if="isLogged()" href="javascript:void(0)" class="btn-circle-dark ms-toggle-left zoomInDown animation-delay-10"><span class="ms-logo animated zoomInDown animation-delay-5">TnT</span></a>
-            <span v-if="!isLogged()" class="btn-circle-white ms-toggle-left zoomInDown animation-delay-10">
-              <h1 class="animated fadeInRight animation-delay-6">Tournament<span>Tracker</span></h1>
+            <a v-if="isLogged()" href="javascript:void(0)" class="btn-circle-dark ms-toggle-left zoomInDown animation-delay-10"><span class="ms-logo animated zoomInDown animation-delay-5">TnT</span></a> -->
+            <span class="btn-circle-white ms-toggle-left zoomInDown animation-delay-10">
+              <router-link to="/">
+                <h1 class=" animated fadeInRight animation-delay-6"><strong>Great <span class="color-"><strong>Northern</strong></span> Classic </strong></h1>
+              </router-link>
             </span>
             <!-- <a href="javascript:void(0)" class="btn-circle-dark ms-toggle-left zoomInDown animation-delay-10"> -->
-              <span v-if="!isLogged()" class="ms-logo animated zoomInDown animation-delay-5">TnT</span>
+              <span class="ms-logo ms-logo-lg animated zoomInDown animation-delay-5">GnC</span>
             <!-- </a> -->
           </div>
           
@@ -227,20 +227,84 @@
       <nav class="navbar navbar-expand-md  navbar-static ms-navbar ms-navbar-white">
         <div class="container container-full">
           <div class="navbar-header">
-            <a href="javascript:void(0)" class="btn-ms-menu btn-circle btn-circle-dark ms-toggle-left animated zoomInDown animation-delay-3"><i class="zmdi zmdi-menu zmdi-hc-4x"></i></a>
-            <a class="navbar-brand btn-ms-menu ms-toggle-left" href="javascript:void(0)">
+            <!-- <a href="javascript:void(0)" class="btn-ms-menu btn-circle btn-circle-dark ms-toggle-left animated zoomInDown animation-delay-3"><i class="zmdi zmdi-menu zmdi-hc-4x"></i></a> -->
+            <router-link to="/">
               <!-- <img src="assets/img/demo/logo-navbar.png" alt=""> -->
-              <span class="ms-logo ms-logo-sm">TnT</span>
-              <span class="ms-title">Tournament<strong>Tracker</strong></span>
-            </a>
+              <span class="ms-logo ms-logo-sm">GNC </span>
+              <!-- <span class="ms-title"> Great<strong>Northern</strong>Classic</span> -->
+            </router-link>
 
           </div>
           <div class="collapse navbar-collapse" id="ms-navbar">     
 
             <ul v-if="isLogged()" class="navbar-nav">
 
-              <!-- slidebar toggle -->
-              <a href="javascript:void(0)" class="btn-ms-menu btn-circle btn-circle-dark ms-toggle-left animated zoomInDown animation-delay-10"><i class="zmdi zmdi-menu zmdi-hc-4x"></i></a>
+            
+             
+
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle animated fadeIn animation-delay-7" data-toggle="dropdown" data-hover="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-name="home">Tournaments <i class="zmdi zmdi-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                  <li class="ms-tab-menu">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs ms-tab-menu-left" role="tablist">
+
+                      
+                      <li v-for="tournament in tournaments" class="nav-item">
+                        <a @mouseover="setTournamentID(tournament.id)" class="nav-link" :href="'#tab-rounds-' + hoverTournament" data-hover="tab" data-toggle="tab" role="tab">
+                          <strong>{{tournament.name}} </strong>
+                        </a>
+                      </li>
+
+                      <li class="color-info-inverse">
+                        <a class="withripple nav-item" href="component-headers.html" data-toggle="modal" data-target="#new-tournament-modal"><i class="zmdi zmdi-hc-lg zmdi-plus-circle"> </i>
+                           <span> </span>
+                           <strong>Create Tournament</strong>
+                        </a>
+                      </li>
+                        
+                      <!-- </ul> -->
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content ms-tab-menu-right">
+                      <div class="tab-pane" :id="'tab-rounds-' + hoverTournament" role="tabpanel">
+                        <ul class="ms-tab-menu-right-container">
+                          <li class="color-success-inverse">
+                            <router-link :to="'/tournaments/'+tournament.id+'/standings'">
+                              <strong>Standings</strong>
+                            </router-link>
+                          </li>
+                          <li v-for="round in tournament.rounds">
+                            <router-link :to="'/rounds/'+round.id">
+                              <strong>{{round.name}}</strong>
+                            </router-link>
+                          </li>
+                          
+                          
+                        </ul>
+                        <ul class="ms-tab-menu-right-container active">
+                          <li class="color-info-inverse">
+                            <router-link :to="'/rounds/' + tournament.id + '/new'">
+                              <i class="zmdi zmdi-hc-lg zmdi-plus-circle"> </i>
+                              <span class="col-lg-1"> </span>
+                              <strong>Create Round</strong>
+                            </router-link>
+                          </li>
+                          <li v-if="isAdmin()" class="color-danger-inverse">
+                            <router-link :to="'/tournaments/' + tournament.id + '/edit'">
+                              <i class="zmdi zmdi-hc-lg zmdi-edit"> </i>
+                              <span class="col-lg-1"> </span>
+                              <strong>Edit Tournament</strong>
+                            </router-link>
+                          </li>
+                        </ul>
+                      </div>
+                      
+                    </div>
+                  </li>
+                </ul>
+              </li>
               
               <li class="nav-item dropdown active">
                 <router-link :to="'/tournaments/' + latestTournament + '/standings'" class="nav-link animated fadeIn animation-delay-7" role="button" aria-haspopup="true" aria-expanded="false" data-name="home">
@@ -264,8 +328,8 @@
             </ul>
           </div>
           <div class="header-right">
-           
-            <a v-if="!isLogged()" href="javascript:void(0)" class="btn-circle btn-circle-dark no-focus animated zoomInDown animation-delay-4" data-toggle="modal" data-target="#ms-account-modal"><i class="zmdi zmdi-account"></i></a>
+            
+            <a v-if="!isLogged()" href="javascript:void(0)" class="btn-circle btn-circle-dark no-focus animated zoomInDown animation-delay-4" data-toggle="modal" data-target="#ms-account-modal"><i class="zmdi zmdi-account"> <strong> Login</strong></i></a>
             <!-- <div v-if="!isLogged()" class="btn-group">
                 <a href="javascript:void(0)" type="button" class="btn btn-grey btn-raised dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="zmdi zmdi-account zmdi-hc-lg"></i>
@@ -282,9 +346,9 @@
             </div> -->
             <!-- <i v-if="isLogged()" class="zmdi zmdi-account"></i> -->
 
-            <span v-if="isLogged()">
+            <span >
 
-              <div class="btn-group">
+              <div v-if="isLogged()" class="btn-group">
                   <button type="button" class="btn btn-grey btn-raised dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="zmdi zmdi-account zmdi-hc-lg"></i>
                   </button>
@@ -294,7 +358,7 @@
                       <li role="separator" class="dropdown-divider"></li>
                       <li><router-link v-on:click="isAdmin()" class="dropdown-item" to="/logout">Logout</router-link></li>
                   </ul>
-                  <button type="button" class="btn btn-white btn-raised" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{currentUser.name}}</button>
+                  <button v-if="isLogged()" type="button" class="btn btn-white btn-raised" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{currentUser.name}}</button>
               </div>
 
             </span>
@@ -315,93 +379,7 @@
     </div>
 
 
-    <div class="ms-slidebar  sb-left sb-style-overlay" id="ms-slidebar">
-      <div class="sb-slidebar-container">
-        <header class="ms-slidebar-header">
-          <div v-if="!isLogged()" class="ms-slidebar-login">
-            <h3>
-              <a href="javascript:void(0)" class="withripple" data-toggle="modal" data-target="#ms-account-modal">
-                <i class="zmdi zmdi-account"></i> Login
-              </a>
-            </h3>
-            <!-- <router-link to="signup" class="withripple"> -->
-           <!--  <a href="#ms-register-tab" class="withripple modal-toggle" data-toggle="modal" data-target="#ms-account-modal">
-              <i class="zmdi zmdi-account-add"></i> Register
-            </a> -->
-            <!-- </router-link> -->
-          </div>
-          <div v-if="isLogged()" class="ms-slidebar-login">
-            <router-link to="/users/me/edit" class="withripple"><i class="zmdi zmdi-account"></i> Profile</router-link>
-            <router-link to="/logout" class="withripple"><i class="zmdi zmdi-sign-in"></i> Logout</router-link>
-            
-          </div>
-          <div class="ms-slidebar-title">
-            <form class="search-form">
-              <input id="search-box-slidebar" type="text" class="search-input" placeholder="Search..." name="q" />
-              <label for="search-box-slidebar"><i class="zmdi zmdi-search"></i></label>
-            </form>
-            <div class="ms-slidebar-t">
-              <h3 v-if="isLogged()" class="no-m ms-site-title"><b v-if="currentUser.id == null">{{logo1}}</b><big><span>{{currentUser.name || logo2}}</span></big></h3>
-              <span v-if="!isLogged()" class="ms-logo ms-logo-sm">TnT</span>
-            </div>
-          </div>
-        </header>
-        <ul v-if="isLogged()" class="ms-slidebar-menu" id="slidebar-menu" role="tablist" aria-multiselectable="true">
-          <li class="card" role="tab" id="sch1">
-            <a class="collapsed" role="button" data-toggle="collapse" href="#sc1" aria-expanded="false" aria-controls="sc1">
-              <i class="zmdi zmdi-hc-lg ">
-                Tournaments
-              </i>
-            </a>
-            <ul id="sc1" class="card-collapse collapse" role="tabpanel" aria-labelledby="sch1" data-parent="#slidebar-menu">
-              <li>
-                <a href="javascript:void(0)" class="withripple" data-toggle="modal" data-target="#new-tournament-modal">
-                  <i class="zmdi zmdi-hc-lg zmdi-plus-circle"> 
-                    Create Tournament
-                  </i>
-                </a>
-              </li>
-              <li v-for="tournament in tournaments" class="card" role="tab" id="sch1">
-                <a class="collapsed" role="button" data-toggle="collapse" href="#sc2" aria-expanded="false" aria-controls="sc2">
-                  <i class="zmdi zmdi-hc-lg zmdi-gamepad"> <b> {{tournament.name}}</b></i>  </a>
-                <ul id="sc2" class="" role="tabpanel" aria-labelledby="sch2" data-parent="#sc1">
-                  <!-- <li> -->
-                  <li  class="card">
-                    <router-link id="tournament-sub-links" :to="`/tournaments/${tournament.id}/standings`" >
-                      <i id="link-standings" class="zmdi text-dark zmdi-format-list-numbered">
-                         Standings
-                      </i>
-                    </router-link>
-                  <!-- </li>
-                  <li class="card"> -->
-                    <router-link :to="'/rounds/' + tournament.id + '/new'" id="tournament-sub-links">
-                      <i id="link-add-round" class=" zmdi text-dark  zmdi-plus-circle">
-                        Add Round
-                      </i>
-                    </router-link>
-                  
-                  <!-- </li> -->
-                    <!-- <div v-for="round in rounds"> -->
-                      <!-- <li> -->
-                      <router-link v-for="round in tournament.rounds" :to="'/rounds/' + round.id">
-                        <i id="link-round" class="text-dark zmdi zmdi-minus-circle">
-                          {{round.name}}
-                        </i>
-                      </router-link>
-                    <!-- </li> -->
-                    <!-- </div> -->
-                </li>
-
-                </ul>
-              </li>
-            </ul>
-          </li>
-         
-          
-        </ul>
-      
-      </div>
-    </div>
+  <Footer/>    
 
   </div>
 </template>
@@ -410,22 +388,28 @@
 
   .ms-header.ms-header-dark{
     background-color: #424242;
+    /*background-image: url("./assets/islandShot.jpg");*/
   }
+  
   .ms-site-container, .ms-slidebar {
-    background-image: url("../public/assets/img/papyrus/papyrus.png");
+    background-image: url("../public/assets/img/papyrus-dark/papyrus-dark.png");
     /*padding-top: 0px;*/
   }
 
-  .panel-body, .ms-slidebar-login{
-    background-image: url("../public/assets/img/papyrus-dark/papyrus-dark.png");
+  .panel-body, .card-body, .ms-slidebar-login{
+    background-image: url("../public/assets/img/papyrus/papyrus.png");
   }
     
   .card-body {
 
   }
 
+  .bolder {
+    font-weight: bolder;
+  }
+
   #app {
-    background-image: url("../public/assets/img/papyrus/papyrus.png");
+    background-image: url("../public/assets/img/papyrus-dark/papyrus-dark.png");
     /*padding-top: 0px;*/
   }
 
@@ -441,10 +425,15 @@
 <script>
 // import Vue2Filters from "vue2-filters";
 import axios from "axios";
+import Footer from './components/Footer.vue';
 export default {
+  components: {
+    Footer
+  },
   // mixins: [Vue2Filters.mixin],
   data: function() {
     return {
+      hoverTournament: 1,
       latestTournament: "",
       newTournamentName: "",
       tournament: {},
@@ -491,9 +480,20 @@ export default {
       this.tournaments = response.data;
       this.latestTournament = this.tournaments;
       this.latestTournament = this.latestTournament.slice(-1)[0].id;
+      this.tournament = this.tournaments[this.tournaments.length-1];
+      console.log("tournament on created", this.tournament);
+      
     })
   },
   methods: {
+    setTournamentID: function(id){
+      this.hoverTournament = id;
+      var index = this.tournaments.findIndex(tournament => tournament.id === id);
+      console.log("index", index);
+      this.tournament = this.tournaments[index];
+      console.log("tournaments array", this.tournaments);
+      console.log("hover tournament", this.tournament);
+    },
     signup: function() {
       var params = {
         first_name: this.firstName,
@@ -514,9 +514,10 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
-    refreshUser: function(){
+    refreshUser: function(id){
+      console.log(id);
       axios
-        .get("/api/users/" + this.userID)
+        .get("/api/users/" + id)
         .then(response => {
           this.currentUser = response.data;
           console.log("Current User after Login", response.data);
@@ -532,9 +533,18 @@ export default {
         .then(response => {
           axios.defaults.headers.common["Authorization"] =
             "Bearer " + response.data.jwt;
+
+          var d = new Date();
+          var expiration = d.getTime()+86340000;
+          var date = new Date(expiration);
+          console.log("date", date);
           localStorage.setItem("jwt", response.data.jwt);
+          localStorage.setItem("expiration", expiration);
           this.userID = response.data.user_id;
+          var userID = response.data.user_id;
+          
           console.log("logged in", response.data);
+          console.log("session expires at", (date));
           if (response.data.admin){
             this.admin = true;
           } else {
@@ -547,7 +557,7 @@ export default {
           $('#ms-account-modal').modal('hide');
           var id = this.tournaments[this.tournaments.length - 1].id
           console.log("id", id);
-          this.refreshUser();
+          this.refreshUser(userID);
           this.$router.push("/tournaments/" + id + "/standings");
           
           // location.reload();
@@ -555,6 +565,7 @@ export default {
         .catch(error => {
           // console.log(error.response.data.errors);
           this.errors = ["Invalid email or password."];
+          this.errors.push(error);
           this.email = "";
           this.password = "";
           console.log(this.errors);
@@ -580,6 +591,15 @@ export default {
           console.log(this.errors);
         });
     },
+    isCommissioner: function(){
+      if (this.currentUser.id === this.tournament.commissioner.id){
+        console.log("commissioner");
+        return true;
+      } else {
+        console.log("not commissioner");
+        return false;
+      }
+    },
     isAdmin: function(){
       if (this.currentUser.admin){
         this.admin = true;
@@ -590,10 +610,19 @@ export default {
       }
     },
     isLogged: function() {
-      if (localStorage.getItem('jwt')) {
+      var d = new Date();
+      var date = d.getTime();
+      if (localStorage.getItem('expiration') > date && localStorage.getItem('jwt')) {
         return true;
+
       } else {
-        return false;
+        localStorage.removeItem("jwt");
+        localStorage.removeItem("expiration");
+        if (this.$router.currentRoute.fullPath !== "/" && this.$router.currentRoute.fullPath !== "/signup"){
+
+          this.$router.push("/");
+          return false;
+        }
       }
     }
 

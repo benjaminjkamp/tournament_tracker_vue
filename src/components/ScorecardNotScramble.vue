@@ -5,7 +5,7 @@
       <div class="col-xs-1">
 
         <div v-if="matches.length > 0"  class="card">
-          <div  class="row">
+          <div  style="background-color: #2e7d32;" class="row">
 
             <div v-bind:key="match.id" v-for="match in matches" class="col-lg-6">
                                 
