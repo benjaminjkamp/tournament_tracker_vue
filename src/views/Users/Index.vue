@@ -17,7 +17,7 @@
         <h3 class="" v-if="isAdmin()">
           <router-link v-if="admin" :to="'/users/new'">
             <button class="btn btn-raised btn-white">
-              <i class="zmdi zmdi-hc-lg text-dark zmdi-plus-circle"> Add User</i>
+              <i class="zmdi zmdi-hc-lg text-dark zmdi-plus-circle"> Add Player</i>
             </button>
           </router-link>
         </h3>
